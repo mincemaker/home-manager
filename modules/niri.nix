@@ -4,7 +4,6 @@
   # niri本体をインストール
   home.packages = [
     pkgs.niri
-    noctalia-shell.packages.${pkgs.system}.default
   ];
 
   # 設定ファイルを配置
@@ -307,19 +306,4 @@ binds {
         skip-at-startup
     }
   '';
-
-  systemd.user.services.noctalia-shell = {
-    Unit = {
-      Description = "Noctalia Shell";
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.quickshell}/bin/qs -c ${noctalia-shell}";
-      Restart = "on-failure";
-    };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-  };
 }
