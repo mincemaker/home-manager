@@ -16,8 +16,13 @@
       After = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.quickshell}/bin/qs -c ${noctalia-shell.packages.${pkgs.system}.default}";
+      ExecStart = "/usr/bin/qs -p ${noctalia-shell.packages.${pkgs.system}.default}/share/noctalia-shell";
       Restart = "on-failure";
+      Environment = [
+        "QT_QPA_PLATFORM=wayland"
+        "QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=wayland-egl"
+        "EGL_PLATFORM=wayland"
+      ];
     };
     Install = {
       WantedBy = [ "graphical-session.target" ];

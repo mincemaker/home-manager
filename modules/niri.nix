@@ -65,10 +65,10 @@ binds {
 
     // ─── Applications ───
     MOD+RETURN  hotkey-overlay-title="Open Terminal: alacritty" { spawn "ghostty"; }
-    MOD+SPACE   hotkey-overlay-title="App Launcher" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    MOD+SLASH   hotkey-overlay-title="App Launcher" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    MOD+SPACE   hotkey-overlay-title="App Launcher" { spawn "qs" "-p" "${noctalia-shell.packages.${pkgs.system}.default}/share/noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    MOD+SLASH   hotkey-overlay-title="App Launcher" { spawn "qs" "-p" "${noctalia-shell.packages.${pkgs.system}.default}/share/noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     ALT+TAB     hotkey-overlay-title="App Launcher" { spawn "rofi" "-show" "window"; }
-    Mod+Alt+L   hotkey-overlay-title="Lock Screen" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+Alt+L   hotkey-overlay-title="Lock Screen" { spawn "qs" "-p" "${noctalia-shell.packages.${pkgs.system}.default}/share/noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     MOD+B       hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
 
     // Please choose your own file manager
@@ -206,9 +206,10 @@ binds {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
+    spawn-sh-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all" // Pass environment to systemd
     spawn-sh-at-startup "swww-daemon" // Wallpaper daemon
     spawn-sh-at-startup "swww img /usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
-    spawn-sh-at-startup "swayidle -w timeout 900 'qs -c noctalia-shell ipc call lockScreen lock' timeout 1800 'niri msg action power-off-monitors' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
+    spawn-sh-at-startup "swayidle -w timeout 900 'qs -p ${noctalia-shell.packages.${pkgs.system}.default}/share/noctalia-shell ipc call lockScreen lock' timeout 1800 'niri msg action power-off-monitors' before-sleep 'qs -p ${noctalia-shell.packages.${pkgs.system}.default}/share/noctalia-shell ipc call lockScreen lock'"
 
     prefer-no-csd // Disable program decorations
     screenshot-path null // Disable screenshot saving
