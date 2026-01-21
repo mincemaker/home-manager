@@ -11,11 +11,15 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia-shell = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs =
-    { nixpkgs, home-manager, zen-browser, xremap-flake, ... }:
+    { nixpkgs, home-manager, zen-browser, noctalia-shell, xremap-flake, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -27,7 +31,7 @@
           xremap-flake.homeManagerModules.default
           ./home.nix
         ];
-        extraSpecialArgs = { inherit zen-browser; };
+        extraSpecialArgs = { inherit zen-browser noctalia-shell; };
       };
     };
 }

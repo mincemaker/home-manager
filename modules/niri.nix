@@ -1,8 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, noctalia-shell, ... }:
 
 {
   # niri本体をインストール
-  home.packages = [ pkgs.niri ];
+  home.packages = [
+    pkgs.niri
+    noctalia-shell.packages.${pkgs.system}.default
+  ];
 
   # 設定ファイルを配置
   xdg.configFile."niri/config.kdl".text = ''
