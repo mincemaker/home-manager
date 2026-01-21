@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, noctalia-shell, ... }:
 
 {
   # niri本体をインストール
-  home.packages = [ pkgs.niri ];
+  home.packages = [
+    pkgs.niri
+  ];
 
   # 設定ファイルを配置
   xdg.configFile."niri/config.kdl".text = ''
@@ -206,7 +208,6 @@ binds {
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "swww-daemon" // Wallpaper daemon
     spawn-sh-at-startup "swww img /usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
-    spawn-sh-at-startup "qs -c noctalia-shell"
     spawn-sh-at-startup "swayidle -w timeout 900 'qs -c noctalia-shell ipc call lockScreen lock' timeout 1800 'niri msg action power-off-monitors' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
 
     prefer-no-csd // Disable program decorations

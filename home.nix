@@ -6,6 +6,7 @@
     ./modules/clock-rs.nix
     ./modules/zen-browser.nix
     ./modules/niri.nix
+    ./modules/noctalia-shell.nix
   ];
 
   home.username = "mince";
