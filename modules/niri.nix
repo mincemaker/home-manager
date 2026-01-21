@@ -209,7 +209,6 @@ binds {
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "swww-daemon" // Wallpaper daemon
     spawn-sh-at-startup "swww img /usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
-    spawn-sh-at-startup "qs -c noctalia-shell"
     spawn-sh-at-startup "swayidle -w timeout 900 'qs -c noctalia-shell ipc call lockScreen lock' timeout 1800 'niri msg action power-off-monitors' before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'"
 
     prefer-no-csd // Disable program decorations
@@ -308,4 +307,19 @@ binds {
         skip-at-startup
     }
   '';
+
+  systemd.user.services.noctalia-shell = {
+    Unit = {
+      Description = "Noctalia Shell";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.quickshell}/bin/qs -c ${noctalia-shell}";
+      Restart = "on-failure";
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 }
