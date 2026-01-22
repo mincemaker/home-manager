@@ -1,10 +1,9 @@
-{ pkgs, lib, noctalia-shell, ... }:
+{ pkgs, lib, ... }:
 
 let
-  # noctalia-shell 専用設定
-  shellCmd = "/usr/bin/qs -p ${noctalia-shell.packages.${pkgs.system}.default}/share/noctalia-shell";
-  ipcLauncher = "launcher toggle";
-  ipcLock = "lockScreen lock";
+  # iNiR 専用設定
+  shellCmd = "/usr/bin/qs -c ii";
+  ipcLock = "lock activate";
 in {
   # niri本体をインストール
   home.packages = [
@@ -69,30 +68,47 @@ binds {
     MOD+SHIFT+SLASH                     { show-hotkey-overlay; }
 
     // ─── Applications ───
-    MOD+RETURN  hotkey-overlay-title="Open Terminal: alacritty" { spawn "ghostty"; }
-    MOD+SPACE   hotkey-overlay-title="App Launcher" { spawn-sh "${shellCmd} ipc call ${ipcLauncher}"; }
-    MOD+SLASH   hotkey-overlay-title="App Launcher" { spawn-sh "${shellCmd} ipc call ${ipcLauncher}"; }
-    ALT+TAB     hotkey-overlay-title="App Launcher" { spawn "rofi" "-show" "window"; }
-    Mod+Alt+L   hotkey-overlay-title="Lock Screen" { spawn-sh "${shellCmd} ipc call ${ipcLock}"; }
+    MOD+RETURN  hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    MOD+T       hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     MOD+B       hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
+    MOD+E       hotkey-overlay-title="File Manager: Dolphin" { spawn "dolphin"; }
 
-    // Please choose your own file manager
-    MOD+E                             hotkey-overlay-title="File Manager: Nautilus" { spawn-sh "nautilus"; }
+    // ─── iNiR Controls ───
+    MOD+Space   repeat=false hotkey-overlay-title="Overview" { spawn "qs" "-c" "ii" "ipc" "call" "overview" "toggle"; }
+    MOD+G       hotkey-overlay-title="iNiR Overlay" { spawn "qs" "-c" "ii" "ipc" "call" "overlay" "toggle"; }
+    MOD+SLASH   hotkey-overlay-title="Cheatsheet" { spawn "qs" "-c" "ii" "ipc" "call" "cheatsheet" "toggle"; }
+    MOD+COMMA   hotkey-overlay-title="Settings" { spawn "qs" "-c" "ii" "ipc" "call" "settings" "open"; }
+    MOD+V       hotkey-overlay-title="Clipboard" { spawn "qs" "-c" "ii" "ipc" "call" "clipboard" "toggle"; }
+    MOD+Alt+L   hotkey-overlay-title="Lock Screen" { spawn "qs" "-c" "ii" "ipc" "call" "lock" "activate"; }
+    ALT+TAB     hotkey-overlay-title="Window Switcher" { spawn "qs" "-c" "ii" "ipc" "call" "altSwitcher" "next"; }
+    ALT+SHIFT+TAB hotkey-overlay-title="Window Switcher Prev" { spawn "qs" "-c" "ii" "ipc" "call" "altSwitcher" "previous"; }
+    CTRL+ALT+T  hotkey-overlay-title="Wallpaper Selector" { spawn "qs" "-c" "ii" "ipc" "call" "wallpaperSelector" "toggle"; }
+    MOD+SHIFT+S hotkey-overlay-title="Region Screenshot" { spawn "qs" "-c" "ii" "ipc" "call" "region" "screenshot"; }
+    MOD+SHIFT+X hotkey-overlay-title="Region OCR" { spawn "qs" "-c" "ii" "ipc" "call" "region" "ocr"; }
+    MOD+SHIFT+A hotkey-overlay-title="Region Search (Google Lens)" { spawn "qs" "-c" "ii" "ipc" "call" "region" "search"; }
+    MOD+SHIFT+W hotkey-overlay-title="Cycle Panel Family" { spawn "qs" "-c" "ii" "ipc" "call" "panelFamily" "cycle"; }
 
-    // ─── Audio Controls ───
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute                       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-    XF86AudioNext                       allow-when-locked=true { spawn-sh "playerctl next"; }
-    XF86AudioPause                      allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioPlay                       allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioPrev                       allow-when-locked=true { spawn-sh "playerctl previous"; }
+    // ─── Audio Controls (iNiR IPC) ───
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "audio" "volumeUp"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "audio" "volumeDown"; }
+    XF86AudioMute        allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "audio" "mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "audio" "micMute"; }
+    XF86AudioNext        allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "next"; }
+    XF86AudioPause       allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPlay        allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPrev        allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "previous"; }
+
+    // ─── Music Control ───
+    Ctrl+MOD+Space hotkey-overlay-title="Play/Pause" { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "playPause"; }
+    MOD+Alt+N      hotkey-overlay-title="Next Track" { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "next"; }
+    MOD+Alt+P      hotkey-overlay-title="Previous Track" { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "previous"; }
+
+    // ─── Window Management ───
+    MOD+Q       repeat=false hotkey-overlay-title="Close Window" { spawn "bash" "-c" "$HOME/.config/quickshell/ii/scripts/close-window.sh"; }
+    MOD+D       hotkey-overlay-title="Maximize Column" { maximize-column; }
+    MOD+A       hotkey-overlay-title="Toggle Floating" { toggle-window-floating; }
 
     // ─── Window Movement and Focus ───
-    MOD+Q                               { close-window; }
 
     MOD+LEFT                            { focus-column-left; }
     MOD+H                               { focus-column-or-monitor-left; }
@@ -187,7 +203,6 @@ binds {
     Mod+BracketRight                    { expel-window-from-column; }
 
     // ─── Modes ───
-    MOD+T                               { toggle-window-floating; }
     MOD+F                               { fullscreen-window; }
     MOD+W                               { toggle-column-tabbed-display; }
 
@@ -213,8 +228,9 @@ binds {
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all" // Pass environment to systemd
     spawn-sh-at-startup "swww-daemon" // Wallpaper daemon
-    spawn-sh-at-startup "swww img /usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
     spawn-sh-at-startup "swayidle -w timeout 900 '${shellCmd} ipc call ${ipcLock}' timeout 1800 'niri msg action power-off-monitors' before-sleep '${shellCmd} ipc call ${ipcLock}'"
+    spawn-at-startup "${pkgs.wl-clipboard}/bin/wl-paste" "--watch" "${pkgs.cliphist}/bin/cliphist" "store" // Clipboard history (text)
+    spawn-at-startup "${pkgs.wl-clipboard}/bin/wl-paste" "--type" "image" "--watch" "${pkgs.cliphist}/bin/cliphist" "store" // Clipboard history (image)
 
     prefer-no-csd // Disable program decorations
     screenshot-path null // Disable screenshot saving
@@ -294,6 +310,21 @@ binds {
     window-rule {
         geometry-corner-radius 20 // Set every window radius to 20
         clip-to-geometry true
+    }
+
+// ────────────── Layer Rules ──────────────
+// iNiR backdrop layers for overview and widgets
+
+    layer-rule {
+        match namespace="quickshell:iiBackdrop"
+        place-within-backdrop true
+        opacity 1.0
+    }
+
+    layer-rule {
+        match namespace="quickshell:wBackdrop"
+        place-within-backdrop true
+        opacity 1.0
     }
 
 // ────────────── Environment Variables ──────────────

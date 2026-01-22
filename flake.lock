@@ -53,6 +53,22 @@
         "type": "github"
       }
     },
+    "inir": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769039744,
+        "narHash": "sha256-gwk9RTkFyoug9tUjTUewMh+Y2L+aAri6gXARU6mf6NY=",
+        "owner": "snowarch",
+        "repo": "iNiR",
+        "rev": "cd81f2368e11d6b03d2d61e2da5102b719e71edd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "snowarch",
+        "repo": "iNiR",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1768886240,
@@ -123,6 +139,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "inir": "inir",
         "nixpkgs": "nixpkgs",
         "noctalia-shell": "noctalia-shell",
         "xremap-flake": "xremap-flake",
