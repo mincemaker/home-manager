@@ -16,7 +16,7 @@ in {
     text = ''
       @description "niri idle management"
 
-      stasis:
+      default:
         monitor_media true
         debounce_seconds 5
 
@@ -31,11 +31,10 @@ in {
           resume-command "niri msg action power-on-monitors"
         end
 
-        # サスペンドは動作確認後に追加
-        # suspend:
-        #   timeout 3600
-        #   command "systemctl suspend"
-        # end
+        suspend:
+          timeout 7200
+          command "systemctl suspend"
+        end
       end
     '';
   };
