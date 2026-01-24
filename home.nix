@@ -8,6 +8,7 @@
     ./modules/niri              # 統合niriモジュール
     ./modules/noctalia-shell.nix
     ./modules/inir.nix
+    ./modules/stasis.nix        # アイドル管理
   ];
 
   home.username = "mince";

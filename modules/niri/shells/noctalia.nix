@@ -31,7 +31,6 @@ in {
   startup = ''
     spawn-sh-at-startup "swww-daemon"
     spawn-sh-at-startup "swww img /usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png"
-    spawn-sh-at-startup "swayidle -w timeout 900 '${shellCmd} ipc call ${ipcLock}' timeout 1800 'niri msg action power-off-monitors' before-sleep '${shellCmd} ipc call ${ipcLock}'"
   '';
 
   layerRules = "";

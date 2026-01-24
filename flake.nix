@@ -20,10 +20,14 @@
       flake = false;
     };
     xremap-flake.url = "github:xremap/nix-flake";
+    stasis = {
+      url = "github:saltnpepper97/stasis";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, zen-browser, noctalia-shell, inir, xremap-flake, ... }:
+    { nixpkgs, home-manager, zen-browser, noctalia-shell, inir, xremap-flake, stasis, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -33,9 +37,10 @@
         inherit pkgs;
         modules = [
           xremap-flake.homeManagerModules.default
+          stasis.homeModules.default
           ./home.nix
         ];
-        extraSpecialArgs = { inherit zen-browser noctalia-shell inir; };
+        extraSpecialArgs = { inherit zen-browser noctalia-shell inir stasis; };
       };
     };
 }

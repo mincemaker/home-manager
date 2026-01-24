@@ -45,7 +45,6 @@ in {
 
   startup = pkgs: ''
     spawn-sh-at-startup "swww-daemon"
-    spawn-sh-at-startup "swayidle -w timeout 900 '${shellCmd} ipc call ${ipcLock}' timeout 1800 'niri msg action power-off-monitors' before-sleep '${shellCmd} ipc call ${ipcLock}'"
     spawn-at-startup "${pkgs.wl-clipboard}/bin/wl-paste" "--watch" "${pkgs.cliphist}/bin/cliphist" "store"
     spawn-at-startup "${pkgs.wl-clipboard}/bin/wl-paste" "--type" "image" "--watch" "${pkgs.cliphist}/bin/cliphist" "store"
   '';
