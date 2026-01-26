@@ -5,6 +5,8 @@ let
   ipcLauncher = "launcher toggle";
   ipcLock = "lockScreen lock";
 in {
+  lockCommand = "${shellCmd} ipc call ${ipcLock}";
+
   binds = ''
     // ─── noctalia-shell Controls ───
     MOD+SPACE   hotkey-overlay-title="App Launcher" { spawn-sh "${shellCmd} ipc call ${ipcLauncher}"; }

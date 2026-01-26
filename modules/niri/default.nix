@@ -14,9 +14,16 @@ in {
       default = "noctalia";
       description = "Which shell to use with niri (noctalia or inir)";
     };
+    lockCommand = lib.mkOption {
+      type = lib.types.str;
+      readOnly = true;
+      description = "Lock screen command derived from the selected shell configuration";
+    };
   };
 
   config = lib.mkIf cfg.enable {
+    programs.niri.lockCommand = shellConfig.lockCommand;
+
     home.packages = [ pkgs.niri ];
 
     # 選択されたシェルを自動的に有効化

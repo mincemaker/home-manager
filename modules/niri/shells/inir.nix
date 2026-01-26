@@ -4,6 +4,8 @@ let
   shellCmd = "/usr/bin/qs -c ii";
   ipcLock = "lock activate";
 in {
+  lockCommand = "${shellCmd} ipc call ${ipcLock}";
+
   binds = ''
     // ─── iNiR Controls ───
     MOD+Space   repeat=false hotkey-overlay-title="Overview" { spawn "qs" "-c" "ii" "ipc" "call" "overview" "toggle"; }
