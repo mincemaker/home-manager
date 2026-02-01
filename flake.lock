@@ -1,5 +1,42 @@
 {
   "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769944375,
+        "narHash": "sha256-TmTyQvFz8rNCwN8MQZGFtgFGdJANF6P6nbxVOjQvpME=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "bb2fc09cd0152867bd548422e66f4738b081d719",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
+    "anthropic-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766254184,
+        "narHash": "sha256-pllFZoWRdtLliz/5pLWks0V9nKFMzeWoRcmFgu2UWi8=",
+        "owner": "anthropics",
+        "repo": "skills",
+        "rev": "69c0b1a0674149f27b61b2635f935524b6add202",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anthropics",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1766774972,
@@ -51,6 +88,27 @@
       }
     },
     "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "agent-skills",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766387499,
+        "narHash": "sha256-AjK3/UKDzeXFeYNLVBaJ3+HLE9he1g5UrlNd4/BM3eA=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "527ad07e6625302b648ed3b28c34b62a79bd103e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -170,13 +228,32 @@
     },
     "root": {
       "inputs": {
-        "home-manager": "home-manager",
+        "agent-skills": "agent-skills",
+        "anthropic-skills": "anthropic-skills",
+        "home-manager": "home-manager_2",
         "inir": "inir",
         "nixpkgs": "nixpkgs",
         "noctalia-shell": "noctalia-shell",
+        "slash-criticalthink": "slash-criticalthink",
         "stasis": "stasis",
         "xremap-flake": "xremap-flake",
         "zen-browser": "zen-browser"
+      }
+    },
+    "slash-criticalthink": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760141776,
+        "narHash": "sha256-D+AjpVnxYnNJ6joA1Ex3uEyDGACEOhkox+LArRzP9fc=",
+        "owner": "abagames",
+        "repo": "slash-criticalthink",
+        "rev": "049ea25e5188515c6f76bd0432d44cbef49c0357",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abagames",
+        "repo": "slash-criticalthink",
+        "type": "github"
       }
     },
     "stasis": {

@@ -9,6 +9,7 @@
     ./modules/noctalia-shell.nix
     ./modules/inir.nix
     ./modules/stasis.nix        # アイドル管理
+    ./modules/claude.nix        # Claude Code設定
   ];
 
   home.username = "mince";
@@ -22,4 +23,7 @@
     enable = true;
     shell = "inir";  # "noctalia" または "inir"
   };
+
+  # Claude Code設定
+  programs.claude.enable = true;
 }
