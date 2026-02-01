@@ -11,6 +11,7 @@
       "r47go"
       "foostan Corne v4"
       "Lofree"
+      "HUGE PLUS HUGE PLUS"
     ];
 
     config.modmap = [
@@ -101,6 +102,15 @@
         name = "F24 to Ctrl+V";
         remap = {
           "F24" = "C-v";
+        };
+      }
+      {
+        name = "Elecom Huge Plus";
+        device.only = "HUGE PLUS HUGE PLUS";
+        remap = {
+          BTN_FORWARD = "Shift-Insert";  # Fn1 → ペースト
+          BTN_BACK = "Win-o";            # Fn2 → Win-o
+          BTN_TASK = "Enter";            # Fn3 → Enter
         };
       }
     ];
