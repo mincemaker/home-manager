@@ -24,10 +24,22 @@
       url = "github:saltnpepper97/stasis";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    slash-criticalthink = {
+      url = "github:abagames/slash-criticalthink";
+      flake = false;
+    };
+    agent-skills = {
+      url = "github:Kyure-A/agent-skills-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    anthropic-skills = {
+      url = "github:anthropics/skills";
+      flake = false;
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, zen-browser, noctalia-shell, inir, xremap-flake, stasis, ... }:
+    { nixpkgs, home-manager, zen-browser, noctalia-shell, inir, xremap-flake, stasis, slash-criticalthink, agent-skills, anthropic-skills, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -38,9 +50,10 @@
         modules = [
           xremap-flake.homeManagerModules.default
           stasis.homeModules.default
+          agent-skills.homeManagerModules.default
           ./home.nix
         ];
-        extraSpecialArgs = { inherit zen-browser noctalia-shell inir stasis; };
+        extraSpecialArgs = { inherit zen-browser noctalia-shell inir stasis slash-criticalthink anthropic-skills; };
       };
     };
 }
