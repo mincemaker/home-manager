@@ -57,23 +57,6 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1768135262,
-        "narHash": "sha256-PVvu7OqHBGWN16zSi6tEmPwwHQ4rLPU9Plvs8/1TUBY=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "80daad04eddbbf5a4d883996a73f3f542fa437ac",
-        "type": "github"
-      },
-      "original": {
-        "id": "flake-parts",
-        "type": "indirect"
-      }
-    },
-    "flake-parts_2": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib_2"
-      },
-      "locked": {
         "lastModified": 1765835352,
         "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
         "owner": "hercules-ci",
@@ -175,21 +158,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-lib_2": {
-      "locked": {
-        "lastModified": 1765674936,
-        "narHash": "sha256-k00uTP4JNfmejrCLJOwdObYC9jHRrr/5M/a/8L2EIdo=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "2075416fcb47225d9b68ac469a5c4801a9c4dd85",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1767026758,
@@ -235,7 +203,6 @@
         "nixpkgs": "nixpkgs",
         "noctalia-shell": "noctalia-shell",
         "slash-criticalthink": "slash-criticalthink",
-        "stasis": "stasis",
         "xremap-flake": "xremap-flake",
         "zen-browser": "zen-browser"
       }
@@ -253,27 +220,6 @@
       "original": {
         "owner": "abagames",
         "repo": "slash-criticalthink",
-        "type": "github"
-      }
-    },
-    "stasis": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769176936,
-        "narHash": "sha256-Lf1+jGcVgPNlS5Rk+ax8/gs7Skzhe6WJ3pldcLEOeec=",
-        "owner": "saltnpepper97",
-        "repo": "stasis",
-        "rev": "61f7f1094744510c94e76892b49795dee8f9b1c0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "saltnpepper97",
-        "repo": "stasis",
         "type": "github"
       }
     },
@@ -297,7 +243,7 @@
     "xremap-flake": {
       "inputs": {
         "crane": "crane",
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs_2",
         "xremap": "xremap"
       },
