@@ -12,6 +12,7 @@
       "foostan Corne v4"
       "Lofree"
       "HUGE PLUS HUGE PLUS"
+      "Keychron Keychron K6 Pro"
     ];
 
     config.modmap = [
