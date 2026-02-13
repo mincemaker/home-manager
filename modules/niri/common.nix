@@ -171,6 +171,12 @@
 
   windowRules = ''
     window-rule {
+        match app-id=r#"firefox$"#
+        opacity 0.8
+        draw-border-with-background false
+    }
+
+    window-rule {
         match app-id=r#"firefox$"# title="^Picture-in-Picture$"
         open-floating true
     }
