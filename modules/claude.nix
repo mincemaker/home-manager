@@ -24,6 +24,7 @@ in {
         dest = "\${CLAUDE_CONFIG_DIR:-$HOME/.claude}/skills";
         structure = "symlink-tree";
       };
+      targets.gemini.enable = true;
       targets.codex.enable = false;
       targets.opencode.enable = false;
     };
