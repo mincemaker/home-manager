@@ -15,6 +15,7 @@ in {
     MOD+V       hotkey-overlay-title="Clipboard" { spawn "qs" "-c" "ii" "ipc" "call" "clipboard" "toggle"; }
     MOD+Alt+L   hotkey-overlay-title="Lock Screen" { spawn "qs" "-c" "ii" "ipc" "call" "lock" "activate"; }
     ALT+TAB     hotkey-overlay-title="Window Switcher" { spawn "rofi" "-show" "window"; }
+    ALT+Space   hotkey-overlay-title="App Launcher" { spawn "rofi" "-show" "drun" "-terminal" "alacritty"; }
     ALT+SHIFT+TAB hotkey-overlay-title="Window Switcher Prev" { spawn "qs" "-c" "ii" "ipc" "call" "altSwitcher" "previous"; }
     CTRL+ALT+T  hotkey-overlay-title="Wallpaper Selector" { spawn "qs" "-c" "ii" "ipc" "call" "wallpaperSelector" "toggle"; }
     MOD+SHIFT+S hotkey-overlay-title="Region Screenshot" { spawn "qs" "-c" "ii" "ipc" "call" "region" "screenshot"; }
