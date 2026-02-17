@@ -46,6 +46,7 @@
         modules = [
           xremap-flake.homeManagerModules.default
           agent-skills.homeManagerModules.default
+          ./modules/agent-skills.nix
           ./home.nix
         ];
         extraSpecialArgs = { inherit zen-browser noctalia-shell inir slash-criticalthink anthropic-skills; };
