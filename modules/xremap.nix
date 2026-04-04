@@ -13,6 +13,7 @@
       "Lofree"
       "HUGE PLUS HUGE PLUS"
       "Keychron Keychron K6 Pro"
+      "NuPhy NuPhy Air60 V2"
     ];
 
     config.modmap = [
