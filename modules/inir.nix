@@ -68,6 +68,8 @@ in {
         PartOf = [ "graphical-session.target" ];
         After = [ "graphical-session.target" ];
         Conflicts = [ "noctalia-shell.service" ];
+        # inir ソースが変わったら home-manager switch 後に自動再起動
+        X-Restart-Triggers = [ (toString inir) ];
       };
       Service = {
         ExecStart = "/usr/bin/qs -c ii";
@@ -82,6 +84,7 @@ in {
       Install = {
         WantedBy = [ "graphical-session.target" ];
       };
+      # inir ソースが変わったら home-manager switch 後に自動再起動
     };
   };
 }
