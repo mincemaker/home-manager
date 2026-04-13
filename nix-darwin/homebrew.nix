@@ -9,6 +9,7 @@
       "eza"
       "fd"
       "gh"
+      "gemini-cli"
       "gnupg"
       "pinentry-mac"
       "ripgrep"
