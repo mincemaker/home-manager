@@ -1,0 +1,25 @@
+[tasks.switch]
+description = "Apply nix-darwin configuration (macOS)"
+run = "sudo darwin-rebuild switch --flake '.#mince-mac'"
+
+[tasks.update]
+description = "Update flake inputs and apply"
+run = [
+  "nix flake update",
+  "sudo darwin-rebuild switch --flake '.#mince-mac'",
+]
+
+[tasks.check]
+description = "Dry-run: check what would change without applying"
+run = "darwin-rebuild check --flake '.#mince-mac'"
+
+[tasks.switch-linux]
+description = "Apply home-manager configuration (Linux)"
+run = "home-manager switch --flake '.#mince'"
+
+[tasks.update-linux]
+description = "Update flake inputs and apply (Linux)"
+run = [
+  "nix flake update",
+  "home-manager switch --flake '.#mince'",
+]

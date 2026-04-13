@@ -40,6 +40,21 @@ sudo darwin-rebuild switch --flake '.#mince-mac'
 
 ## 適用コマンド
 
+[mise](https://mise.jdx.dev/) のタスクランナーを使うと簡単に実行できる。
+
+```bash
+# macOS
+mise run switch        # 設定を適用
+mise run update        # flake を更新して適用
+mise run check         # ドライラン（変更内容の確認のみ）
+
+# Linux
+mise run switch-linux  # 設定を適用
+mise run update-linux  # flake を更新して適用
+```
+
+mise を使わない場合:
+
 ```bash
 # Linux
 home-manager switch --flake '.#mince'
