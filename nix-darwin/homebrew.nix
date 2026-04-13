@@ -6,6 +6,7 @@
 
     brews = [
       "bat"
+      "btop"
       "eza"
       "fd"
       "gh"
