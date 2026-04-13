@@ -5,9 +5,13 @@
     enable = true;
 
     brews = [
+      "bat"
+      "eza"
+      "fd"
       "gh"
       "gnupg"
       "pinentry-mac"
+      "ripgrep"
       "rtk"
     ];
 
@@ -19,7 +23,9 @@
       "ghostty"
       "macskk"
       "obsidian"
+      "tailscale-app"
       "visual-studio-code"
+      "zen"
     ];
 
     onActivation = {
