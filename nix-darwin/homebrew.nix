@@ -11,6 +11,7 @@
       "gh"
       "gemini-cli"
       "gnupg"
+      "lazygit"
       "pinentry-mac"
       "ripgrep"
       "rtk"
@@ -18,7 +19,6 @@
     ];
 
     casks = [
-      "Jean-Tinland/a-bar/a-bar"
       "azookey"
       "bitwarden"
       "claude-code"
@@ -26,6 +26,7 @@
       "ghostty"
       "macskk"
       "obsidian"
+      "raycast"
       "tailscale-app"
       "visual-studio-code"
       "zen"

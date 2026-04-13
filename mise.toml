@@ -11,7 +11,7 @@ run = [
 
 [tasks.check]
 description = "Dry-run: check what would change without applying"
-run = "darwin-rebuild check --flake '.#mince-mac'"
+run = "sudo darwin-rebuild check --flake '.#mince-mac'"
 
 [tasks.switch-linux]
 description = "Apply home-manager configuration (Linux)"
