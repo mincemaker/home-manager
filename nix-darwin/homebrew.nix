@@ -14,9 +14,11 @@
       "pinentry-mac"
       "ripgrep"
       "rtk"
+      "k1LoW/tap/mo"
     ];
 
     casks = [
+      "Jean-Tinland/a-bar/a-bar"
       "azookey"
       "bitwarden"
       "claude-code"
