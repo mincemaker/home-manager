@@ -6,7 +6,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     # iNiR を ~/.config/quickshell/ii に配置
-    home.file.".config/quickshell/ii" = {
+    home.file.".config/quickshell/inir" = {
       source = inir;
       recursive = true;
     };
@@ -72,7 +72,7 @@ in {
         X-Restart-Triggers = [ (toString inir) ];
       };
       Service = {
-        ExecStart = "/usr/bin/qs -c ii";
+        ExecStart = "${inir}/scripts/inir run --session";
         Restart = "on-failure";
         Environment = [
           "QT_QPA_PLATFORM=wayland"
