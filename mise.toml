@@ -1,15 +1,15 @@
-[tasks.switch]
+[tasks.switch-mac]
 description = "Apply nix-darwin configuration (macOS)"
 run = "sudo darwin-rebuild switch --flake '.#mince-mac'"
 
-[tasks.update]
+[tasks.update-mac]
 description = "Update flake inputs and apply"
 run = [
   "nix flake update",
   "sudo darwin-rebuild switch --flake '.#mince-mac'",
 ]
 
-[tasks.check]
+[tasks.check-mac]
 description = "Dry-run: check what would change without applying"
 run = "sudo darwin-rebuild check --flake '.#mince-mac'"
 

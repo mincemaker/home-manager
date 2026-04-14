@@ -25,6 +25,7 @@
       "claude-code"
       "copilot-cli"
       "ghostty"
+      "karabiner-elements"
       "macskk"
       "obsidian"
       "raycast"
