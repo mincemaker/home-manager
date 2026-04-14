@@ -28,6 +28,7 @@
       "karabiner-elements"
       "macskk"
       "obsidian"
+      "postgres-app"
       "raycast"
       "tailscale-app"
       "visual-studio-code"
