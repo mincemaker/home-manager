@@ -10,7 +10,6 @@
       "eza"
       "fd"
       "gh"
-      "gemini-cli"
       "gnupg"
       "lazygit"
       "pinentry-mac"
@@ -22,7 +21,6 @@
     casks = [
       "azookey"
       "bitwarden"
-      "claude-code"
       "copilot-cli"
       "ghostty"
       "jordanbaird-ice"
