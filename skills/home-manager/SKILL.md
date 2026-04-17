@@ -1,13 +1,11 @@
 ---
 name: home-manager
 description: >
-  nix-darwin + home-manager configuration patterns for this repository.
-  USE WHEN: adding new home-manager modules, refactoring existing config,
-  or working with any .nix file in this repo.
-triggers:
-  - "*.nix"
-  - "flake.nix"
-  - "home-manager"
+  Configuration expert for THIS home-manager + nix-darwin repository (mincemaker/home-manager).
+  USE THIS SKILL for any task touching this repo's code: adding home-manager modules (programs.*, services.*),
+  modifying flake.nix inputs or outputs, understanding common.nix vs darwin.nix vs linux.nix structure,
+  troubleshooting darwin-rebuild or home-manager switch errors, or asking where something is configured
+  in this repo. Do NOT use for general Nix/NixOS questions outside this specific codebase.
 ---
 
 # Home-Manager Repository Guide
