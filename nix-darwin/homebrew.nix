@@ -25,6 +25,7 @@
       "claude-code"
       "copilot-cli"
       "ghostty"
+      "jordanbaird-ice"
       "karabiner-elements"
       "macskk"
       "obsidian"
