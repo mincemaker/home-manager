@@ -4,6 +4,7 @@
   imports = [
     ../modules/agent-skills.nix
     ../modules/macskk.nix
+    ../modules/yaskkserv2.nix
     ./common.nix
   ];
 

@@ -3,6 +3,7 @@
 {
   imports = [
     ./common.nix
+    ../modules/yaskkserv2.nix
     ../modules/niri/xremap.nix
     ../modules/niri/clock-rs.nix
     ../modules/niri/zen-browser.nix
