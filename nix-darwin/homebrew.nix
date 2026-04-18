@@ -30,6 +30,7 @@
       "obsidian"
       "postgres-app"
       "raycast"
+      "secretive"
       "tailscale-app"
       "visual-studio-code"
       "zen"
