@@ -8,6 +8,7 @@
       "bat"
       "btop"
       "eza"
+      "git-delta"
       "fd"
       "gh"
       "gnupg"
