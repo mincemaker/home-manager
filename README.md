@@ -44,13 +44,16 @@ sudo darwin-rebuild switch --flake '.#mince-mac'
 
 ```bash
 # macOS
-mise run switch        # 設定を適用
-mise run update        # flake を更新して適用
-mise run check         # ドライラン（変更内容の確認のみ）
+mise run switch-mac   # 設定を適用
+mise run update-mac   # flake を更新して適用
+mise run check-mac    # ドライラン（変更内容の確認のみ）
 
 # Linux
 mise run switch-linux  # 設定を適用
 mise run update-linux  # flake を更新して適用
+
+# 共通
+mise run gc            # 古い世代を削除（7日以上前）
 ```
 
 mise を使わない場合:
