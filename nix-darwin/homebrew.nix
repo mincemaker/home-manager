@@ -22,6 +22,7 @@
     casks = [
       "azookey"
       "bitwarden"
+      "chatgpt-atlas"
       "copilot-cli"
       "ghostty"
       "jordanbaird-ice"
