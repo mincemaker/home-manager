@@ -110,6 +110,17 @@ in {
    - Linux のみ → `home/linux.nix`
 3. `programs.<name>.enable = true;` で有効化
 
+## パッケージをどこに追加するか
+
+| 対象       | 場所                                  | 注意点                                      |
+|------------|---------------------------------------|---------------------------------------------|
+| Linux      | `home/linux.nix` の `home.packages`   | `pkgs` 引数が既にある                       |
+| Mac CLI    | `nix-darwin/homebrew.nix` の `brews`  | 追加前に既存リストを必ず確認                |
+| Mac GUI    | `nix-darwin/homebrew.nix` の `casks`  | 同上                                        |
+| 両OS共通   | `home/common.nix` の `home.packages`  | `darwin.nix` はデフォルトで `pkgs` なし     |
+
+`darwin.nix` で `pkgs` を使う場合は引数を `{ pkgs, ... }:` に変更する。
+
 ## アンチパターン
 
 - `with pkgs;` は使わない — 常に `pkgs.foo` と明示
@@ -117,6 +128,8 @@ in {
 - `allowUnfree` はこのリポジトリで設定していない
 - home-manager モジュールに `inputs` 引数を追加しない
 - import を追加し忘れない — モジュールはオプトイン制
+- Mac にパッケージを追加する前に必ず `nix-darwin/homebrew.nix` の `brews` / `casks` を確認する — Homebrew 経由で既にインストール済みの可能性がある
+- `programs.git.enable = true` は `~/.config/git/config` を管理下に置く。`~/.gitconfig` が既存の場合は競合する。git バイナリをNix管理にしたくない場合は `home.packages = [ pkgs.delta ]` などパッケージのみ追加する
 
 ## よく使うコマンド
 

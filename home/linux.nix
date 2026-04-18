@@ -18,6 +18,8 @@
 
   programs.home-manager.enable = true;
 
+  home.packages = [ pkgs.delta ];
+
   programs.fish = {
     enable = true;
 
