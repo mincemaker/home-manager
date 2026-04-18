@@ -23,3 +23,7 @@ run = [
   "nix flake update",
   "home-manager switch --flake '.#mince'",
 ]
+
+[tasks.gc]
+description = "Garbage collect old generations (keep 7 days)"
+run = "nix-collect-garbage --delete-older-than 7d"
