@@ -19,6 +19,9 @@ let
 
     cargoHash = "sha256-cycs8Zism228rjMaBpNYa4K1Ll760UhLKkoTX6VJRU0=";
 
+    nativeBuildInputs = [ pkgs.pkg-config ];
+    buildInputs = [ pkgs.openssl ];
+
     doCheck = false;
   };
 
@@ -42,6 +45,9 @@ in
       Label = "com.github.wachikun.yaskkserv2";
       ProgramArguments = [
         "${yaskkserv2}/bin/yaskkserv2"
+        "--no-daemonize"
+        "--google-japanese-input=notfound"
+        "--google-suggest"
         "${yaskDict}/dictionary.yaskkserv2"
       ];
       KeepAlive = true;
@@ -55,7 +61,7 @@ in
     Unit.Description = "yaskkserv2 SKK server";
     Install.WantedBy = [ "default.target" ];
     Service = {
-      ExecStart = "${yaskkserv2}/bin/yaskkserv2 ${yaskDict}/dictionary.yaskkserv2";
+      ExecStart = "${yaskkserv2}/bin/yaskkserv2 --no-daemonize --google-japanese-input=notfound --google-suggest ${yaskDict}/dictionary.yaskkserv2";
       Restart = "on-failure";
     };
   };
