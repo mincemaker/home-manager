@@ -1,29 +1,35 @@
-[tasks.switch-mac]
-description = "Apply nix-darwin configuration (macOS)"
-run = "sudo darwin-rebuild switch --flake '.#mince-mac'"
-
-[tasks.update-mac]
-description = "Update flake inputs and apply"
-run = [
-  "nix flake update",
-  "sudo darwin-rebuild switch --flake '.#mince-mac'",
-]
-
-[tasks.check-mac]
-description = "Dry-run: check what would change without applying"
-run = "sudo darwin-rebuild check --flake '.#mince-mac'"
-
-[tasks.switch-linux]
+[tasks.1-switch-linux]
+alias = "switch-linux"
 description = "Apply home-manager configuration (Linux)"
 run = "home-manager switch --flake '.#mince'"
 
-[tasks.update-linux]
+[tasks.2-update-linux]
+alias = "update-linux"
 description = "Update flake inputs and apply (Linux)"
 run = [
   "nix flake update",
   "home-manager switch --flake '.#mince'",
 ]
 
-[tasks.gc]
+[tasks.3-switch-mac]
+alias = "switch-mac"
+description = "Apply nix-darwin configuration (macOS)"
+run = "sudo darwin-rebuild switch --flake '.#mince-mac'"
+
+[tasks.4-update-mac]
+alias = "update-mac"
+description = "Update flake inputs and apply"
+run = [
+  "nix flake update",
+  "sudo darwin-rebuild switch --flake '.#mince-mac'",
+]
+
+[tasks.5-check-mac]
+alias = "check-mac"
+description = "Dry-run: check what would change without applying"
+run = "sudo darwin-rebuild check --flake '.#mince-mac'"
+
+[tasks.6-gc]
+alias = "gc"
 description = "Garbage collect old generations (keep 7 days)"
 run = "nix-collect-garbage --delete-older-than 7d"
