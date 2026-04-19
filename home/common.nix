@@ -1,9 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ../modules/claude.nix ];
+  imports = [ ../modules/claude.nix ../modules/tmux.nix ];
 
   programs.claude.enable = true;
+  programs.tmux-config.enable = true;
 
   home.packages = [ pkgs.zsh-completions ];
 
