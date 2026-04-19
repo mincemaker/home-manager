@@ -1,9 +1,11 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [ ../modules/claude.nix ];
 
   programs.claude.enable = true;
+
+  home.packages = [ pkgs.zsh-completions ];
 
   home.sessionVariables = {
     LANG = "ja_JP.UTF-8";
@@ -17,6 +19,15 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
+
+    completionInit = ''
+      autoload -Uz compinit
+      if [[ -n ''${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+        compinit
+      else
+        compinit -C
+      fi
+    '';
 
     history = {
       path = "${config.home.homeDirectory}/.zsh_history";
