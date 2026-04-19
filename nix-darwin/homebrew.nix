@@ -21,11 +21,11 @@
 
     casks = [
       "azookey"
+      "battery-buddy"
       "bitwarden"
       "chatgpt-atlas"
       "copilot-cli"
       "ghostty"
-      "jordanbaird-ice"
       "karabiner-elements"
       "macskk"
       "obsidian"
@@ -33,6 +33,7 @@
       "raycast"
       "secretive"
       "tailscale-app"
+      "thaw"
       "visual-studio-code"
       "zen"
     ];
