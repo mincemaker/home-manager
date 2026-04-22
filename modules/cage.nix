@@ -21,6 +21,11 @@ in {
             - "${config.xdg.cacheHome}"
             - "${config.xdg.dataHome}"
             - "/tmp"
+            - "/private/tmp"
+            - "/var/folders"
+            - "/private/var/folders"
+            - "/Library/Caches"
+            - "$HOME/Library/Caches"
             - "/dev"
 
         claude-code:
@@ -54,6 +59,7 @@ in {
 
         git-enabled:
           allow-git: true
+          allow-keychain: true
 
       auto-presets:
         - command: claude
