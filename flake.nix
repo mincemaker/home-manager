@@ -27,6 +27,15 @@
     };
     xremap-flake.url = "github:xremap/nix-flake";
 
+    cage = {
+      url = "github:Warashi/cage";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    guard-and-guide = {
+      url = "github:kawarimidoll/guard-and-guide";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # 共通
     slash-criticalthink = {
       url = "github:abagames/slash-criticalthink";
@@ -55,7 +64,7 @@
           ./home/linux.nix
         ];
         extraSpecialArgs = {
-          inherit (inputs) zen-browser noctalia-shell inir slash-criticalthink anthropic-skills;
+          inherit (inputs) zen-browser noctalia-shell inir slash-criticalthink anthropic-skills cage guard-and-guide;
         };
       };
 

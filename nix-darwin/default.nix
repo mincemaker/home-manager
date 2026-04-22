@@ -13,7 +13,7 @@
       inputs.agent-skills.homeManagerModules.default
     ];
     extraSpecialArgs = {
-      inherit (inputs) slash-criticalthink anthropic-skills;
+      inherit (inputs) slash-criticalthink anthropic-skills cage guard-and-guide;
     };
     users.mince = ../home/darwin.nix;
   };

@@ -1,10 +1,17 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ../modules/claude.nix ../modules/tmux.nix ];
+  imports = [
+    ../modules/claude.nix
+    ../modules/tmux.nix
+    ../modules/cage.nix
+    ../modules/guard-and-guide.nix
+  ];
 
   programs.claude.enable = true;
   programs.tmux-config.enable = true;
+  programs.cage.enable = true;
+  programs.guard-and-guide.enable = true;
 
   home.packages = [ pkgs.zsh-completions ];
 
