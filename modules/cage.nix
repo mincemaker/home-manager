@@ -27,6 +27,7 @@ in {
             - "/Library/Caches"
             - "$HOME/Library/Caches"
             - "/dev"
+            - "/dev/tty"
 
         claude-code:
           allow:
@@ -76,6 +77,11 @@ in {
     '';
 
     home.packages = [ cage.packages.${system}.default ];
-    xdg.configFile."cage/presets.yaml".text = cfg.settings;
+    home.file = lib.mkIf pkgs.stdenv.isDarwin {
+      "Library/Application Support/cage/presets.yaml".text = cfg.settings;
+    };
+    xdg.configFile = lib.mkIf (!pkgs.stdenv.isDarwin) {
+      "cage/presets.yaml".text = cfg.settings;
+    };
   };
 }
