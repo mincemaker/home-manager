@@ -437,6 +437,26 @@
         "type": "github"
       }
     },
+    "nur-packages": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776659219,
+        "narHash": "sha256-yTuLPK1oBb+NMeM9aG9EVlALW+I14kknqWjZVeBerKc=",
+        "owner": "kawarimidoll",
+        "repo": "nur-packages",
+        "rev": "09d2184beef4e17c6583b769ad4cce66d13ab2c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kawarimidoll",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agent-skills": "agent-skills",
@@ -448,6 +468,7 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "noctalia-shell": "noctalia-shell",
+        "nur-packages": "nur-packages",
         "slash-criticalthink": "slash-criticalthink",
         "xremap-flake": "xremap-flake",
         "zen-browser": "zen-browser"
