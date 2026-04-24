@@ -18,6 +18,7 @@ in {
       wl-clipboard
       libnotify
       gum
+      awww
       # Screenshot & Recording
       grim
       slurp
@@ -78,7 +79,7 @@ in {
           "QT_QPA_PLATFORM=wayland"
           "QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=wayland-egl"
           "EGL_PLATFORM=wayland"
-          "PATH=${lib.makeBinPath (with pkgs; [ imagemagick ffmpeg tesseract grim slurp ])}:%h/.nix-profile/bin:/usr/bin:/bin"
+          "PATH=${lib.makeBinPath (with pkgs; [ imagemagick ffmpeg tesseract grim slurp awww ])}:%h/.nix-profile/bin:/usr/bin:/bin"
         ];
       };
       Install = {

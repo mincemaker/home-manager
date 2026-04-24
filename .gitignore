@@ -8,3 +8,4 @@ result-*
 # LLM Agent
 .claude/
 .agents/
+.serena/

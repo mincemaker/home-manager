@@ -47,7 +47,7 @@ in {
   '';
 
   startup = pkgs: ''
-    spawn-sh-at-startup "swww-daemon"
+    spawn-sh-at-startup "awww-daemon"
     spawn-at-startup "${pkgs.wl-clipboard}/bin/wl-paste" "--watch" "${pkgs.cliphist}/bin/cliphist" "store"
     spawn-at-startup "${pkgs.wl-clipboard}/bin/wl-paste" "--type" "image" "--watch" "${pkgs.cliphist}/bin/cliphist" "store"
   '';

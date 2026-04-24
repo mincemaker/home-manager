@@ -328,5 +328,6 @@
   commonStartup = pkgs: ''
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
     spawn-sh-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all"
+    spawn-sh-at-startup "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start graphical-session.target"
   '';
 }
