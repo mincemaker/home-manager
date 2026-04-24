@@ -11,11 +11,6 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur-packages = {
-      url = "github:kawarimidoll/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Linux only
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";

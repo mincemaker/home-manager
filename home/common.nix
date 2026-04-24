@@ -6,14 +6,12 @@
     ../modules/tmux.nix
     ../modules/cage.nix
     ../modules/guard-and-guide.nix
-    ../modules/plamo-translate.nix
   ];
 
   programs.claude.enable = true;
   programs.tmux-config.enable = true;
   programs.cage.enable = true;
   programs.guard-and-guide.enable = true;
-  programs.plamo-translate.enable = true;
 
   home.packages = [ pkgs.zsh-completions ];
 
