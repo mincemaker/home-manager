@@ -36,6 +36,14 @@ in {
       config.lib.file.mkOutOfStoreSymlink
         "${config.home.homeDirectory}/.config/home-manager/modules/claude/settings.json";
 
+    home.file.".claude/CLAUDE.md".source =
+      config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/.config/home-manager/modules/claude/CLAUDE.md";
+
+    home.file.".claude/agents/gemini-explore.md".source =
+      config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/.config/home-manager/modules/claude/agents/gemini-explore.md";
+
     programs.agent-skills = {
       enable = true;
       targets.claude = {
