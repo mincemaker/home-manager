@@ -5,8 +5,11 @@
     ../modules/agent-skills.nix
     ../modules/macskk.nix
     ../modules/yaskkserv2.nix
+    ../modules/plamo-translate.nix
     ./common.nix
   ];
+
+  programs.plamo-translate.enable = true;
 
   home.username = "mince";
   home.homeDirectory = "/Users/mince";
