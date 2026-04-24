@@ -7,7 +7,7 @@
       {
         "hooks": [
           {
-            "command": "/Users/mince/.claude/hooks/open-plan-mo.sh",
+            "command": "open-plan-mo",
             "type": "command"
           }
         ],

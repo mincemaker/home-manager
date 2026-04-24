@@ -8,28 +8,29 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ pkgs.jq ];
+    home.packages = [
+      pkgs.jq
+      (pkgs.writeShellApplication {
+        name = "open-plan-mo";
+        runtimeInputs = [ pkgs.jq ];
+        text = ''
+          INPUT=$(cat)
+          PLAN_FILE=$(echo "$INPUT" | jq -r '.tool_response.filePath // empty' 2>/dev/null)
+
+          if [ -n "$PLAN_FILE" ] && [ -f "$PLAN_FILE" ]; then
+              if command -v mo >/dev/null 2>&1; then
+                  mo "$PLAN_FILE" &
+                  disown
+              else
+                  echo "Error: 'mo' not found. Please install it via 'mise use -g github:k1LoW/mo@latest'" >&2
+              fi
+          fi
+        '';
+      })
+    ];
 
     home.file.".claude/commands/criticalthink.md".source =
       "${slash-criticalthink}/criticalthink.md";
-
-    home.file.".claude/hooks/open-plan-mo.sh" = {
-      executable = true;
-      text = ''
-        #!/bin/bash
-        INPUT=$(cat)
-        PLAN_FILE=$(echo "$INPUT" | jq -r '.tool_response.filePath // empty' 2>/dev/null)
-
-        if [ -n "$PLAN_FILE" ] && [ -f "$PLAN_FILE" ]; then
-            if command -v mo >/dev/null 2>&1; then
-                mo "$PLAN_FILE" &
-                disown
-            else
-                echo "Error: 'mo' not found. Please install it via 'mise use -g github:k1LoW/mo@latest'" >&2
-            fi
-        fi
-      '';
-    };
 
     home.file.".claude/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink
