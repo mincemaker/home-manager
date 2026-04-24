@@ -1,0 +1,57 @@
+{
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "/Users/mince/.claude/hooks/open-plan-mo.sh",
+            "type": "command"
+          }
+        ],
+        "matcher": "ExitPlanMode"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "guard-and-guide",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      },
+      {
+        "hooks": [
+          {
+            "command": "rtk hook claude",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ]
+  },
+  "language": "Japanese",
+  "permissions": {
+    "allow": [
+      "Bash(qs:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.noctalia.dev)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:quickshell.outfoxxed.me)",
+      "WebFetch(domain:quickshell.org)",
+      "Bash(systemctl --user show-environment:*)",
+      "WebFetch(domain:medium.com)"
+    ],
+    "defaultMode": "plan"
+  },
+  "statusLine": {
+    "command": "bunx ccusage statusline",
+    "padding": 0,
+    "type": "command"
+  }
+}

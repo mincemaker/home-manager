@@ -15,8 +15,6 @@
       "lazygit"
       "pinentry-mac"
       "ripgrep"
-      "rtk"
-      "k1LoW/tap/mo"
     ];
 
     casks = [
