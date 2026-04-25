@@ -32,6 +32,15 @@
           }
         ],
         "matcher": "Bash"
+      },
+      {
+        "hooks": [
+          {
+            "command": "deepwiki-guard",
+            "type": "command"
+          }
+        ],
+        "matcher": "mcp__deepwiki__.*"
       }
     ]
   },

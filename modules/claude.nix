@@ -27,6 +27,33 @@ in {
           fi
         '';
       })
+      (pkgs.writeShellApplication {
+        name = "deepwiki-guard";
+        runtimeInputs = [ pkgs.jq pkgs.gh ];
+        text = ''
+          INPUT=$(cat)
+          REPO_NAME=$(echo "$INPUT" | jq -r '.tool_input.repoName // empty')
+
+          if [ -z "$REPO_NAME" ]; then
+            exit 0
+          fi
+
+          if ! echo "$REPO_NAME" | grep -q '/'; then
+            exit 0
+          fi
+
+          VISIBILITY=$(gh repo view "$REPO_NAME" --json visibility -q '.visibility' 2>/dev/null || true)
+
+          if [ -z "$VISIBILITY" ] || [ "$VISIBILITY" = "PUBLIC" ]; then
+            exit 0
+          fi
+
+          REASON="DeepWiki MCPへのアクセスをブロックしました: '$REPO_NAME' はプライベートリポジトリです (visibility: $VISIBILITY)。"
+          jq -n --arg reason "$REASON" \
+            '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: $reason}}'
+          exit 0
+        '';
+      })
     ];
 
     home.file.".claude/commands/criticalthink.md".source =
