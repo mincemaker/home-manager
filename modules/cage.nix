@@ -37,6 +37,7 @@ in {
             - "$HOME/.claude.json.backup"
             - "$HOME/.claude.json.lock"
             - "$HOME/.claude.lock"
+            - "$HOME/.gemini"
             - "$HOME/.serena"
             - "$HOME/.agent-browser"
             - "$HOME/.browser-profile"
