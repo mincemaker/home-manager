@@ -28,6 +28,7 @@ in {
             - "$HOME/Library/Caches"
             - "/dev"
             - "/dev/tty"
+            - "/mnt/development/obsidian"
 
         claude-code:
           allow:
