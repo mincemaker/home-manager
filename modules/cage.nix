@@ -44,6 +44,7 @@ in {
             - "$HOME/.browser-profile"
             - "$HOME/.codex"
             - ".serena"
+            - "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/main"
 
         codex:
           allow:
