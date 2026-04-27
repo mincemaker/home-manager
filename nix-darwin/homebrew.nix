@@ -13,6 +13,7 @@
       "gh"
       "gnupg"
       "lazygit"
+      "neovim"
       "pinentry-mac"
       "ripgrep"
     ];
