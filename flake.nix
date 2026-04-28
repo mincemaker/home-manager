@@ -48,6 +48,10 @@
       url = "github:anthropics/skills";
       flake = false;
     };
+    agent-browser = {
+      url = "github:vercel-labs/agent-browser";
+      flake = false;
+    };
   };
 
   outputs =
@@ -63,7 +67,7 @@
           ./home/linux.nix
         ];
         extraSpecialArgs = {
-          inherit (inputs) zen-browser noctalia-shell inir slash-criticalthink anthropic-skills cage guard-and-guide;
+          inherit (inputs) zen-browser noctalia-shell inir slash-criticalthink anthropic-skills agent-browser cage guard-and-guide;
         };
       };
 

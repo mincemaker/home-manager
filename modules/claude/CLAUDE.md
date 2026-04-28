@@ -1,5 +1,7 @@
 ## Git
 
+Never commit unless the user explicitly asks. Stage files and prepare the commit message, then wait.
+
 Git commit signing varies by platform:
 
 - macOS: Uses Secretive for SSH signing. Run `git commit` directly — Secretive will prompt the user for touch authentication.
