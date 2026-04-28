@@ -26,6 +26,14 @@
 
   system.primaryUser = "mince";
 
+  nixpkgs.overlays = [
+    (_: prev: {
+      direnv = prev.direnv.overrideAttrs (_: {
+        doCheck = false;
+      });
+    })
+  ];
+
   nix.enable = false;
   security.pam.services.sudo_local.touchIdAuth = true;
   system.stateVersion = 5;
