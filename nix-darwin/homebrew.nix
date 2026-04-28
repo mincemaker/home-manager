@@ -11,10 +11,14 @@
       "git-delta"
       "fd"
       "gh"
+      "gmp"
       "gnupg"
       "lazygit"
+      "libyaml"
       "neovim"
+      "openssl@3"
       "pinentry-mac"
+      "readline"
       "ripgrep"
     ];
 
