@@ -1,6 +1,6 @@
 ## Git
 
-Never commit unless the user explicitly asks. Stage files and prepare the commit message, then wait.
+Never commit unless the user explicitly asks. Before running `git commit`, always display the staged diff (`git diff --cached`) and the proposed commit message in the chat, so the user can review them before approving the tool call.
 
 Git commit signing varies by platform:
 
