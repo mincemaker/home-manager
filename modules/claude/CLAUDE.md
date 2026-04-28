@@ -38,4 +38,37 @@ Do NOT delegate web research (library docs, CVEs, error messages, API references
 
 Use direct tools (Bash, Read, Grep) only for targeted lookups — a specific file, a known function name, a single config. If the task would take more than 2-3 lookups, delegate.
 
+## z-ai/ directory
+
+- `z-ai/` is globally gitignored.
+- This directory is used for local AI documents such as plans and progress
+  tracking.
+- Do NOT ask whether `z-ai/` is gitignored — it always is.
+
+## Browser Automation (agent-browser)
+
+`agent-browser` is available to check on the browser.
+
+```bash
+# 1. Open page (`--allow-private` is required to open localhost)
+agent-browser open <url> --allow-private
+
+# 2. Get element reference
+agent-browser snapshot -i
+
+# 3. Operate
+agent-browser click @e<N>
+agent-browser fill @e<N> "テキスト"
+
+# 4. Save screenshot
+agent-browser screenshot z-ai/screenshot.png
+
+# ex. save credentials
+agent-browser open <url> --profile ~/.browser-profile --allow-private
+
+# q. sandbox-nesting is detected
+# a. use `--args "--no-sandbox"`
+agent-browser open <url> --args "--no-sandbox"
+```
+
 @RTK.md
