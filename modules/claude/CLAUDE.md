@@ -1,6 +1,9 @@
 ## Git
 
-Git commits require YubiKey touch for GPG signing. Never attempt `git commit` with `-S` flag or expect signing to work automatically. Instead, prepare the commit message and stage files, then tell the user to run the commit command themselves.
+Git commit signing varies by platform:
+
+- macOS: Uses Secretive for SSH signing. Run `git commit` directly — Secretive will prompt the user for touch authentication.
+- Linux: Uses YubiKey for GPG signing. Never run `git commit` directly. Instead, stage files and prepare the commit message, then instruct the user to run the commit themselves.
 
 The user's shell is fish. fish does not support heredoc (`<<'EOF'`). Always pass commit messages with `-m "..."` directly — multi-line strings work fine inside double quotes in fish.
 
