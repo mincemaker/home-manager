@@ -2,6 +2,8 @@
 
 let
   cfg = config.programs.claude;
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+  claudeDir = "${config.home.homeDirectory}/.config/home-manager/modules/claude";
 in {
   options.programs.claude = {
     enable = lib.mkEnableOption "Claude Code configuration";
@@ -60,16 +62,13 @@ in {
       "${slash-criticalthink}/criticalthink.md";
 
     home.file.".claude/settings.json".source =
-      config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/.config/home-manager/modules/claude/settings.json";
+      mkOutOfStoreSymlink "${claudeDir}/settings.json";
 
     home.file.".claude/CLAUDE.md".source =
-      config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/.config/home-manager/modules/claude/CLAUDE.md";
+      mkOutOfStoreSymlink "${claudeDir}/CLAUDE.md";
 
     home.file.".claude/agents/gemini-explore.md".source =
-      config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/.config/home-manager/modules/claude/agents/gemini-explore.md";
+      mkOutOfStoreSymlink "${claudeDir}/agents/gemini-explore.md";
 
     programs.agent-skills = {
       enable = true;
