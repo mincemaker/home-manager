@@ -19,6 +19,10 @@ let
 
     cargoHash = "sha256-cycs8Zism228rjMaBpNYa4K1Ll760UhLKkoTX6VJRU0=";
 
+    patches = lib.optionals pkgs.stdenv.isDarwin [
+      ./yaskkserv2-socket-activation.patch
+    ];
+
     nativeBuildInputs = [ pkgs.pkg-config ];
     buildInputs = [ pkgs.openssl ];
 
@@ -54,6 +58,12 @@ in
       ];
       KeepAlive = true;
       RunAtLoad = true;
+      Sockets = {
+        Listeners = {
+          SockNodeName = "127.0.0.1";
+          SockServiceName = "1178";
+        };
+      };
       StandardOutPath = "${logDir}/yaskkserv2.log";
       StandardErrorPath = "${logDir}/yaskkserv2.err";
     };
