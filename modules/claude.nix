@@ -67,6 +67,9 @@ in {
     home.file.".claude/CLAUDE.md".source =
       mkOutOfStoreSymlink "${claudeDir}/CLAUDE.md";
 
+    home.file.".claude/statusline.ts".source =
+      mkOutOfStoreSymlink "${claudeDir}/statusline.ts";
+
     home.file.".claude/agents/gemini-explore.md".source =
       mkOutOfStoreSymlink "${claudeDir}/agents/gemini-explore.md";
 
