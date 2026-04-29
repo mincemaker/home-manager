@@ -1,0 +1,65 @@
+--- a/src/skk/yaskkserv2/mod.rs
++++ b/src/skk/yaskkserv2/mod.rs
+@@ -329,11 +329,17 @@
+         let mut poll = Poll::new()?;
+-        let mut listener = TcpListener::bind(
+-            format!(
+-                "{}:{}",
+-                &self.server.config.listen_address, &self.server.config.port
+-            )
+-            .parse()
+-            .unwrap(),
+-        )?;
++        #[cfg(target_os = "macos")]
++        let mut listener = Self::activate_or_bind(&format!(
++            "{}:{}",
++            &self.server.config.listen_address, &self.server.config.port
++        ))?;
++        #[cfg(not(target_os = "macos"))]
++        let mut listener = TcpListener::bind(
++            format!(
++                "{}:{}",
++                &self.server.config.listen_address, &self.server.config.port
++            )
++            .parse()
++            .unwrap(),
++        )?;
+         poll.registry()
+             .register(&mut listener, LISTENER, Interest::READABLE)?;
+@@ -609,4 +615,36 @@
+     fn log_info(message: &str) {
+         info!("{}", message);
+     }
++
++    #[cfg(target_os = "macos")]
++    fn activate_or_bind(addr: &str) -> Result<TcpListener, SkkError> {
++        use std::ffi::{c_void, CString};
++        use std::net::TcpListener as StdTcpListener;
++        use std::os::raw::{c_char, c_int};
++        use std::os::unix::io::FromRawFd;
++
++        extern "C" {
++            fn launch_activate_socket(
++                name: *const c_char,
++                fds: *mut *mut c_int,
++                cnt: *mut usize,
++            ) -> c_int;
++            fn free(ptr: *mut c_void);
++        }
++
++        let cname = CString::new("Listeners").expect("CString::new failed");
++        let mut fds: *mut c_int = std::ptr::null_mut();
++        let mut cnt: usize = 0;
++        let ret = unsafe { launch_activate_socket(cname.as_ptr(), &mut fds, &mut cnt) };
++
++        if ret == 0 && cnt > 0 {
++            let fd = unsafe { *fds };
++            unsafe { free(fds as *mut c_void) };
++            let std_listener = unsafe { StdTcpListener::from_raw_fd(fd) };
++            std_listener.set_nonblocking(true)?;
++            Ok(TcpListener::from_std(std_listener))
++        } else {
++            Ok(TcpListener::bind(addr.parse().unwrap())?)
++        }
++    }
+ }
