@@ -25,6 +25,8 @@ let
     doCheck = false;
   };
 
+  logDir = "${config.home.homeDirectory}/.local/share/yaskkserv2";
+
   yaskDict = pkgs.runCommand "yaskkserv2-dictionary" { } ''
     mkdir -p $out
     ${yaskkserv2}/bin/yaskkserv2_make_dictionary \
@@ -52,8 +54,8 @@ in
       ];
       KeepAlive = true;
       RunAtLoad = true;
-      StandardOutPath = "${config.home.homeDirectory}/.local/share/yaskkserv2/yaskkserv2.log";
-      StandardErrorPath = "${config.home.homeDirectory}/.local/share/yaskkserv2/yaskkserv2.err";
+      StandardOutPath = "${logDir}/yaskkserv2.log";
+      StandardErrorPath = "${logDir}/yaskkserv2.err";
     };
   };
 
