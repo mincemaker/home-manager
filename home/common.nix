@@ -13,7 +13,11 @@
   programs.cage.enable = true;
   programs.guard-and-guide.enable = true;
 
-  home.packages = [ pkgs.zsh-completions ];
+  home.packages = [
+    pkgs.zsh-completions
+    pkgs.nixd
+    pkgs.nil
+  ];
 
   home.sessionVariables = {
     LANG = "ja_JP.UTF-8";
