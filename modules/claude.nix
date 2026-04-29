@@ -73,6 +73,9 @@ in {
     home.file.".claude/agents/gemini-explore.md".source =
       mkOutOfStoreSymlink "${claudeDir}/agents/gemini-explore.md";
 
+    home.file.".claude/agents/context7-researcher.md".source =
+      mkOutOfStoreSymlink "${claudeDir}/agents/context7-researcher.md";
+
     programs.agent-skills = {
       enable = true;
       targets.claude = {

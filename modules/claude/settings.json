@@ -1,50 +1,4 @@
 {
-  "enabledPlugins": {
-    "ruby-lsp@claude-plugins-official": true
-  },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "open-plan-mo",
-            "type": "command"
-          }
-        ],
-        "matcher": "ExitPlanMode"
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "guard-and-guide",
-            "type": "command"
-          }
-        ],
-        "matcher": ""
-      },
-      {
-        "hooks": [
-          {
-            "command": "rtk hook claude",
-            "type": "command"
-          }
-        ],
-        "matcher": "Bash"
-      },
-      {
-        "hooks": [
-          {
-            "command": "deepwiki-guard",
-            "type": "command"
-          }
-        ],
-        "matcher": "mcp__deepwiki__.*"
-      }
-    ]
-  },
-  "language": "Japanese",
   "permissions": {
     "allow": [
       "Bash(qs:*)",
@@ -137,8 +91,55 @@
     ],
     "defaultMode": "plan"
   },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "open-plan-mo"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "guard-and-guide"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__deepwiki__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "deepwiki-guard"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.ts"
-  }
+  },
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
+  "language": "Japanese"
 }
