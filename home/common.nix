@@ -17,6 +17,7 @@
     pkgs.zsh-completions
     pkgs.nixd
     pkgs.nil
+    pkgs.uv
   ];
 
   home.sessionVariables = {
