@@ -1,0 +1,7 @@
+name: home-manager
+version: 0.1.0
+description: Configuration expert for this home-manager + nix-darwin repository
+author: mince
+target: [claude, gemini]
+includes:
+  - SKILL.md

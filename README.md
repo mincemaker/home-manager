@@ -66,6 +66,18 @@ home-manager switch --flake '.#mince'
 sudo darwin-rebuild switch --flake '.#mince-mac'
 ```
 
+## AI Agent Skills
+
+このリポジトリには AI エージェント（Claude, Gemini）向けの管理スキルが含まれています。
+[APM (Agent Package Manager)](https://github.com/microsoft/apm) を使用して、プロジェクトスキルとしてインストールできます。
+
+```bash
+# スキルのインストール（初回および更新時）
+apm install --no-policy
+```
+
+これにより、`.claude/skills/` および `.gemini/skills/` にこのリポジトリ専用の管理ガイドが配置され、エージェントがリポジトリの構造やルールを理解できるようになります。
+
 ## ディレクトリ構成
 
 ```

@@ -1,0 +1,11 @@
+lockfile_version: '1'
+generated_at: '2026-04-30T04:05:39.882998+00:00'
+apm_version: 0.11.0
+dependencies:
+- repo_url: _local/home-manager
+  package_type: hybrid
+  deployed_files:
+  - .claude/skills/home-manager
+  - .gemini/skills/home-manager
+  source: local
+  local_path: ./skills/home-manager

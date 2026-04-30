@@ -1,0 +1,6 @@
+name: mince-home-manager
+version: 0.1.0
+target: [claude, gemini]
+dependencies:
+  apm:
+    - ./skills/home-manager

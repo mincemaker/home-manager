@@ -9,3 +9,9 @@ result-*
 .claude/
 .agents/
 .serena/
+.gemini/*
+!.gemini/.keep
+
+
+# APM dependencies
+apm_modules/
