@@ -52,6 +52,10 @@
       url = "github:vercel-labs/agent-browser";
       flake = false;
     };
+    awesome-copilot = {
+      url = "github:github/awesome-copilot";
+      flake = false;
+    };
   };
 
   outputs =
@@ -67,7 +71,7 @@
           ./home/linux.nix
         ];
         extraSpecialArgs = {
-          inherit (inputs) zen-browser noctalia-shell inir slash-criticalthink anthropic-skills agent-browser cage guard-and-guide;
+          inherit (inputs) zen-browser noctalia-shell inir slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide;
         };
       };
 

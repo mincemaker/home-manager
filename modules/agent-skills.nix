@@ -1,4 +1,4 @@
-{ config, lib, anthropic-skills, agent-browser, ... }:
+{ config, lib, anthropic-skills, agent-browser, awesome-copilot, ... }:
 
 let
   cfg = config.programs.agent-skills;
@@ -13,7 +13,17 @@ in {
         path = agent-browser;
         subdir = "skills";
       };
-      skills.enable = [ "frontend-design" "skill-creator" "agent-browser" ];
+      sources.github = {
+        path = awesome-copilot;
+        subdir = "skills";
+        filter.nameRegex = "^git-commit$";
+      };
+      skills.enable = [
+        "frontend-design"
+        "skill-creator"
+        "agent-browser"
+        "git-commit"
+      ];
       targets.gemini.enable = true;
       targets.codex.enable = false;
       targets.opencode.enable = false;

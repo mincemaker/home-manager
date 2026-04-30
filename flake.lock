@@ -53,6 +53,22 @@
         "type": "github"
       }
     },
+    "awesome-copilot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777508991,
+        "narHash": "sha256-mK3jS1LYjk3+b0wMDV76JkLpoma3O0KTv6utrAek9WE=",
+        "owner": "github",
+        "repo": "awesome-copilot",
+        "rev": "deffc46f9047f538ff7b4f6736bbe918e9f02ff4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "github",
+        "repo": "awesome-copilot",
+        "type": "github"
+      }
+    },
     "cage": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -458,6 +474,7 @@
         "agent-browser": "agent-browser",
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
+        "awesome-copilot": "awesome-copilot",
         "cage": "cage",
         "guard-and-guide": "guard-and-guide",
         "home-manager": "home-manager_2",
