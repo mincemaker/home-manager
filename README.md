@@ -73,7 +73,7 @@ sudo darwin-rebuild switch --flake '.#mince-mac'
 
 ```bash
 # スキルのインストール（初回および更新時）
-apm install --no-policy
+apm install
 ```
 
 これにより、`.claude/skills/` および `.gemini/skills/` にこのリポジトリ専用の管理ガイドが配置され、エージェントがリポジトリの構造やルールを理解できるようになります。
