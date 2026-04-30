@@ -40,8 +40,6 @@
 
   system.defaults = {
     NSGlobalDomain = {
-      # マウス/トラックパッド
-      "com.apple.swipescrolldirection" = true; # ナチュラルスクロールを有効化
       # キーボード
       NSAutomaticCapitalizationEnabled = false; # 文頭の自動大文字化を無効化
       NSAutomaticPeriodSubstitutionEnabled = false; # ピリオドの自動置換を無効化

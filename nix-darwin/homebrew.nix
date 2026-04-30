@@ -24,7 +24,6 @@
 
     casks = [
       "azookey"
-      "battery-buddy"
       "bitwarden"
       "chatgpt-atlas"
       "copilot-cli"
