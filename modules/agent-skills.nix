@@ -26,7 +26,7 @@ in {
       ];
       targets.gemini.enable = true;
       targets.codex.enable = false;
-      targets.opencode.enable = false;
+      targets.opencode.enable = true;
     };
   };
 }

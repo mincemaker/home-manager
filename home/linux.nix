@@ -50,12 +50,12 @@
     '';
 
     shellAliases = {
-      ls = "ls --color=auto";
+      ls = "LC_ALL=C ls --color=auto";
     };
   };
 
   programs.zsh.shellAliases = {
-    ls = "ls --color=auto";
+    ls = "LC_ALL=C ls --color=auto";
   };
 
   programs.niri = {
