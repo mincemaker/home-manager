@@ -4,6 +4,11 @@
   homebrew = {
     enable = true;
 
+    taps = [
+      "FelixKratz/formulae"
+      "nikitabobko/tap"
+    ];
+
     brews = [
       "bat"
       "btop"
@@ -20,6 +25,8 @@
       "pinentry-mac"
       "readline"
       "ripgrep"
+      "sketchybar"
+      "borders"
     ];
 
     casks = [
@@ -35,11 +42,13 @@
       "postgres-app"
       "raycast"
       "secretive"
+      "shottr"
       "spotify"
       "tailscale-app"
       "thaw"
       "visual-studio-code"
       "zen"
+      "aerospace"
     ];
 
     onActivation = {
