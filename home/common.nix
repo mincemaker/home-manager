@@ -14,6 +14,7 @@
   programs.guard-and-guide.enable = true;
 
   home.packages = [
+    pkgs.tealdeer
     pkgs.zsh-completions
     pkgs.nixd
     pkgs.nil
