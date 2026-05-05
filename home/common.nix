@@ -75,7 +75,6 @@
         setopt auto_param_keys auto_pushd pushd_ignore_dups prompt_subst cdable_vars
 
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-        zstyle ':completion:*' menu select=1
         zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
         setopt complete_aliases
 
@@ -92,11 +91,26 @@
         bindkey "^n" history-beginning-search-forward-end
 
         WORDCHARS="''${WORDCHARS:s,/,,}"
+
+        zstyle ':fzf-tab:*' fzf-command fzf
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
       ''
       (lib.mkAfter ''
         [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
       '')
     ];
+
+    plugins = [
+      {
+        name = "fzf-tab";
+        src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+      }
+    ];
+  };
+
+  programs.carapace = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.starship.enable = true;
