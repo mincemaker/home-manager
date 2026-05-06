@@ -120,4 +120,13 @@
   programs.fzf.enable = true;
 
   programs.mise.enable = true;
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      aliases = {
+        tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
+      };
+    };
+  };
 }
