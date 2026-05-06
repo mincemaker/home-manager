@@ -124,6 +124,10 @@
   programs.jujutsu = {
     enable = true;
     settings = {
+      user = {
+        name = "mincemaker";
+        email = "mince@hey.com";
+      };
       aliases = {
         tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
       };
