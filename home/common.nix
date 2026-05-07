@@ -19,6 +19,8 @@
     pkgs.nixd
     pkgs.nil
     pkgs.uv
+    pkgs.moralerspace-hw
+    pkgs.moralerspace-hwjpdoc
   ];
 
   home.sessionVariables = {
