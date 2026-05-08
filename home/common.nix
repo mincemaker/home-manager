@@ -19,6 +19,7 @@
     pkgs.nixd
     pkgs.nil
     pkgs.uv
+    pkgs.fence
     pkgs.moralerspace-hw
     pkgs.moralerspace-hwjpdoc
   ];
