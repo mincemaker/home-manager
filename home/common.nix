@@ -71,6 +71,9 @@
     };
 
     initContent = lib.mkMerge [
+      (lib.mkBefore ''
+        export CARAPACE_EXCLUDES=git
+      '')
       ''
         setopt auto_menu auto_cd correct auto_name_dirs auto_remove_slash
         setopt extended_glob list_types no_beep always_last_prompt
@@ -113,6 +116,7 @@
   programs.carapace = {
     enable = true;
     enableZshIntegration = true;
+    enableFishIntegration = false;
   };
 
   programs.starship.enable = true;
