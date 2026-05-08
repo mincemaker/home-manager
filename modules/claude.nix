@@ -17,7 +17,7 @@ in {
         runtimeInputs = [ pkgs.jq ];
         text = ''
           INPUT=$(cat)
-          PLAN_FILE=$(echo "$INPUT" | jq -r '.tool_response.filePath // empty' 2>/dev/null)
+          PLAN_FILE=$(echo "$INPUT" | jq -r '.tool_response.filePath // .tool_input.file_path // empty' 2>/dev/null)
 
           if [ -n "$PLAN_FILE" ] && [ -f "$PLAN_FILE" ]; then
               if command -v mo >/dev/null 2>&1; then

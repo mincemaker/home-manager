@@ -101,6 +101,28 @@
             "command": "open-plan-mo"
           }
         ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "open-plan-mo",
+            "if": "Write(/home/mince/.claude/plans/*)",
+            "async": true
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "open-plan-mo",
+            "if": "Edit(/home/mince/.claude/plans/*)",
+            "async": true
+          }
+        ]
       }
     ],
     "PreToolUse": [
