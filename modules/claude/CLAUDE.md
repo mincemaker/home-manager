@@ -5,7 +5,7 @@ Never commit unless the user explicitly asks. Before running `git commit`, alway
 Git commit signing varies by platform:
 
 - macOS: Uses Secretive for SSH signing. Run `git commit` directly — Secretive will prompt the user for touch authentication.
-- Linux: Uses YubiKey for GPG signing. Never run `git commit` directly. Instead, stage files and prepare the commit message, then instruct the user to run the commit themselves.
+- Linux: Uses YubiKey for GPG signing. Always show the staged diff and the proposed commit message in chat first. Once the user confirms, run `git commit` directly — YubiKey will prompt for touch authentication.
 
 The user's shell is fish. fish does not support heredoc (`<<'EOF'`). Always pass commit messages with `-m "..."` directly — multi-line strings work fine inside double quotes in fish.
 
