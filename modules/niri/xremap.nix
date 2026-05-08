@@ -33,7 +33,7 @@
     config.keymap = [
       {
         name = "Emacs";
-        application.not = [ "Emacs" "Ghostty" "ghostty" "Alacritty" "wezterm"];
+        application.not = [ "Emacs" "Ghostty" "ghostty" "Alacritty" "wezterm" "dev.zed.Zed"];
         remap = {
           # Cursor
           "C-b" = { with_mark = "left"; };
