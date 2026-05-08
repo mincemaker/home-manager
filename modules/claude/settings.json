@@ -98,7 +98,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/open-plan-mo"
+            "command": "open-plan-mo"
           }
         ]
       },
@@ -107,7 +107,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/open-plan-mo",
+            "command": "open-plan-mo",
             "if": "Write(/home/mince/.claude/plans/*)",
             "async": true
           }
@@ -118,7 +118,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/open-plan-mo",
+            "command": "open-plan-mo",
             "if": "Edit(/home/mince/.claude/plans/*)",
             "async": true
           }
@@ -131,7 +131,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/guard-and-guide"
+            "command": "guard-and-guide"
           }
         ]
       },
@@ -140,7 +140,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/share/mise/installs/github-rtk-ai-rtk/latest/rtk hook claude"
+            "command": "rtk hook claude"
           }
         ]
       },
@@ -149,7 +149,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.local/bin/deepwiki-guard"
+            "command": "deepwiki-guard"
           }
         ]
       }
