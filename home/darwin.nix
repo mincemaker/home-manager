@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../modules/autoraise.nix
     ../modules/agent-skills.nix
     ../modules/macskk.nix
     ../modules/yaskkserv2.nix
