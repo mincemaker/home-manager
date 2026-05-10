@@ -1,13 +1,13 @@
 ## Git
 
-Never commit unless the user explicitly asks. Before running `git commit`, always display the staged diff (`git diff --cached`) and the proposed commit message in the chat, so the user can review them before approving the tool call.
+Committing triggers physical authentication — YubiKey (GPG) on Linux, Secretive (SSH)
+on macOS — so the user needs to be mentally present and ready to touch the key.
+The intended flow is: show the staged diff and proposed commit message in chat,
+then wait. The user will read them and say when they want to commit. This is a
+deliberate, conscious act on the user's part, not a side effect of invoking a
+skill or approving a plan.
 
-Git commit signing varies by platform:
-
-- macOS: Uses Secretive for SSH signing. Run `git commit` directly — Secretive will prompt the user for touch authentication.
-- Linux: Uses YubiKey for GPG signing. Always show the staged diff and the proposed commit message in chat first. Once the user confirms, run `git commit` directly — YubiKey will prompt for touch authentication.
-
-The user's shell is fish. fish does not support heredoc (`<<'EOF'`). Always pass commit messages with `-m "..."` directly — multi-line strings work fine inside double quotes in fish.
+Fish shell doesn't support heredoc; use `-m "..."` directly.
 
 ## Debugging
 
