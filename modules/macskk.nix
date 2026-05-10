@@ -1,17 +1,11 @@
 { pkgs, lib, ... }:
 
 let
-  jawikiDict = pkgs.fetchurl {
-    url = "https://github.com/tokuhirom/jawiki-kana-kanji-dict/releases/download/v2026.04.01.141931/SKK-JISYO.jawiki";
-    hash = "sha256-Dt1zExGVR7MZVYjDaDDqKYn2gq1EzJDx0wG5rXyYtTw=";
-  };
-
   dictEntries = [
     { filename = "SKK-JISYO.L";       src = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";                 encoding = 3; }
     { filename = "SKK-JISYO.jinmei";  src = "${pkgs.skkDictionaries.jinmei}/share/skk/SKK-JISYO.jinmei";       encoding = 3; }
     { filename = "SKK-JISYO.zipcode"; src = "${pkgs.skkDictionaries.zipcode}/share/skk/SKK-JISYO.zipcode";     encoding = 3; }
     { filename = "SKK-JISYO.geo";     src = "${pkgs.skkDictionaries.geo}/share/skk/SKK-JISYO.geo";             encoding = 3; }
-    { filename = "SKK-JISYO.jawiki";  src = "${jawikiDict}";                                                    encoding = 4; }
   ];
 
   dictListPy = lib.concatMapStringsSep ",\n    " (d: ''
