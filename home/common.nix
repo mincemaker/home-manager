@@ -128,6 +128,13 @@
 
   programs.mise.enable = true;
 
+  programs.chawan = {
+    enable = true;
+    settings = {
+      buffer.images = true;
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     settings = {
