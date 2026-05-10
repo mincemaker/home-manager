@@ -4,8 +4,6 @@ let
   dictEntries = [
     { filename = "SKK-JISYO.L";       src = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";                 encoding = 3; }
     { filename = "SKK-JISYO.jinmei";  src = "${pkgs.skkDictionaries.jinmei}/share/skk/SKK-JISYO.jinmei";       encoding = 3; }
-    { filename = "SKK-JISYO.zipcode"; src = "${pkgs.skkDictionaries.zipcode}/share/skk/SKK-JISYO.zipcode";     encoding = 3; }
-    { filename = "SKK-JISYO.geo";     src = "${pkgs.skkDictionaries.geo}/share/skk/SKK-JISYO.geo";             encoding = 3; }
   ];
 
   dictListPy = lib.concatMapStringsSep ",\n    " (d: ''
@@ -24,6 +22,7 @@ in {
       echo "macSKK: コンテナが存在しません。macSKK を一度起動してから再ビルドしてください。"
     else
       mkdir -p "$DICT_DIR"
+      rm -f "$DICT_DIR"/SKK-JISYO.*
       ${copyCmds}
       ${pkgs.python3}/bin/python3 << 'PYEOF'
 import plistlib, os
