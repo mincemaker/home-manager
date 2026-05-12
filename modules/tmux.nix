@@ -19,6 +19,7 @@ in {
       baseIndex = 1;
       focusEvents = true;
       extraConfig = ''
+        set -g prefix2 C-b
         set -g status-keys emacs
         set -g repeat-time 1000
         set -s extended-keys on
@@ -74,6 +75,23 @@ in {
         bind b display-popup -E \
           "tmux lsw | fzf --reverse | cut -d: -f1 | xargs -I{} tmux select-window -t {}"
         bind w choose-tree -Zw
+
+        if-shell "command -v sesh >/dev/null 2>&1" {
+          bind-key "T" run-shell "sesh connect \"$(
+            sesh list --icons | fzf-tmux -p 80%,70% \
+              --no-sort --ansi --border-label ' sesh ' --prompt '⚡  ' \
+              --header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
+              --bind 'tab:down,btab:up' \
+              --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list --icons)' \
+              --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t --icons)' \
+              --bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -c --icons)' \
+              --bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z --icons)' \
+              --bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+              --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list --icons)' \
+              --preview-window 'right:55%' \
+              --preview 'sesh preview {}'
+          )\""
+        }
       '';
     };
   };
