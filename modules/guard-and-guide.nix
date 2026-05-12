@@ -37,6 +37,16 @@ in {
         message = "Access to private keys is prohibited. Ask the user to handle key-related operations."
 
         [[rules]]
+        matcher = "File"
+        regex = 'secrets|token'
+        message = "Access to files containing secrets/tokens is prohibited. Ask the user to provide the values you need."
+
+        [[rules]]
+        matcher = "Write|Edit"
+        regex = '\.lock$'
+        message = "Lock files are read-only. Do not modify them directly."
+
+        [[rules]]
         matcher = "Bash"
         regex = '\bgit\s+push\b'
         message = "Use of 'git push' is prohibited. Ask the user to execute it."
@@ -65,6 +75,36 @@ in {
         matcher = "Bash"
         regex = '\bgit\s+stash\b.*(drop|clear)\b'
         message = "Use of 'git stash drop/clear' is prohibited. Ask the user to execute it."
+
+        [[rules]]
+        matcher = "Bash"
+        regex = '\b(env|printenv|export)\b'
+        message = "Accessing environment variables is prohibited. Ask the user to check or set environment variables."
+
+        [[rules]]
+        matcher = "Bash"
+        regex = '\.env\b'
+        message = "Access to .env files via bash is prohibited. Ask the user to check or provide the values you need."
+
+        [[rules]]
+        matcher = "Bash"
+        regex = '\.ssh/'
+        message = "Access to SSH keys via bash is prohibited. Ask the user to handle SSH-related operations."
+
+        [[rules]]
+        matcher = "Bash"
+        regex = '\.aws/'
+        message = "Access to AWS credentials via bash is prohibited. Ask the user to check or provide AWS configuration."
+
+        [[rules]]
+        matcher = "Bash"
+        regex = '\.git-credentials|\.netrc|\.npmrc'
+        message = "Access to credential files via bash is prohibited. Ask the user to handle credentials."
+
+        [[rules]]
+        matcher = "Bash"
+        regex = 'id_rsa|id_ed25519'
+        message = "Access to private keys via bash is prohibited. Ask the user to handle key-related operations."
       '';
       description = "Content of ~/.config/guard-and-guide/rules.toml";
     };
