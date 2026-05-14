@@ -127,7 +127,17 @@
 
   programs.fzf.enable = true;
 
-  programs.mise.enable = true;
+  programs.mise = {
+    enable = true;
+    package = if pkgs.stdenv.hostPlatform.isDarwin
+      then pkgs.runCommand "mise" {
+        meta.mainProgram = "mise";
+      } ''
+        mkdir -p $out/bin
+        ln -s /opt/homebrew/bin/mise $out/bin/mise
+      ''
+      else pkgs.mise;
+  };
 
   programs.chawan = {
     enable = true;

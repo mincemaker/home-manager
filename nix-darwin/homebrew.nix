@@ -19,6 +19,7 @@
       "gmp"
       "gnupg"
       "lazygit"
+      "mise"
       "libyaml"
       "neovim"
       "openssl@3"
