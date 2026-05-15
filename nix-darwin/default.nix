@@ -66,6 +66,10 @@
       launchanim = false; # アプリ起動時のアニメーションを無効化
       mineffect = "scale"; # ウィンドウを閉じるときのエフェクトをスケールに設定
     };
+    # アクセシビリティ
+    universalaccess = {
+      reduceMotion = true; # 視差効果を減らす（スペース切り替えアニメーションを包括的に無効化）
+    };
     # 画面キャプチャ
     screencapture = {
       target = "clipboard"; # スクリーンショットの保存先をクリップボードに設定
@@ -78,6 +82,10 @@
         WebAutomaticSpellingCorrectionEnabled = false; # スペル自動修正を無効化 (WebView)
         # Finder
         AppleMenuBarVisibleInFullscreen = true; # フルスクリーン時にメニューバーを表示
+      };
+      "com.apple.dock" = {
+        expose-animation-duration = 0; # Mission Control のアニメーションを無効化
+        "workspaces-swoosh-animation-off" = true; # フルスクリーン間の切り替えアニメーションを無効化
       };
     };
   };
