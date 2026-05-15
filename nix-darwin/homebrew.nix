@@ -39,6 +39,7 @@
       "ghostty"
       "karabiner-elements"
       "macskk"
+      "music-decoy"
       "obsidian"
       "postgres-app"
       "raycast"
