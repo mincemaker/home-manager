@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -12,56 +12,59 @@
     ../modules/niri/inir.nix
   ];
 
-  home.username = "mince";
-  home.homeDirectory = "/home/mince";
-  home.stateVersion = "25.11";
+  home = {
+    username = "mince";
+    homeDirectory = "/home/mince";
+    stateVersion = "25.11";
+    packages = [ pkgs.delta ];
+  };
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
 
-  home.packages = [ pkgs.delta ];
+    fish = {
+      enable = true;
 
-  programs.fish = {
-    enable = true;
+      shellInit = ''
+        fish_add_path $HOME/.local/bin
+        fish_add_path $HOME/go/bin
+        if test -d $HOME/.cargo/bin
+            fish_add_path $HOME/.cargo/bin
+        end
+        fish_add_path $HOME/.lmstudio/bin
+      '';
 
-    shellInit = ''
-      fish_add_path $HOME/.local/bin
-      fish_add_path $HOME/go/bin
-      if test -d $HOME/.cargo/bin
-          fish_add_path $HOME/.cargo/bin
-      end
-      fish_add_path $HOME/.lmstudio/bin
-    '';
+      interactiveShellInit = ''
+        if test -f /usr/share/cachyos-fish-config/cachyos-config.fish
+            source /usr/share/cachyos-fish-config/cachyos-config.fish
+        end
 
-    interactiveShellInit = ''
-      if test -f /usr/share/cachyos-fish-config/cachyos-config.fish
-          source /usr/share/cachyos-fish-config/cachyos-config.fish
-      end
+        if test -f ~/.config/fish/aliases.fish
+            source ~/.config/fish/aliases.fish
+        end
 
-      if test -f ~/.config/fish/aliases.fish
-          source ~/.config/fish/aliases.fish
-      end
+        set -x GPG_TTY (tty)
+        set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+        gpgconf --launch gpg-agent
 
-      set -x GPG_TTY (tty)
-      set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-      gpgconf --launch gpg-agent
+        set -g fish_history_ignore_duplicates 1
+        set -g fish_history_ignore_space 1
+      '';
 
-      set -g fish_history_ignore_duplicates 1
-      set -g fish_history_ignore_space 1
-    '';
+      shellAliases = {
+        ls = "LC_ALL=C ls --color=auto";
+      };
+    };
 
-    shellAliases = {
+    zsh.shellAliases = {
       ls = "LC_ALL=C ls --color=auto";
     };
-  };
 
-  programs.zsh.shellAliases = {
-    ls = "LC_ALL=C ls --color=auto";
-  };
+    niri = {
+      enable = true;
+      shell = "inir";
+    };
 
-  programs.niri = {
-    enable = true;
-    shell = "inir";
+    claude.enable = true;
   };
-
-  programs.claude.enable = true;
 }

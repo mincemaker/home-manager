@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -24,8 +24,6 @@
     home = "/Users/mince";
   };
 
-  system.primaryUser = "mince";
-
   nixpkgs.overlays = [
     (_: prev: {
       direnv = prev.direnv.overrideAttrs (_: {
@@ -36,9 +34,11 @@
 
   nix.enable = false;
   security.pam.services.sudo_local.touchIdAuth = true;
-  system.stateVersion = 5;
 
-  system.defaults = {
+  system = {
+    primaryUser = "mince";
+    stateVersion = 5;
+    defaults = {
     NSGlobalDomain = {
       # キーボード
       NSAutomaticCapitalizationEnabled = false; # 文頭の自動大文字化を無効化
@@ -88,5 +88,6 @@
         "workspaces-swoosh-animation-off" = true; # フルスクリーン間の切り替えアニメーションを無効化
       };
     };
+  };
   };
 }

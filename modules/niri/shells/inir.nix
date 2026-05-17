@@ -1,4 +1,4 @@
-{ pkgs }:
+_:
 
 {
   lockCommand = "inir lock activate";
