@@ -1,27 +1,24 @@
 { pkgs }:
 
-let
-  shellCmd = "/usr/bin/qs -c inir";
-  ipcLock = "lock activate";
-in {
-  lockCommand = "${shellCmd} ipc call ${ipcLock}";
+{
+  lockCommand = "inir lock activate";
 
   binds = ''
     // ─── iNiR Controls ───
-    MOD+Space   repeat=false hotkey-overlay-title="Overview" { spawn "qs" "-c" "inir" "ipc" "call" "overview" "toggle"; }
-    MOD+G       hotkey-overlay-title="iNiR Overlay" { spawn "qs" "-c" "inir" "ipc" "call" "overlay" "toggle"; }
-    MOD+SLASH   hotkey-overlay-title="Cheatsheet" { spawn "qs" "-c" "inir" "ipc" "call" "cheatsheet" "toggle"; }
-    MOD+COMMA   hotkey-overlay-title="Settings" { spawn "qs" "-c" "inir" "ipc" "call" "settings" "open"; }
-    MOD+V       hotkey-overlay-title="Clipboard" { spawn "qs" "-c" "inir" "ipc" "call" "clipboard" "toggle"; }
-    MOD+Alt+L   hotkey-overlay-title="Lock Screen" { spawn "qs" "-c" "inir" "ipc" "call" "lock" "activate"; }
+    MOD+Space   repeat=false hotkey-overlay-title="Overview" { spawn "inir" "overview" "toggle"; }
+    MOD+G       hotkey-overlay-title="iNiR Overlay" { spawn "inir" "overlay" "toggle"; }
+    MOD+SLASH   hotkey-overlay-title="Cheatsheet" { spawn "inir" "cheatsheet" "toggle"; }
+    MOD+COMMA   hotkey-overlay-title="Settings" { spawn "inir" "settings" "open"; }
+    MOD+V       hotkey-overlay-title="Clipboard" { spawn "inir" "clipboard" "toggle"; }
+    MOD+Alt+L   hotkey-overlay-title="Lock Screen" { spawn "inir" "lock" "activate"; }
     ALT+TAB     hotkey-overlay-title="Window Switcher" { spawn "rofi" "-show" "window"; }
     ALT+Space   hotkey-overlay-title="App Launcher" { spawn "rofi" "-show" "drun" "-terminal" "alacritty"; }
-    ALT+SHIFT+TAB hotkey-overlay-title="Window Switcher Prev" { spawn "qs" "-c" "inir" "ipc" "call" "altSwitcher" "previous"; }
-    CTRL+ALT+T  hotkey-overlay-title="Wallpaper Selector" { spawn "qs" "-c" "inir" "ipc" "call" "wallpaperSelector" "toggle"; }
-    MOD+SHIFT+S hotkey-overlay-title="Region Screenshot" { spawn "qs" "-c" "inir" "ipc" "call" "region" "screenshot"; }
-    MOD+SHIFT+X hotkey-overlay-title="Region OCR" { spawn "qs" "-c" "inir" "ipc" "call" "region" "ocr"; }
-    MOD+SHIFT+A hotkey-overlay-title="Region Search (Google Lens)" { spawn "qs" "-c" "inir" "ipc" "call" "region" "search"; }
-    MOD+SHIFT+W hotkey-overlay-title="Cycle Panel Family" { spawn "qs" "-c" "inir" "ipc" "call" "panelFamily" "cycle"; }
+    ALT+SHIFT+TAB hotkey-overlay-title="Window Switcher Prev" { spawn "inir" "altSwitcher" "previous"; }
+    CTRL+ALT+T  hotkey-overlay-title="Wallpaper Selector" { spawn "inir" "wallpaperSelector" "toggle"; }
+    MOD+SHIFT+S hotkey-overlay-title="Region Screenshot" { spawn "inir" "region" "screenshot"; }
+    MOD+SHIFT+X hotkey-overlay-title="Region OCR" { spawn "inir" "region" "ocr"; }
+    MOD+SHIFT+A hotkey-overlay-title="Region Search (Google Lens)" { spawn "inir" "region" "search"; }
+    MOD+SHIFT+W hotkey-overlay-title="Cycle Panel Family" { spawn "inir" "panelFamily" "cycle"; }
     MOD+T       hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     MOD+E       hotkey-overlay-title="File Manager: Dolphin" { spawn "dolphin"; }
 
@@ -31,19 +28,19 @@ in {
     MOD+A       hotkey-overlay-title="Toggle Floating" { toggle-window-floating; }
 
     // ─── Audio Controls (iNiR IPC) ───
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "audio" "volumeUp"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "audio" "volumeDown"; }
-    XF86AudioMute        allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "audio" "mute"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "audio" "micMute"; }
-    XF86AudioNext        allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "next"; }
-    XF86AudioPause       allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "playPause"; }
-    XF86AudioPlay        allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "playPause"; }
-    XF86AudioPrev        allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "previous"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "inir" "audio" "volumeUp"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "inir" "audio" "volumeDown"; }
+    XF86AudioMute        allow-when-locked=true { spawn "inir" "audio" "mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "inir" "audio" "micMute"; }
+    XF86AudioNext        allow-when-locked=true { spawn "inir" "mpris" "next"; }
+    XF86AudioPause       allow-when-locked=true { spawn "inir" "mpris" "playPause"; }
+    XF86AudioPlay        allow-when-locked=true { spawn "inir" "mpris" "playPause"; }
+    XF86AudioPrev        allow-when-locked=true { spawn "inir" "mpris" "previous"; }
 
     // ─── Music Control ───
-    Ctrl+MOD+Space hotkey-overlay-title="Play/Pause" { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "playPause"; }
-    MOD+Alt+N      hotkey-overlay-title="Next Track" { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "next"; }
-    MOD+Alt+P      hotkey-overlay-title="Previous Track" { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "previous"; }
+    Ctrl+MOD+Space hotkey-overlay-title="Play/Pause" { spawn "inir" "mpris" "playPause"; }
+    MOD+Alt+N      hotkey-overlay-title="Next Track" { spawn "inir" "mpris" "next"; }
+    MOD+Alt+P      hotkey-overlay-title="Previous Track" { spawn "inir" "mpris" "previous"; }
   '';
 
   startup = pkgs: ''

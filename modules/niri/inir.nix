@@ -5,7 +5,7 @@ in {
   options.programs.inir.enable = lib.mkEnableOption "iNiR shell";
 
   config = lib.mkIf cfg.enable {
-    # iNiR を ~/.config/quickshell/ii に配置
+    # quickshell の設定ファイルを配置（inir run --session がここを参照する）
     home.file.".config/quickshell/inir" = {
       source = inir;
       recursive = true;
@@ -13,12 +13,22 @@ in {
 
     # 依存パッケージ（nixpkgs から）
     home.packages = with pkgs; [
+      # inir CLI を PATH に公開（symlink で script_dir が正しく解決される）
+      (pkgs.runCommand "inir-cli" {} ''
+        mkdir -p $out/bin
+        ln -s ${inir}/scripts/inir $out/bin/inir
+      '')
       # Core
+      bc
+      jq
+      ripgrep
       cliphist
       wl-clipboard
       libnotify
       gum
       awww
+      xwayland-satellite
+      wlsunset
       # Screenshot & Recording
       grim
       slurp
@@ -33,6 +43,7 @@ in {
       brightnessctl
       # Audio
       playerctl
+      socat
       # Qt6 追加
       kdePackages.kdialog
       # Theming
@@ -40,52 +51,18 @@ in {
     ];
 
     # dots/.config/ から追加設定ファイルを配置
-    # illogical-impulse は書き込み可能にするため activation で初期化
     home.file.".config/matugen".source = "${inir}/dots/.config/matugen";
     home.file.".config/fuzzel/fuzzel.ini".source = "${inir}/dots/.config/fuzzel/fuzzel.ini";
 
-    # illogical-impulse を書き込み可能なディレクトリとして初期化
-    home.activation.initIllogicalImpulse = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      configDir="$HOME/.config/illogical-impulse"
-      sourceDir="${inir}/dots/.config/illogical-impulse"
-
-      # シンボリックリンクの場合は削除してコピー
-      if [ -L "$configDir" ]; then
-        rm "$configDir"
-      fi
-
-      # ディレクトリが存在しなければコピー
-      if [ ! -d "$configDir" ]; then
-        mkdir -p "$configDir"
-        cp -r "$sourceDir"/* "$configDir/"
-        chmod -R u+w "$configDir"
-      fi
+    # iNiR 公式のサービス管理機能でサービスファイルを生成・有効化する。
+    # inir service install: assets/systemd/inir.service テンプレートから
+    #   ExecStart を現在のランチャーパスに書き換えて
+    #   ~/.config/systemd/user/inir.service を生成する。
+    # inir service enable: niri.service.wants/ に自動起動リンクを作る。
+    home.activation.inirServiceSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      export PATH="/usr/bin:/usr/local/bin:$PATH"
+      ${inir}/scripts/inir service install
+      ${inir}/scripts/inir service enable || true
     '';
-
-    # systemd user service
-    systemd.user.services.inir = {
-      Unit = {
-        Description = "iNiR Shell";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-        Conflicts = [ "noctalia-shell.service" ];
-        # inir ソースが変わったら home-manager switch 後に自動再起動
-        X-Restart-Triggers = [ (toString inir) ];
-      };
-      Service = {
-        ExecStart = "${inir}/scripts/inir run --session";
-        Restart = "on-failure";
-        Environment = [
-          "QT_QPA_PLATFORM=wayland"
-          "QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=wayland-egl"
-          "EGL_PLATFORM=wayland"
-          "PATH=${lib.makeBinPath (with pkgs; [ imagemagick ffmpeg tesseract grim slurp awww ])}:%h/.nix-profile/bin:/usr/bin:/bin"
-        ];
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-      # inir ソースが変わったら home-manager switch 後に自動再起動
-    };
   };
 }
