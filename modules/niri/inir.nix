@@ -40,27 +40,8 @@ in {
     ];
 
     # dots/.config/ から追加設定ファイルを配置
-    # illogical-impulse は書き込み可能にするため activation で初期化
     home.file.".config/matugen".source = "${inir}/dots/.config/matugen";
     home.file.".config/fuzzel/fuzzel.ini".source = "${inir}/dots/.config/fuzzel/fuzzel.ini";
-
-    # illogical-impulse を書き込み可能なディレクトリとして初期化
-    home.activation.initIllogicalImpulse = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      configDir="$HOME/.config/illogical-impulse"
-      sourceDir="${inir}/dots/.config/illogical-impulse"
-
-      # シンボリックリンクの場合は削除してコピー
-      if [ -L "$configDir" ]; then
-        rm "$configDir"
-      fi
-
-      # ディレクトリが存在しなければコピー
-      if [ ! -d "$configDir" ]; then
-        mkdir -p "$configDir"
-        cp -r "$sourceDir"/* "$configDir/"
-        chmod -R u+w "$configDir"
-      fi
-    '';
 
     # systemd user service
     systemd.user.services.inir = {
