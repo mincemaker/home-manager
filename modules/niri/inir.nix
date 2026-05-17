@@ -5,7 +5,7 @@ in {
   options.programs.inir.enable = lib.mkEnableOption "iNiR shell";
 
   config = lib.mkIf cfg.enable {
-    # iNiR を ~/.config/quickshell/ii に配置
+    # quickshell の設定ファイルを配置（inir run --session がここを参照する）
     home.file.".config/quickshell/inir" = {
       source = inir;
       recursive = true;
@@ -43,30 +43,15 @@ in {
     home.file.".config/matugen".source = "${inir}/dots/.config/matugen";
     home.file.".config/fuzzel/fuzzel.ini".source = "${inir}/dots/.config/fuzzel/fuzzel.ini";
 
-    # systemd user service
-    systemd.user.services.inir = {
-      Unit = {
-        Description = "iNiR Shell";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-        Conflicts = [ "noctalia-shell.service" ];
-        # inir ソースが変わったら home-manager switch 後に自動再起動
-        X-Restart-Triggers = [ (toString inir) ];
-      };
-      Service = {
-        ExecStart = "${inir}/scripts/inir run --session";
-        Restart = "on-failure";
-        Environment = [
-          "QT_QPA_PLATFORM=wayland"
-          "QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=wayland-egl"
-          "EGL_PLATFORM=wayland"
-          "PATH=${lib.makeBinPath (with pkgs; [ imagemagick ffmpeg tesseract grim slurp awww ])}:%h/.nix-profile/bin:/usr/bin:/bin"
-        ];
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-      # inir ソースが変わったら home-manager switch 後に自動再起動
-    };
+    # iNiR 公式のサービス管理機能でサービスファイルを生成・有効化する。
+    # inir service install: assets/systemd/inir.service テンプレートから
+    #   ExecStart を現在のランチャーパスに書き換えて
+    #   ~/.config/systemd/user/inir.service を生成する。
+    # inir service enable: niri.service.wants/ に自動起動リンクを作る。
+    home.activation.inirServiceSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      export PATH="/usr/bin:/usr/local/bin:$PATH"
+      ${inir}/scripts/inir service install
+      ${inir}/scripts/inir service enable || true
+    '';
   };
 }
