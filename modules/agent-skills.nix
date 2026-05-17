@@ -5,18 +5,20 @@ let
 in {
   config = lib.mkIf cfg.enable {
     programs.agent-skills = {
-      sources.anthropic = {
-        path = anthropic-skills;
-        subdir = "skills";
-      };
-      sources.vercel = {
-        path = agent-browser;
-        subdir = "skills";
-      };
-      sources.github = {
-        path = awesome-copilot;
-        subdir = "skills";
-        filter.nameRegex = "^git-commit$";
+      sources = {
+        anthropic = {
+          path = anthropic-skills;
+          subdir = "skills";
+        };
+        vercel = {
+          path = agent-browser;
+          subdir = "skills";
+        };
+        github = {
+          path = awesome-copilot;
+          subdir = "skills";
+          filter.nameRegex = "^git-commit$";
+        };
       };
       skills.enable = [
         "frontend-design"
@@ -24,9 +26,11 @@ in {
         "agent-browser"
         "git-commit"
       ];
-      targets.gemini.enable = true;
-      targets.codex.enable = false;
-      targets.opencode.enable = true;
+      targets = {
+        gemini.enable = true;
+        codex.enable = false;
+        opencode.enable = true;
+      };
     };
   };
 }

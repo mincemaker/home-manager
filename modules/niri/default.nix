@@ -411,17 +411,19 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    programs.niri.lockCommand = shellConfig.lockCommand;
+    programs = {
+      niri.lockCommand = shellConfig.lockCommand;
+      # 選択されたシェルを自動的に有効化
+      noctalia-shell.enable = lib.mkDefault (cfg.shell == "noctalia");
+      inir.enable = lib.mkDefault (cfg.shell == "inir");
+    };
 
-    home.packages = [ pkgs.niri ];
-
-    # 選択されたシェルを自動的に有効化
-    programs.noctalia-shell.enable = lib.mkDefault (cfg.shell == "noctalia");
-    programs.inir.enable = lib.mkDefault (cfg.shell == "inir");
-
-    home.activation.niriConfig = lib.hm.dag.entryAfter ["linkGeneration"] ''
-      mkdir -p "$HOME/.config/niri"
-      install -m 644 "${niriConfig}" "$HOME/.config/niri/config.kdl"
-    '';
+    home = {
+      packages = [ pkgs.niri ];
+      activation.niriConfig = lib.hm.dag.entryAfter ["linkGeneration"] ''
+        mkdir -p "$HOME/.config/niri"
+        install -m 644 "${niriConfig}" "$HOME/.config/niri/config.kdl"
+      '';
+    };
   };
 }
