@@ -19,11 +19,16 @@ in {
         ln -s ${inir}/scripts/inir $out/bin/inir
       '')
       # Core
+      bc
+      jq
+      ripgrep
       cliphist
       wl-clipboard
       libnotify
       gum
       awww
+      xwayland-satellite
+      wlsunset
       # Screenshot & Recording
       grim
       slurp
@@ -38,6 +43,7 @@ in {
       brightnessctl
       # Audio
       playerctl
+      socat
       # Qt6 追加
       kdePackages.kdialog
       # Theming
