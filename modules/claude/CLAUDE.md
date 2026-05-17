@@ -74,3 +74,4 @@ agent-browser open <url> --args "--no-sandbox"
 ```
 
 @RTK.md
+@CLAUDE.local.md
