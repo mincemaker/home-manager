@@ -13,6 +13,11 @@ in {
 
     # 依存パッケージ（nixpkgs から）
     home.packages = with pkgs; [
+      # inir CLI を PATH に公開（symlink で script_dir が正しく解決される）
+      (pkgs.runCommand "inir-cli" {} ''
+        mkdir -p $out/bin
+        ln -s ${inir}/scripts/inir $out/bin/inir
+      '')
       # Core
       cliphist
       wl-clipboard
