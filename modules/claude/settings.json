@@ -108,7 +108,7 @@
           {
             "type": "command",
             "command": "open-plan-mo",
-            "if": "Write(/home/mince/.claude/plans/*)",
+            "if": "Write(*/.claude/plans/*)",
             "async": true
           }
         ]
@@ -119,7 +119,7 @@
           {
             "type": "command",
             "command": "open-plan-mo",
-            "if": "Edit(/home/mince/.claude/plans/*)",
+            "if": "Edit(*/.claude/plans/*)",
             "async": true
           }
         ]
