@@ -1,11 +1,18 @@
 lockfile_version: '1'
-generated_at: '2026-04-30T04:05:39.882998+00:00'
-apm_version: 0.11.0
+generated_at: '2026-05-20T04:29:08.012454+00:00'
+apm_version: 0.14.0
 dependencies:
 - repo_url: _local/home-manager
   package_type: hybrid
   deployed_files:
+  - .agents/skills/home-manager
   - .claude/skills/home-manager
-  - .gemini/skills/home-manager
   source: local
   local_path: ./skills/home-manager
+- repo_url: _local/merge-pr
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/merge-pr
+  - .claude/skills/merge-pr
+  source: local
+  local_path: ./skills/merge-pr

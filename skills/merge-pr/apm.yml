@@ -1,0 +1,5 @@
+name: merge-pr
+version: 0.1.0
+description: PR を --merge フラグで安全にマージするワークフロー（squash/rebase 禁止）
+author: mince
+target: [claude, agent-skills]
