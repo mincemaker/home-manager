@@ -105,6 +105,11 @@ in {
         matcher = "Bash"
         regex = 'id_rsa|id_ed25519'
         message = "Access to private keys via bash is prohibited. Ask the user to handle key-related operations."
+
+        [[rules]]
+        matcher = "Bash"
+        regex = '(^|[;&|]\s*)curl\s.*\bgithub\.com\b'
+        message = "Do not use curl for GitHub. Use 'gh api \"repos/OWNER/REPO/...\"' instead."
       '';
       description = "Content of ~/.config/guard-and-guide/rules.toml";
     };
