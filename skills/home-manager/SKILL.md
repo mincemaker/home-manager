@@ -123,6 +123,7 @@ in {
 
 ## アンチパターン
 
+- nixpkgs パッケージの属性パスを web 調査や推測で決めない。Python パッケージは `python3Packages.foo` として定義されているが、CLI ツールとして `pkgs.foo` というトップレベル属性が別途存在することが多い。必ず `nix search nixpkgs <name>` で実際の属性パスを確認してから使う。
 - `with pkgs;` は使わない — 常に `pkgs.foo` と明示
 - overlay はこのリポジトリにない — 必要なら flake.nix の nixpkgs レベルで追加
 - `allowUnfree` はこのリポジトリで設定していない
@@ -134,6 +135,11 @@ in {
 ## よく使うコマンド
 
 ```bash
+# nixpkgs パッケージ属性パス確認 (web 調査より確実)
+nix search nixpkgs <name>
+nix eval nixpkgs#<name>.pname   # 存在確認
+nix eval nixpkgs#<name>.meta.mainProgram   # CLI名確認
+
 # macOS 適用
 darwin-rebuild switch --flake ~/.config/home-manager#mince-mac
 
