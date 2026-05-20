@@ -1,45 +1,32 @@
 ---
 name: merge-pr
-description: >-
-  GitHub PR を安全にマージするワークフロー。「PR をマージする」「PR を取り込む」などの文脈でトリガーする。
-  必ず --merge フラグ（マージコミット作成）を使う。--squash と --rebase は git graph を破壊するため絶対に使わない。
-  PR 番号を引数として受け取るか、引数なしでオープン PR 一覧から対話的に選択する。
+description: "GitHub PR を安全にマージするワークフロー。「PR をマージする」「PR を取り込む」等の文脈でトリガーする。git worktree で隔離検証し、rebase 後に --merge フラグでマージする。"
 allowed-tools: Bash
 ---
 
-# PR マージワークフロー
+# merge-pr
 
-## 絶対ルール
+## 使用方法
 
-`gh pr merge` には必ず `--merge` を使う。`--squash` と `--rebase` は **絶対に使わない**。
-
-## 呼び出し形式
-
-- **引数あり**: 指定された PR 番号を処理する
-- **引数なし**: `gh pr list` でオープン PR 一覧を表示し、ユーザーに選択させる
-
-## 処理ステップ
-
-### Step 1: PR の情報確認
-
-```bash
-gh pr view <N> --json number,title,headRefName,state,mergeable
+```
+/merge-pr [PR番号]
 ```
 
-### Step 2: ユーザーに確認
+- 数値のみ: そのPR番号を対象とする
+- 無引数: `gh pr list` でオープンPRを一覧表示し、対話的に選択
 
-マージ前に必ず確認を求める:
+## 動作フロー
 
-> PR #N「<タイトル>」を `--merge` でマージしてよいですか？
+1. PR情報取得 — `gh pr view <N>` でブランチ名・タイトル・差分を確認
+2. worktree作成 — `git worktree add ../<repo>-pr<N> <branch>`
+3. 検証 — プロジェクトの CLAUDE.md / README の指示に従う。環境やコマンドが不明な場合はユーザーに確認
+4. rebase — `git rebase origin/main`、コンフリクトはプロジェクト慣習で解決し再検証
+5. 記録 — `gh pr review --comment` で検証結果・rebase先・特記事項を PR に残す
+6. マージ — ユーザーの承認を得てから `gh pr merge --merge <N>`
+7. 後片付け — `git worktree remove` で隔離環境を削除、元ディレクトリで `git pull --rebase`
 
-### Step 3: マージ
+## 注意事項
 
-```bash
-gh pr merge <N> --merge
-```
+- `gh pr merge --merge` のみ使用すること。`--squash` と `--rebase` は履歴を破壊するため禁止
+- 不確実な状況では独断せずユーザーに確認する
 
-### Step 4: 同期
-
-```bash
-git pull origin main
-```
