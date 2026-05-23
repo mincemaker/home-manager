@@ -54,6 +54,14 @@ in {
         kdePackages.kdialog
         # Theming
         fuzzel
+        # Optional features
+        hyprpicker
+        blueman
+        mission-center
+        songrec
+        translate-shell
+        gowall
+        darkly
       ];
 
       # iNiR 公式のサービス管理機能でサービスファイルを生成・有効化する。
