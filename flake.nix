@@ -20,10 +20,6 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    inir = {
-      url = "github:snowarch/iNiR";
-      flake = false;
-    };
     xremap-flake.url = "github:xremap/nix-flake";
 
     cage = {
@@ -71,7 +67,7 @@
           ./home/linux.nix
         ];
         extraSpecialArgs = {
-          inherit (inputs) zen-browser noctalia-shell inir slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide;
+          inherit (inputs) zen-browser noctalia-shell slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide;
         };
       };
 

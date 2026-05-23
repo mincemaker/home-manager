@@ -327,22 +327,6 @@
         "type": "github"
       }
     },
-    "inir": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1779162340,
-        "narHash": "sha256-qfnFnJUA4clEUeT0WkPfWsikDefvU7yOAu92az5tSrw=",
-        "owner": "snowarch",
-        "repo": "iNiR",
-        "rev": "83b6722cd6b4e849f060438cd95445df6b1a0fa7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "snowarch",
-        "repo": "iNiR",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -478,7 +462,6 @@
         "cage": "cage",
         "guard-and-guide": "guard-and-guide",
         "home-manager": "home-manager_2",
-        "inir": "inir",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "noctalia-shell": "noctalia-shell",
