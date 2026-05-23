@@ -9,14 +9,13 @@
     ../modules/niri/zen-browser.nix
     ../modules/niri
     ../modules/niri/noctalia-shell.nix
-    ../modules/niri/inir.nix
   ];
 
   home = {
     username = "mince";
     homeDirectory = "/home/mince";
     stateVersion = "25.11";
-    packages = [ pkgs.delta ];
+    packages = with pkgs; [ delta wl-clipboard cliphist ];
   };
 
   programs = {

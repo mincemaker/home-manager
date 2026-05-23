@@ -9,6 +9,8 @@ let
     then shellConfig.startup pkgs
     else shellConfig.startup;
 
+  outputConfig = pkgs.writeText "niri-output.kdl" output;
+
   input = ''
     input {
         keyboard {
@@ -415,15 +417,19 @@ in {
       niri.lockCommand = shellConfig.lockCommand;
       # 選択されたシェルを自動的に有効化
       noctalia-shell.enable = lib.mkDefault (cfg.shell == "noctalia");
-      inir.enable = lib.mkDefault (cfg.shell == "inir");
     };
 
     home = {
-      packages = [ pkgs.niri ];
-      activation.niriConfig = lib.hm.dag.entryAfter ["linkGeneration"] ''
-        mkdir -p "$HOME/.config/niri"
-        install -m 644 "${niriConfig}" "$HOME/.config/niri/config.kdl"
-      '';
+      packages = lib.mkIf (cfg.shell == "noctalia") [ pkgs.niri ];
+      activation.niriConfig = lib.hm.dag.entryAfter ["linkGeneration"] (
+        if cfg.shell == "inir" then ''
+          mkdir -p "$HOME/.config/niri/config.d"
+          install -m 644 "${outputConfig}" "$HOME/.config/niri/config.d/90-user-extra.kdl"
+        '' else ''
+          mkdir -p "$HOME/.config/niri"
+          install -m 644 "${niriConfig}" "$HOME/.config/niri/config.kdl"
+        ''
+      );
     };
   };
 }
