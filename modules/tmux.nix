@@ -19,7 +19,7 @@ in {
       baseIndex = 1;
       focusEvents = true;
       extraConfig = ''
-        set -g prefix2 C-b
+        unbind C-b
         set -g status-keys emacs
         set -g repeat-time 1000
         set -s extended-keys on
