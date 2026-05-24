@@ -2,14 +2,8 @@
 
 let
   cfg = config.programs.niri;
-  shellConfig = if cfg.shell == "noctalia"
-    then import ./shells/noctalia.nix { inherit pkgs noctalia-shell; }
-    else import ./shells/inir.nix { inherit pkgs; };
-  shellStartup = if cfg.shell == "inir"
-    then shellConfig.startup pkgs
-    else shellConfig.startup;
-
-  outputConfig = pkgs.writeText "niri-output.kdl" output;
+  shellConfig = import ./shells/noctalia.nix { inherit pkgs noctalia-shell; };
+  shellStartup = shellConfig.startup;
 
   input = ''
     input {
@@ -405,16 +399,10 @@ in {
       default = "noctalia";
       description = "Which shell to use with niri (noctalia or inir)";
     };
-    lockCommand = lib.mkOption {
-      type = lib.types.str;
-      readOnly = true;
-      description = "Lock screen command derived from the selected shell configuration";
-    };
   };
 
   config = lib.mkIf cfg.enable {
     programs = {
-      niri.lockCommand = shellConfig.lockCommand;
       # 選択されたシェルを自動的に有効化
       noctalia-shell.enable = lib.mkDefault (cfg.shell == "noctalia");
     };
@@ -422,10 +410,8 @@ in {
     home = {
       packages = lib.mkIf (cfg.shell == "noctalia") [ pkgs.niri ];
       activation.niriConfig = lib.hm.dag.entryAfter ["linkGeneration"] (
-        if cfg.shell == "inir" then ''
-          mkdir -p "$HOME/.config/niri/config.d"
-          install -m 644 "${outputConfig}" "$HOME/.config/niri/config.d/90-user-extra.kdl"
-        '' else ''
+        if cfg.shell == "inir" then ""
+        else ''
           mkdir -p "$HOME/.config/niri"
           install -m 644 "${niriConfig}" "$HOME/.config/niri/config.kdl"
         ''
