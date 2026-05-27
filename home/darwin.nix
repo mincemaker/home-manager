@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -22,6 +22,8 @@
   };
 
   home = {
+    packages = [ pkgs.cliamp ];
+
     username = "mince";
     homeDirectory = "/Users/mince";
     stateVersion = "25.11";

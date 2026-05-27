@@ -15,7 +15,20 @@
     username = "mince";
     homeDirectory = "/home/mince";
     stateVersion = "25.11";
-    packages = with pkgs; [ delta wl-clipboard cliphist ];
+    packages = with pkgs; [
+      delta
+      wl-clipboard
+      cliphist
+      (symlinkJoin {
+        name = "cliamp";
+        paths = [ cliamp ];
+        nativeBuildInputs = [ makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/cliamp \
+            --set ALSA_PLUGIN_DIR ${pipewire}/lib/alsa-lib
+        '';
+      })
+    ];
   };
 
   programs = {
