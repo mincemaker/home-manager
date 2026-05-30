@@ -29,6 +29,9 @@
       direnv = prev.direnv.overrideAttrs (_: {
         doCheck = false;
       });
+      cliamp = prev.cliamp.overrideAttrs (_: {
+        doCheck = false;
+      });
     })
   ];
 
