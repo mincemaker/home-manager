@@ -7,6 +7,7 @@ _:
     taps = [
       "FelixKratz/formulae"
       "nikitabobko/tap"
+      "docker/tap"
     ];
 
     brews = [
@@ -51,6 +52,7 @@ _:
       "visual-studio-code"
       "zen"
       "aerospace"
+      "docker/tap/sbx"
     ];
 
     onActivation = {
