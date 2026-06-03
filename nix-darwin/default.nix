@@ -69,10 +69,6 @@
       launchanim = false; # アプリ起動時のアニメーションを無効化
       mineffect = "scale"; # ウィンドウを閉じるときのエフェクトをスケールに設定
     };
-    # アクセシビリティ
-    universalaccess = {
-      reduceMotion = true; # 視差効果を減らす（スペース切り替えアニメーションを包括的に無効化）
-    };
     # 画面キャプチャ
     screencapture = {
       target = "clipboard"; # スクリーンショットの保存先をクリップボードに設定
@@ -89,6 +85,9 @@
       "com.apple.dock" = {
         expose-animation-duration = 0; # Mission Control のアニメーションを無効化
         "workspaces-swoosh-animation-off" = true; # フルスクリーン間の切り替えアニメーションを無効化
+      };
+      "com.apple.Accessibility" = {
+        ReduceMotionEnabled = true; # 視差効果を減らす（スペース切り替えアニメーションを無効化）
       };
     };
   };

@@ -5,6 +5,7 @@ _:
     enable = true;
 
     taps = [
+      "dimentium/autoraise"
       "FelixKratz/formulae"
       "nikitabobko/tap"
       "docker/tap"
@@ -53,12 +54,14 @@ _:
       "zen"
       "aerospace"
       "docker/tap/sbx"
+      "dimentium/autoraise/autoraiseapp"
     ];
 
     onActivation = {
       autoUpdate = true;
       upgrade = true;
       cleanup = "zap";
+      extraFlags = [ "--force" ];
     };
   };
 }

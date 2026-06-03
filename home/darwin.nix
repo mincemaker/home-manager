@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../modules/autoraise.nix
     ../modules/agent-skills.nix
     ../modules/macskk.nix
     ../modules/yaskkserv2.nix
@@ -19,6 +18,25 @@
       export GPG_TTY=$(tty)
       export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
     '';
+  };
+
+  launchd.agents.autoraise = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "/Applications/AutoRaise.app/Contents/MacOS/AutoRaise"
+        "-delay" "1"
+        "-disableKey" "control"
+        "-warpX" "0.5"
+        "-warpY" "0.5"
+        "-focusDelay" "1"
+        "-requireMouseStop" "false"
+      ];
+      KeepAlive = true;
+      RunAtLoad = true;
+      ProcessType = "Background";
+      LimitLoadToSessionType = "Aqua";
+    };
   };
 
   home = {
