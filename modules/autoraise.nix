@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   home.packages = [ pkgs.autoraise ];
@@ -7,7 +7,9 @@
     enable = true;
     config = {
       ProgramArguments = [
-        "${pkgs.autoraise}/bin/autoraise"
+        # Use stable path on main APFS volume so macOS TCC can validate the
+        # permission during early boot (nix store volume isn't mounted yet).
+        "${config.home.homeDirectory}/Applications/Home Manager Apps/AutoRaise.app/Contents/MacOS/AutoRaise"
         "-delay" "1"
         "-disableKey" "control"
         "-warpX" "0.5"
