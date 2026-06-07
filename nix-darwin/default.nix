@@ -89,6 +89,10 @@
       "com.apple.Accessibility" = {
         ReduceMotionEnabled = true; # 視差効果を減らす（スペース切り替えアニメーションを無効化）
       };
+      "com.apple.desktopservices" = {
+        DSDontWriteNetworkStores = true;
+        DSDontWriteUSBStores = true;
+      };
     };
   };
   };

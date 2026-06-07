@@ -10,6 +10,7 @@
   ];
 
   programs = {
+    git.ignores = [ ".DS_Store" ];
     plamo-translate.enable = true;
     home-manager.enable = true;
     zsh.initContent = ''
