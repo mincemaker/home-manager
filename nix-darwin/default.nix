@@ -35,6 +35,8 @@
     })
   ];
 
+  environment.systemPath = [ "/opt/homebrew/bin" "/opt/homebrew/sbin" ];
+
   nix.enable = false;
   security.pam.services.sudo_local.touchIdAuth = true;
 
