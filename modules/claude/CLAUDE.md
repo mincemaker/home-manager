@@ -29,6 +29,8 @@ Use `podman` instead of `docker` for container commands unless explicitly told o
 
 Do not add bold markdown formatting or decorative formatting to content unless explicitly asked. Keep output clean and minimal.
 
+Do not write in the "noun（appositive gloss / restating the noun）" style — attaching a parenthetical that re-explains or paraphrases the word right before it. The user strongly dislikes this style in both prose and headings. Fold the information into natural sentences or separate clauses instead. This applies to Japanese `（…）` and ASCII `(...)` alike. Legitimate parentheses are fine: markdown link URLs, and factual data (version numbers, verification commands, code identifiers).
+
 ## Research and Exploration
 
 For broad codebase investigation tasks, delegate to the `gemini-explore` sub-agent instead of doing it yourself:
