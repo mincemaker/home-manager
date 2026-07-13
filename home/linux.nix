@@ -55,6 +55,10 @@
             source ~/.config/fish/aliases.fish
         end
 
+        if test -f ~/.config/fish/config.local.fish
+            source ~/.config/fish/config.local.fish
+        end
+
         set -x GPG_TTY (tty)
         set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
         gpgconf --launch gpg-agent
