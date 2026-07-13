@@ -12,6 +12,7 @@
     useUserPackages = true;
     sharedModules = [
       inputs.agent-skills.homeManagerModules.default
+      inputs.hunk.homeManagerModules.default
     ];
     extraSpecialArgs = {
       inherit (inputs) slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide;
