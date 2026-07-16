@@ -5,10 +5,10 @@ _:
     enable = true;
 
     taps = [
-      "dimentium/autoraise"
-      "FelixKratz/formulae"
-      "nikitabobko/tap"
-      "docker/tap"
+      { name = "dimentium/autoraise"; trusted = true; }
+      { name = "FelixKratz/formulae"; trusted = true; }
+      { name = "nikitabobko/tap"; trusted = true; }
+      { name = "docker/tap"; trusted = true; }
     ];
 
     brews = [
