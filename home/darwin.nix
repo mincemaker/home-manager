@@ -10,7 +10,12 @@
   ];
 
   programs = {
-    git.ignores = [ ".DS_Store" ];
+    git.ignores = [
+      ".DS_Store"
+      "**/.claude/settings.local.json"
+      "**/z-ai"
+      ".env"
+    ];
     plamo-translate.enable = true;
     home-manager.enable = true;
     zsh.initContent = ''
