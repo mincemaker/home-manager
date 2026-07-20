@@ -6,7 +6,6 @@
     ../modules/tmux.nix
     ../modules/cage.nix
     ../modules/guard-and-guide.nix
-    ../modules/hunk.nix
   ];
 
   home = {
@@ -37,7 +36,6 @@
     tmux-config.enable = true;
     cage.enable = true;
     guard-and-guide.enable = true;
-    hunk.enable = true;
     git.enable = true;
 
     zsh = {
