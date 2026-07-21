@@ -77,4 +77,12 @@ in
       Restart = "on-failure";
     };
   };
+
+  xdg.configFile."fcitx5/skk/dictionary_list" = lib.mkIf pkgs.stdenv.isLinux {
+    text = ''
+      type=file,file=$FCITX_CONFIG_DIR/skk/user.dict,mode=readwrite
+      type=server,host=127.0.0.1,port=1178
+      type=file,file=/usr/share/skk/SKK-JISYO.L,mode=readonly
+    '';
+  };
 }
