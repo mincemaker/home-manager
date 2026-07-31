@@ -9,11 +9,13 @@ _:
       { name = "FelixKratz/formulae"; trusted = true; }
       { name = "nikitabobko/tap"; trusted = true; }
       { name = "docker/tap"; trusted = true; }
+      { name = "bjarneo/cliamp"; trusted = true;}
     ];
 
     brews = [
       "bat"
       "btop"
+      "cliamp"
       "eza"
       "git-delta"
       "fd"
@@ -21,6 +23,7 @@ _:
       "gmp"
       "gnupg"
       "lazygit"
+      "media-control"
       "mise"
       "libyaml"
       "neovim"
