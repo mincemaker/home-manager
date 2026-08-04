@@ -9,8 +9,6 @@ result-*
 .claude/
 .agents/
 .serena/
-.gemini/*
-!.gemini/.keep
 
 
 # APM dependencies

@@ -38,7 +38,6 @@ in {
             - "$HOME/.claude.json.backup"
             - "$HOME/.claude.json.lock"
             - "$HOME/.claude.lock"
-            - "$HOME/.gemini"
             - "$HOME/.serena"
             - "$HOME/.agent-browser"
             - "$HOME/.browser-profile"
@@ -61,12 +60,6 @@ in {
             - "$HOME/.npmrc"
             - "$HOME/.config/.wrangler"
 
-        gemini:
-          allow:
-            - "$HOME/.gemini"
-            - "$HOME/.serena"
-            - ".serena"
-
         git-enabled:
           allow-git: true
           allow-keychain: true
@@ -83,12 +76,6 @@ in {
           presets:
             - base
             - git-enabled
-
-        - command: gemini
-          presets:
-            - base
-            - git-enabled
-            - gemini
     '';
 
     home.packages = [ cage.packages.${system}.default ];

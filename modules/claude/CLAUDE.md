@@ -31,17 +31,6 @@ Do not add bold markdown formatting or decorative formatting to content unless e
 
 Do not write in the "noun（appositive gloss / restating the noun）" style — attaching a parenthetical that re-explains or paraphrases the word right before it. The user strongly dislikes this style in both prose and headings. Fold the information into natural sentences or separate clauses instead. This applies to Japanese `（…）` and ASCII `(...)` alike. Legitimate parentheses are fine: markdown link URLs, and factual data (version numbers, verification commands, code identifiers).
 
-## Research and Exploration
-
-For broad codebase investigation tasks, delegate to the `gemini-explore` sub-agent instead of doing it yourself:
-
-- Broad codebase searches (`**/*.ts`, `grep -r` across the whole project, "where is X implemented?")
-- Understanding an unfamiliar module or feature across many files
-
-Do NOT delegate web research (library docs, CVEs, error messages, API references) to `gemini-explore` — Gemini web search is too slow and unreliable. Handle web research directly with WebSearch or WebFetch.
-
-Use direct tools (Bash, Read, Grep) only for targeted lookups — a specific file, a known function name, a single config. If the task would take more than 2-3 lookups, delegate.
-
 ## z-ai/ directory
 
 - `z-ai/` is globally gitignored.

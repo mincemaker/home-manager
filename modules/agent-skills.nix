@@ -28,7 +28,7 @@ in {
       ];
       excludePatterns = [ "/.system" "/hunk-review" ];
       targets = {
-        gemini.enable = true;
+        gemini.enable = false;
         codex.enable = false;
         opencode.enable = true;
       };
