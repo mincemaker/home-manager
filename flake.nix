@@ -32,6 +32,10 @@
     };
 
     # 共通
+    hunk = {
+      url = "github:modem-dev/hunk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     slash-criticalthink = {
       url = "github:abagames/slash-criticalthink";
       flake = false;
@@ -63,6 +67,7 @@
         modules = [
           inputs.xremap-flake.homeManagerModules.default
           inputs.agent-skills.homeManagerModules.default
+          inputs.hunk.homeManagerModules.default
           ./modules/agent-skills.nix
           ./home/linux.nix
         ];

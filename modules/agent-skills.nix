@@ -26,6 +26,7 @@ in {
         "agent-browser"
         "git-commit"
       ];
+      excludePatterns = [ "/.system" "/hunk-review" ];
       targets = {
         gemini.enable = true;
         codex.enable = false;
