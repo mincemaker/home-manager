@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../modules/antigravity-cli.nix
     ../modules/claude.nix
     ../modules/tmux.nix
     ../modules/cage.nix
@@ -33,6 +34,7 @@
   };
 
   programs = {
+    agy-hooks.enable = true;
     claude.enable = true;
     tmux-config.enable = true;
     cage.enable = true;

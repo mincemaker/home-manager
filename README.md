@@ -111,6 +111,7 @@ apm install
 
 | モジュール | common | linux | darwin |
 |---|---|---|---|
+| `antigravity-cli.nix` | ✅ | | |
 | `claude.nix` | ✅ | | |
 | `agent-skills.nix` | ✅ | | |
 | `niri/xremap.nix` | | ✅ | |

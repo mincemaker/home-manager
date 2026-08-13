@@ -1,0 +1,30 @@
+{
+  "RtkHook": {
+    "enabled": true,
+    "PreToolUse": [
+      {
+        "matcher": "run_command|run_shell_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk-hook-gemini"
+          }
+        ]
+      }
+    ]
+  },
+  "GuardAndGuide": {
+    "enabled": true,
+    "PreToolUse": [
+      {
+        "matcher": "run_command|run_shell_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "guard-and-guide-agy"
+          }
+        ]
+      }
+    ]
+  }
+}
