@@ -19,7 +19,6 @@
       "Bash(* ~/.npmrc)",
       "Bash(* ~/.ssh/*)",
       "Bash(chmod 777:*)",
-      "Bash(curl *)",
       "Bash(do)",
       "Bash(find * -delete*)",
       "Bash(for)",
