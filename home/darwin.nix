@@ -16,6 +16,7 @@
         "**/.claude/settings.local.json"
         "**/z-ai"
         ".env"
+        ".serena/"
       ];
       package = null;
     };
