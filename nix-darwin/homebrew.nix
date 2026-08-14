@@ -16,6 +16,7 @@ _:
       "bat"
       "btop"
       "cliamp"
+      "clock-rs"
       "eza"
       "git-delta"
       "fd"
