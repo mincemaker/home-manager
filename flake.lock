@@ -319,11 +319,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786977023,
-        "narHash": "sha256-cXoJhAHROHOxReZhwJD4QbQe42Mcm/g1vVx1tdBG+B0=",
+        "lastModified": 1787017657,
+        "narHash": "sha256-Hyt/nbGozlTQZDAelw7pYsq+H8FwsRK4M/DVIjvixuI=",
         "owner": "kawarimidoll",
         "repo": "guard-and-guide",
-        "rev": "12c80bf5606c58421377587683648070d9473434",
+        "rev": "c30105242f7f5653d21b5ed0241ed190c4e50e30",
         "type": "github"
       },
       "original": {
@@ -383,11 +383,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1787000514,
-        "narHash": "sha256-hjratV607j0O7nr5p/NMkKGYar0fl5cvDZpGg0F+9o8=",
+        "lastModified": 1787062376,
+        "narHash": "sha256-9axFFEFx5pXoy27cS0PK6SRRPEM72FKDd7JdQJ2oq4s=",
         "owner": "modem-dev",
         "repo": "hunk",
-        "rev": "1981ee6daf29d953171bb044a9bb0bf5a1c2e3b1",
+        "rev": "6ffea22dbddb7e60359d527abcac7f9190a8cc3e",
         "type": "github"
       },
       "original": {
@@ -515,11 +515,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787000081,
-        "narHash": "sha256-sFyoCSeC+vwQUjQ54e2EBYh9EdYc7yGp31whjaYOOfk=",
+        "lastModified": 1787060938,
+        "narHash": "sha256-EC387Ui4QiG6Vsq34De4+g9iKfIcBLw+QeJKTn1GAy8=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "74db8e7a62c04e85c876da4827405700455c160c",
+        "rev": "c874d65e68242d585fbe499e87a96158a41432dd",
         "type": "github"
       },
       "original": {
