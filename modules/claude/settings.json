@@ -85,7 +85,7 @@
       "Bash(git rm:*)",
       "Bash(git switch:*)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "auto"
   },
   "hooks": {
     "PostToolUse": [
