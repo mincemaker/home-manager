@@ -19,7 +19,7 @@ let
 
     cargoHash = "sha256-cycs8Zism228rjMaBpNYa4K1Ll760UhLKkoTX6VJRU0=";
 
-    patches = lib.optionals pkgs.stdenv.isDarwin [
+    patches = lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
       ./yaskkserv2-socket-activation.patch
     ];
 
@@ -45,7 +45,7 @@ in
 {
   home.packages = [ yaskkserv2 ];
 
-  launchd.agents.yaskkserv2 = lib.mkIf pkgs.stdenv.isDarwin {
+  launchd.agents.yaskkserv2 = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     enable = true;
     config = {
       Label = "com.github.wachikun.yaskkserv2";
@@ -69,7 +69,7 @@ in
     };
   };
 
-  systemd.user.services.yaskkserv2 = lib.mkIf pkgs.stdenv.isLinux {
+  systemd.user.services.yaskkserv2 = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     Unit.Description = "yaskkserv2 SKK server";
     Install.WantedBy = [ "default.target" ];
     Service = {
@@ -78,7 +78,7 @@ in
     };
   };
 
-  xdg.configFile."fcitx5/skk/dictionary_list" = lib.mkIf pkgs.stdenv.isLinux {
+  xdg.configFile."fcitx5/skk/dictionary_list" = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     text = ''
       type=file,file=$FCITX_CONFIG_DIR/skk/user.dict,mode=readwrite
       type=server,host=127.0.0.1,port=1178

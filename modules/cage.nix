@@ -79,10 +79,10 @@ in {
     '';
 
     home.packages = [ cage.packages.${system}.default ];
-    home.file = lib.mkIf pkgs.stdenv.isDarwin {
+    home.file = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
       "Library/Application Support/cage/presets.yaml".text = cfg.settings;
     };
-    xdg.configFile = lib.mkIf (!pkgs.stdenv.isDarwin) {
+    xdg.configFile = lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) {
       "cage/presets.yaml".text = cfg.settings;
     };
   };
