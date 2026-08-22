@@ -31,7 +31,7 @@ _:
       "pinentry-mac"
       "readline"
       "ripgrep"
-      { name = "sketchybar"; start_service = true; }
+      { name = "sketchybar"; restart_service = "changed"; }
       "borders"
     ];
 
