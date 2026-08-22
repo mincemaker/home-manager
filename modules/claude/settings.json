@@ -164,5 +164,6 @@
     "typescript-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true
   },
-  "language": "Japanese"
+  "language": "Japanese",
+  "agentPushNotifEnabled": true
 }
