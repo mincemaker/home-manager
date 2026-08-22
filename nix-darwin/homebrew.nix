@@ -5,9 +5,7 @@ _:
     enable = true;
 
     taps = [
-      { name = "dimentium/autoraise"; trusted = true; }
       { name = "FelixKratz/formulae"; trusted = true; }
-      { name = "nikitabobko/tap"; trusted = true; }
       { name = "docker/tap"; trusted = true; }
       { name = "bjarneo/cliamp"; trusted = true;}
     ];
@@ -29,10 +27,11 @@ _:
       "libyaml"
       "neovim"
       "openssl@3"
+      "paneru"
       "pinentry-mac"
       "readline"
       "ripgrep"
-      "sketchybar"
+      { name = "sketchybar"; start_service = true; }
       "borders"
     ];
 
@@ -56,9 +55,7 @@ _:
       "thaw"
       "visual-studio-code"
       "zen"
-      "aerospace"
       "docker/tap/sbx"
-      "dimentium/autoraise/autoraiseapp"
     ];
 
     onActivation = {

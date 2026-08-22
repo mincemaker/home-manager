@@ -30,22 +30,16 @@
     '';
   };
 
-  launchd.agents.autoraise = {
+  launchd.agents.paneru = {
     enable = true;
     config = {
-      ProgramArguments = [
-        "/Applications/AutoRaise.app/Contents/MacOS/AutoRaise"
-        "-delay" "1"
-        "-disableKey" "control"
-        "-warpX" "0.5"
-        "-warpY" "0.5"
-        "-focusDelay" "1"
-        "-requireMouseStop" "false"
-      ];
+      ProgramArguments = [ "/opt/homebrew/bin/paneru" ];
       KeepAlive = true;
       RunAtLoad = true;
-      ProcessType = "Background";
+      ProcessType = "Interactive";
       LimitLoadToSessionType = "Aqua";
+      StandardOutPath = "/Users/mince/Library/Logs/paneru.out.log";
+      StandardErrorPath = "/Users/mince/Library/Logs/paneru.err.log";
     };
   };
 
