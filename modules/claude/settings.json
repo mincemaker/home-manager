@@ -165,5 +165,6 @@
     "gopls-lsp@claude-plugins-official": true
   },
   "language": "Japanese",
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "autoUpdatesChannel": "stable"
 }
