@@ -8,6 +8,7 @@ _:
       { name = "FelixKratz/formulae"; trusted = true; }
       { name = "docker/tap"; trusted = true; }
       { name = "bjarneo/cliamp"; trusted = true;}
+      { name = "sheeki03/tap"; trusted = true; }
     ];
 
     brews = [
@@ -36,6 +37,7 @@ _:
       "pinentry-mac"
       "readline"
       "ripgrep"
+      "tirith"
       { name = "sketchybar"; restart_service = "changed"; }
       "borders"
     ];
