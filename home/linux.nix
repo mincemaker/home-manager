@@ -70,6 +70,42 @@
       shellAliases = {
         ls = "LC_ALL=C ls --color=auto";
       };
+
+      # tirith の fish フックは umask 077 を復元しないバグがあり
+      # (fish の (...) は本物のサブシェルではないため tirith 側のパターンが機能しない)、
+      # 対話シェルの umask が恒久的に汚染される。汚染値は _tirith_v3_new_capture_file の
+      # ハードコードで必ず 0077 固定なので、umask が 0077 のときだけ直近の既知良好値へ
+      # 戻す。毎コマンド実行後に既知良好値を実際の umask で更新し続けるため、ユーザーが
+      # 対話シェルで umask を手動変更してもそのまま尊重・継続される
+      # (0077 を意図的に使い続けたい場合も、その値が既知良好値として上書きされるので
+      # 実害はない)。有効化は各マシンの ~/.config/fish/config.local.fish 側で行う。
+      #
+      # __tirith_umask_guard_resync が既知良好値として 0077 をそのまま記録してしまう
+      # 余地は、tirith が fish_preexec/fish_postexec 等のイベントで汚染するように
+      # なった場合にのみ生じる (現行の tirith 0.4.0 は Enter キーへの直接バインドの
+      # 中だけで同期的に汚染するため該当しない。fish-hook.fish 全体で --on-event は
+      # 一切使われていないことをソースで確認済み)。tirith 側の実装が変わった場合は
+      # この前提を再確認すること。
+      #
+      # __tirith_umask_guard / __tirith_umask_guard_resync は tirith-umask-guard-enable
+      # の呼び出し時にネストして定義する。fish は --on-event 付き関数を functions/
+      # ディレクトリに置くだけで呼び出しの有無に関わらずシェル起動時に登録してしまう
+      # ため、独立した autoload 関数として置くと有効化していないマシンでも毎コマンド
+      # 前後に umask ビルトインが素通しで実行され余計な出力が出る。呼び出し時定義に
+      # することで未有効化のマシンでは関数自体が一切登録されない。
+      functions.tirith-umask-guard-enable = ''
+        if not set -q __tirith_umask_guard_last_good
+          set -g __tirith_umask_guard_last_good (umask)
+        end
+        function __tirith_umask_guard --on-event fish_preexec
+          if test (umask) = 0077
+            umask $__tirith_umask_guard_last_good
+          end
+        end
+        function __tirith_umask_guard_resync --on-event fish_postexec
+          set -g __tirith_umask_guard_last_good (umask)
+        end
+      '';
     };
 
     zsh.shellAliases = {
