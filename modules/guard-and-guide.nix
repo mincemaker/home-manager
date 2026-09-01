@@ -110,6 +110,11 @@ in {
         matcher = "Bash"
         regex = '(^|[;&|]\s*)curl\s.*\bgithub\.com\b'
         message = "Do not use curl for GitHub. Use 'gh api \"repos/OWNER/REPO/...\"' instead."
+
+        [[rules]]
+        matcher = "Bash"
+        regex = '(?m)(^|[;&|(]\s*)(/usr)?/(s?bin|local/bin)/'
+        message = "Do not use absolute paths to system binaries. Use the command name directly."
       '';
       description = "Content of ~/.config/guard-and-guide/rules.toml";
     };
