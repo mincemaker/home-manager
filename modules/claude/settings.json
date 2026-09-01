@@ -1,5 +1,8 @@
 {
   "agentPushNotifEnabled": true,
+  "attribution": {
+    "sessionUrl": false
+  },
   "autoUpdatesChannel": "stable",
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
