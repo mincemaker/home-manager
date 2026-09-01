@@ -1,0 +1,2 @@
+# 外部ツールが書き戻す整形と配列順の揺れを吸収する
+modules/claude/settings.json filter=jsonsort

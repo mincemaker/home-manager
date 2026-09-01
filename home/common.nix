@@ -39,7 +39,12 @@
     tmux-config.enable = true;
     cage.enable = true;
     guard-and-guide.enable = true;
-    git.enable = true;
+    git = {
+      enable = true;
+      settings = {
+        filter."jsonsort".clean = ''jq -S 'walk(if type=="array" then sort else . end)' '';
+      };
+    };
     hunk.enable = true;
 
     zsh = {

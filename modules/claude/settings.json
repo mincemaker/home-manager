@@ -1,15 +1,193 @@
 {
+  "agentPushNotifEnabled": true,
+  "autoUpdatesChannel": "stable",
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "_pixtuoid": true,
+        "hooks": [
+          {
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
+            "type": "command"
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "_pixtuoid": true,
+        "hooks": [
+          {
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
+            "type": "command"
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "_pixtuoid": true,
+        "hooks": [
+          {
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
+            "type": "command"
+          }
+        ],
+        "matcher": ".*"
+      },
+      {
+        "hooks": [
+          {
+            "async": true,
+            "command": "open-plan-mo",
+            "if": "Edit(*/.claude/plans/*)",
+            "type": "command"
+          }
+        ],
+        "matcher": "Edit"
+      },
+      {
+        "hooks": [
+          {
+            "async": true,
+            "command": "open-plan-mo",
+            "if": "Write(*/.claude/plans/*)",
+            "type": "command"
+          }
+        ],
+        "matcher": "Write"
+      },
+      {
+        "hooks": [
+          {
+            "command": "open-plan-mo",
+            "type": "command"
+          }
+        ],
+        "matcher": "ExitPlanMode"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "_pixtuoid": true,
+        "hooks": [
+          {
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
+            "type": "command"
+          }
+        ],
+        "matcher": ".*"
+      },
+      {
+        "hooks": [
+          {
+            "command": "deepwiki-guard",
+            "type": "command"
+          }
+        ],
+        "matcher": "mcp__deepwiki__.*"
+      },
+      {
+        "hooks": [
+          {
+            "command": "guard-and-guide",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      },
+      {
+        "hooks": [
+          {
+            "command": "rtk hook claude",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "_pixtuoid": true,
+        "hooks": [
+          {
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
+            "type": "command"
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "SessionStart": [
+      {
+        "_pixtuoid": true,
+        "hooks": [
+          {
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
+            "type": "command"
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "SubagentStart": [
+      {
+        "_pixtuoid": true,
+        "hooks": [
+          {
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
+            "type": "command"
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "SubagentStop": [
+      {
+        "_pixtuoid": true,
+        "hooks": [
+          {
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
+            "type": "command"
+          }
+        ],
+        "matcher": ".*"
+      }
+    ]
+  },
+  "language": "Japanese",
   "permissions": {
     "allow": [
       "Bash(qs:*)",
-      "WebSearch",
+      "Bash(systemctl --user show-environment:*)",
       "WebFetch(domain:docs.noctalia.dev)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:quickshell.outfoxxed.me)",
+      "WebFetch(domain:medium.com)",
       "WebFetch(domain:quickshell.org)",
-      "Bash(systemctl --user show-environment:*)",
-      "WebFetch(domain:medium.com)"
+      "WebFetch(domain:quickshell.outfoxxed.me)",
+      "WebSearch"
     ],
+    "ask": [
+      "Bash(curl:*)",
+      "Bash(git config:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)",
+      "Bash(git rm:*)",
+      "Bash(git switch:*)"
+    ],
+    "defaultMode": "auto",
     "deny": [
       "Bash(* .env*)",
       "Bash(* ~/.aws/*)",
@@ -75,188 +253,10 @@
       "Read(~/.npmrc)",
       "Read(~/.ssh/**)",
       "mcp__supabase__execute_sql"
-    ],
-    "ask": [
-      "Bash(curl:*)",
-      "Bash(git config:*)",
-      "Bash(git push:*)",
-      "Bash(git reset:*)",
-      "Bash(git restore:*)",
-      "Bash(git rm:*)",
-      "Bash(git switch:*)"
-    ],
-    "defaultMode": "auto"
-  },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "ExitPlanMode",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "open-plan-mo"
-          }
-        ]
-      },
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "open-plan-mo",
-            "if": "Write(*/.claude/plans/*)",
-            "async": true
-          }
-        ]
-      },
-      {
-        "matcher": "Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "open-plan-mo",
-            "if": "Edit(*/.claude/plans/*)",
-            "async": true
-          }
-        ]
-      },
-      {
-        "_pixtuoid": true,
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "guard-and-guide"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "rtk hook claude"
-          }
-        ]
-      },
-      {
-        "matcher": "mcp__deepwiki__.*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "deepwiki-guard"
-          }
-        ]
-      },
-      {
-        "_pixtuoid": true,
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "_pixtuoid": true,
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "_pixtuoid": true,
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "_pixtuoid": true,
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
-          }
-        ]
-      }
-    ],
-    "SubagentStart": [
-      {
-        "_pixtuoid": true,
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "_pixtuoid": true,
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "_pixtuoid": true,
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.ts"
-  },
-  "enabledPlugins": {
-    "ruby-lsp@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true
-  },
-  "language": "Japanese",
-  "agentPushNotifEnabled": true,
-  "autoUpdatesChannel": "stable"
+    "command": "~/.claude/statusline.ts",
+    "type": "command"
+  }
 }
