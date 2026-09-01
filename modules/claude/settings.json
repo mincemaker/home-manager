@@ -119,6 +119,16 @@
             "async": true
           }
         ]
+      },
+      {
+        "_pixtuoid": true,
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -146,6 +156,88 @@
           {
             "type": "command",
             "command": "deepwiki-guard"
+          }
+        ]
+      },
+      {
+        "_pixtuoid": true,
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "_pixtuoid": true,
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "_pixtuoid": true,
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "_pixtuoid": true,
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "_pixtuoid": true,
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "_pixtuoid": true,
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "_pixtuoid": true,
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'"
           }
         ]
       }

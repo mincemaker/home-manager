@@ -35,6 +35,7 @@ _:
       "openssl@3"
       "paneru"
       "pinentry-mac"
+      "pixtuoid"
       "readline"
       "ripgrep"
       "tirith"
