@@ -67,6 +67,9 @@ in {
         git-enabled:
           allow-git: true
           allow-keychain: true
+          allow:
+            - "$HOME/.gnupg"
+            - "$XDG_RUNTIME_DIR/gnupg"
 
       auto-presets:
         - command: claude
