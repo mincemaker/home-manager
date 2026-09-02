@@ -60,6 +60,10 @@ in {
             - "$HOME/.npmrc"
             - "$HOME/.config/.wrangler"
 
+        antigravity-cli:
+          allow:
+            - "$HOME/.gemini"
+
         git-enabled:
           allow-git: true
           allow-keychain: true
@@ -71,6 +75,13 @@ in {
             - git-enabled
             - npm
             - claude-code
+
+        - command: agy
+          presets:
+            - base
+            - git-enabled
+            - npm
+            - antigravity-cli
 
         - command: git
           presets:
