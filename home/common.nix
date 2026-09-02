@@ -128,6 +128,44 @@
       ];
     };
 
+    fish = {
+      enable = true;
+
+      shellAbbrs = {
+        j = "jobs -l";
+        la = "ls -a";
+        ll = "ls -ltrAF";
+        l = "ls -lh";
+        du = "du -h";
+        df = "df -h";
+      };
+
+      shellAliases = {
+        where = "type -a";
+      };
+
+      interactiveShellInit = ''
+        # 起動時の挨拶メッセージを非表示
+        set -g fish_greeting
+
+        # Ctrl+P / Ctrl+N で履歴のプレフィックス検索
+        bind \cp history-prefix-search-backward
+        bind \cn history-prefix-search-forward
+
+        # ローカル設定があれば読み込み
+        if test -f ~/.config/fish/config.local.fish
+          source ~/.config/fish/config.local.fish
+        end
+      '';
+
+      plugins = [
+        {
+          name = "foreign-env";
+          src = pkgs.fishPlugins.foreign-env.src;
+        }
+      ];
+    };
+
     carapace = {
       enable = true;
       enableZshIntegration = true;
