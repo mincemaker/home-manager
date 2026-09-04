@@ -4,6 +4,7 @@
     "sessionUrl": false
   },
   "autoUpdatesChannel": "stable",
+  "editorMode": "normal",
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
@@ -270,5 +271,6 @@
   "statusLine": {
     "command": "~/.claude/statusline.ts",
     "type": "command"
-  }
+  },
+  "verbose": true
 }
