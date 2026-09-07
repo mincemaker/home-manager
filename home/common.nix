@@ -21,6 +21,7 @@
       pkgs.fence
       pkgs.moralerspace-hw
       pkgs.moralerspace-hwjpdoc
+      pkgs.rmpc
     ];
 
     sessionVariables = {

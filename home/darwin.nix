@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -29,6 +29,25 @@
       export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
     '';
   };
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/Volumes/Music";
+    extraConfig = ''
+      audio_output {
+        type "osx"
+        name "CoreAudio"
+      }
+    '';
+  };
+
+  # home-manager の launchd 用 mpd エージェントは systemd 版と違い
+  # ExecStartPre で dataDir/playlistDirectory を作成しないため、
+  # 初回起動時に "No such file or directory" で失敗する。
+  home.activation.mpdDataDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    $DRY_RUN_CMD mkdir -p $VERBOSE_ARG "$HOME/.local/share/mpd/playlists"
+    $DRY_RUN_CMD mkdir -p $VERBOSE_ARG "$HOME/Library/Logs/mpd"
+  '';
 
   launchd.agents.paneru = {
     enable = true;

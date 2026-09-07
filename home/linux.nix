@@ -31,6 +31,17 @@
     ];
   };
 
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/mnt/music";
+    extraConfig = ''
+      audio_output {
+        type "pipewire"
+        name "PipeWire"
+      }
+    '';
+  };
+
   programs = {
     home-manager.enable = true;
 
