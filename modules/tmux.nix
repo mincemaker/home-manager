@@ -25,6 +25,7 @@ in {
         set -s extended-keys on
         set -ga terminal-overrides ",xterm-256color:Tc"
         set -g set-clipboard on
+        set -g allow-passthrough on
 
         set -g pane-base-index 1
         set -g renumber-windows on
