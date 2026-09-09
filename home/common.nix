@@ -22,6 +22,7 @@
       pkgs.moralerspace-hw
       pkgs.moralerspace-hwjpdoc
       pkgs.rmpc
+      pkgs.fd
     ];
 
     sessionVariables = {
@@ -177,7 +178,12 @@
 
     zoxide.enable = true;
 
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      defaultCommand = "fd --type f --hidden --exclude .git";
+      fileWidget.command = "fd --type f --hidden --exclude .git";
+      changeDirWidget.command = "fd --type d --hidden --exclude .git";
+    };
 
     mise = {
       enable = true;
