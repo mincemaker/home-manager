@@ -74,6 +74,10 @@
           inputs.hunk.homeManagerModules.default
           ./modules/agent-skills.nix
           ./home/linux.nix
+          {
+            nixpkgs.config.allowUnfreePredicate = pkg:
+              builtins.elem (nixpkgs.lib.getName pkg) [ "nvidia-x11" "nvidia" ];
+          }
         ];
         extraSpecialArgs = {
           inherit (inputs) zen-browser noctalia-shell slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide arto;

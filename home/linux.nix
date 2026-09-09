@@ -142,4 +142,22 @@
 
     claude.enable = true;
   };
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [
+        "Moralerspace Neon HW"
+        "Noto Sans Mono CJK JP"
+      ];
+      sansSerif = [
+        "Noto Sans CJK JP"
+        "DejaVu Sans"
+      ];
+      serif = [
+        "Noto Serif CJK JP"
+        "DejaVu Serif"
+      ];
+    };
+  };
 }
