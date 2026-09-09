@@ -9,6 +9,7 @@ _:
       { name = "docker/tap"; trusted = true; }
       { name = "bjarneo/cliamp"; trusted = true;}
       { name = "sheeki03/tap"; trusted = true; }
+      { name = "arto-app/tap"; trusted = true; }
     ];
 
     brews = [
@@ -44,6 +45,7 @@ _:
     ];
 
     casks = [
+      "arto-app/tap/arto"
       "azookey"
       "bitwarden"
       "chatgpt-atlas"
@@ -73,4 +75,11 @@ _:
       extraFlags = [ "--force" ];
     };
   };
+
+  # Arto は未署名・未公証のため、cask インストール後に検疫属性が付いたままだと起動できない
+  system.activationScripts.postActivation.text = ''
+    if [ -d "/Applications/Arto.app" ]; then
+      xattr -dr com.apple.quarantine /Applications/Arto.app
+    fi
+  '';
 }

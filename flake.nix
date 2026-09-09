@@ -16,6 +16,10 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    arto = {
+      url = "github:arto-app/Arto";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia-shell = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,7 +76,7 @@
           ./home/linux.nix
         ];
         extraSpecialArgs = {
-          inherit (inputs) zen-browser noctalia-shell slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide;
+          inherit (inputs) zen-browser noctalia-shell slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide arto;
         };
       };
 

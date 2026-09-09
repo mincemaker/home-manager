@@ -7,6 +7,7 @@
     ../modules/niri/xremap.nix
     ../modules/niri/clock-rs.nix
     ../modules/niri/zen-browser.nix
+    ../modules/niri/arto.nix
     ../modules/niri
     ../modules/niri/noctalia-shell.nix
   ];
