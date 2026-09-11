@@ -69,59 +69,6 @@ in {
         if __name__ == "__main__":
             main()
       '')
-
-      # agy の PreToolUse フックから呼ばれる RTK (Rust Token Killer) ラッパー
-      # コマンドを rtk 経由にリライトしてトークン削減を図る
-      # 注意: rtk バイナリ自体は Homebrew 管理（nix 管理外）
-      (pkgs.writers.writePython3Bin "rtk-hook-gemini" { } ''
-        import json
-        import subprocess
-        import sys
-
-
-        def main():
-            try:
-                data = json.loads(sys.stdin.read())
-            except (json.JSONDecodeError, EOFError):
-                print(json.dumps({"decision": "allow"}))
-                return
-
-            tool_call = data.get("toolCall", {})
-            tool_name = tool_call.get("name", "")
-            args = tool_call.get("args", {})
-            cmd = args.get("CommandLine", "")
-
-            if tool_name not in ("run_command", "run_shell_command"):
-                print(json.dumps({"decision": "allow"}))
-                return
-
-            if not cmd or cmd.startswith("rtk "):
-                print(json.dumps({"decision": "allow"}))
-                return
-
-            try:
-                res = subprocess.run(
-                    ["rtk", "hook", "check", cmd],
-                    capture_output=True, text=True, timeout=10,
-                )
-                rewritten = res.stdout.strip()
-            except (subprocess.TimeoutExpired, FileNotFoundError):
-                # rtk が PATH にない環境（Linux 等）では graceful fail
-                print(json.dumps({"decision": "allow"}))
-                return
-
-            if rewritten and rewritten != cmd:
-                print(json.dumps({
-                    "decision": "allow",
-                    "overwrite": {"CommandLine": rewritten},
-                }))
-            else:
-                print(json.dumps({"decision": "allow"}))
-
-
-        if __name__ == "__main__":
-            main()
-      '')
     ];
 
     # ~/.gemini/config/hooks.json を modules/antigravity-cli/hooks.json へのシンボリックリンクとして管理
