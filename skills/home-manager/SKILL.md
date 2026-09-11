@@ -58,7 +58,7 @@ home-manager = {
 homeConfigurations."mince" = home-manager.lib.homeManagerConfiguration {
   pkgs = nixpkgs.legacyPackages."x86_64-linux";
   extraSpecialArgs = {
-    inherit (inputs) zen-browser noctalia-shell inir slash-criticalthink anthropic-skills;
+    inherit (inputs) zen-browser slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide arto;
   };
   modules = [ ... ./home/linux.nix ];
 };
@@ -96,7 +96,7 @@ in {
 
 **Linux home-manager モジュール**でさらに使える引数：
 ```nix
-{ config, lib, pkgs, zen-browser, noctalia-shell, inir, ... }:
+{ config, lib, pkgs, zen-browser, agent-browser, awesome-copilot, cage, guard-and-guide, arto, ... }:
 ```
 
 `inputs` 全体は nix-darwin モジュール（`nix-darwin/default.nix`）でのみ使える。home-manager モジュールには渡さない。Linux 専用 inputs（`zen-browser` 等）を macOS モジュールで参照しない。
