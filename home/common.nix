@@ -135,9 +135,8 @@
 
       shellAbbrs = {
         j = "jobs -l";
-        la = "ls -a";
-        ll = "ls -ltrAF";
-        l = "ls -lh";
+        l = "eza -l --binary";
+        ll = "eza -l -A -F --sort=modified";
         du = "du -h";
         df = "df -h";
       };

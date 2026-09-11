@@ -79,10 +79,6 @@
         set -g fish_history_ignore_space 1
       '';
 
-      shellAliases = {
-        ls = "LC_ALL=C ls --color=auto";
-      };
-
       # tirith の fish フックは umask 077 を復元しないバグがあり
       # (fish の (...) は本物のサブシェルではないため tirith 側のパターンが機能しない)、
       # 対話シェルの umask が恒久的に汚染される。汚染値は _tirith_v3_new_capture_file の
