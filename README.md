@@ -23,6 +23,15 @@ nix run home-manager -- init --flake '.#mince'
 home-manager switch --flake '.#mince'
 ```
 
+#### 新規マシンでのセットアップ（一度きり）
+
+niri のシェルである iNiR と、home-manager が管理しないその他の dotfiles（dotfiles_new / chezmoi 管理）は home-manager の管轄外。新しい Linux マシンでは次の順で導入する（iNiR の `setup install` が niri の `config.d/*.kdl` を書き換えるため、dotfiles_new の chezmoi apply は必ず後に行う）。
+
+```bash
+mise run setup-linux-inir       # home-manager switch → iNiR clone + setup install
+mise run setup-linux-dotfiles   # ↑ に続けて dotfiles_new clone + chezmoi apply
+```
+
 ### macOS
 
 #### 初回セットアップ
@@ -51,6 +60,10 @@ mise run check-mac    # ドライラン（変更内容の確認のみ）
 # Linux
 mise run switch-linux  # 設定を適用
 mise run update-linux  # flake を更新して適用
+
+# Linux 新規マシンのみ（一度きり）
+mise run setup-linux-inir       # iNiR (niri shell) の clone + install
+mise run setup-linux-dotfiles   # dotfiles_new の clone + chezmoi apply
 
 # 共通
 mise run gc            # 古い世代を削除（7日以上前）
@@ -88,35 +101,42 @@ apm install
 │   ├── default.nix
 │   └── homebrew.nix
 ├── home/                    # home-manager ユーザー設定
-│   ├── common.nix           # 全環境共通 (claude, agent-skills, zsh, starship, zoxide, fzf, mise)
+│   ├── common.nix           # 全環境共通シェル・CLI ツール設定
 │   ├── linux.nix            # Linux 固有
 │   └── darwin.nix           # macOS 固有
 └── modules/
+    ├── agent-skills.nix     # 共通（Linux は flake.nix 経由、macOS は darwin.nix 経由で有効化）
+    ├── antigravity-cli.nix  # 共通
+    ├── cage.nix             # 共通
     ├── claude.nix           # 共通
-    ├── agent-skills.nix     # 共通
-    └── niri/                # Linux Wayland 環境
-        ├── default.nix
-        ├── common.nix
-        ├── clock-rs.nix
-        ├── inir.nix
-        ├── noctalia-shell.nix
+    ├── guard-and-guide.nix  # 共通
+    ├── hunk.nix             # 共通
+    ├── macskk.nix           # macOS 固有
+    ├── plamo-translate.nix  # macOS 固有
+    ├── tmux.nix             # 共通
+    ├── yaskkserv2.nix       # Linux / macOS 個別 import（common.nix 経由ではない）
+    └── niri/                # Linux Wayland 環境（niri 本体・iNiR の設定は dotfiles_new / iNiR 側が管理）
         ├── xremap.nix
+        ├── clock-rs.nix
         ├── zen-browser.nix
-        └── shells/
-            ├── inir.nix
-            └── noctalia.nix
+        └── arto.nix
 ```
 
 ## モジュール
 
 | モジュール | common | linux | darwin |
 |---|---|---|---|
-| `antigravity-cli.nix` | ✅ | | |
-| `claude.nix` | ✅ | | |
 | `agent-skills.nix` | ✅ | | |
+| `antigravity-cli.nix` | ✅ | | |
+| `cage.nix` | ✅ | | |
+| `claude.nix` | ✅ | | |
+| `guard-and-guide.nix` | ✅ | | |
+| `hunk.nix` | ✅ | | |
+| `tmux.nix` | ✅ | | |
+| `yaskkserv2.nix` | | ✅ | ✅ |
+| `macskk.nix` | | | ✅ |
+| `plamo-translate.nix` | | | ✅ |
 | `niri/xremap.nix` | | ✅ | |
 | `niri/clock-rs.nix` | | ✅ | |
 | `niri/zen-browser.nix` | | ✅ | |
-| `niri/` (compositor) | | ✅ | |
-| `niri/noctalia-shell.nix` | | ✅ | |
-| `niri/inir.nix` | | ✅ | |
+| `niri/arto.nix` | | ✅ | |

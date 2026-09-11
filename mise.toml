@@ -33,3 +33,25 @@ run = "sudo darwin-rebuild check --flake '.#mince-mac'"
 alias = "gc"
 description = "Garbage collect old generations (keep 7 days)"
 run = "nix-collect-garbage --delete-older-than 7d"
+
+[tasks.7-setup-linux-inir]
+alias = "setup-linux-inir"
+description = "One-time: clone and install iNiR (niri shell) on a new Linux machine"
+depends = ["1-switch-linux"]
+run = '''
+if [ ! -d /mnt/development/iNiR ]; then
+  git clone https://github.com/snowarch/iNiR.git /mnt/development/iNiR
+fi
+cd /mnt/development/iNiR && ./setup install -y
+'''
+
+[tasks.8-setup-linux-dotfiles]
+alias = "setup-linux-dotfiles"
+description = "One-time: clone dotfiles_new and apply via chezmoi on a new Linux machine"
+depends = ["7-setup-linux-inir"]
+run = '''
+if [ ! -d /mnt/development/dotfiles_new ]; then
+  git clone https://github.com/mincemaker/dotfiles_new.git /mnt/development/dotfiles_new
+fi
+cd /mnt/development/dotfiles_new && mise install && chezmoi apply --source .
+'''
