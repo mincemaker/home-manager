@@ -8,8 +8,6 @@
     ../modules/niri/clock-rs.nix
     ../modules/niri/zen-browser.nix
     ../modules/niri/arto.nix
-    ../modules/niri
-    ../modules/niri/noctalia-shell.nix
   ];
 
   home = {
@@ -129,11 +127,6 @@
 
     zsh.shellAliases = {
       ls = "LC_ALL=C ls --color=auto";
-    };
-
-    niri = {
-      enable = true;
-      shell = "inir";
     };
 
     claude.enable = true;

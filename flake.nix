@@ -20,10 +20,6 @@
       url = "github:arto-app/Arto";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia-shell = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     xremap-flake.url = "github:xremap/nix-flake";
 
     cage = {
@@ -80,7 +76,7 @@
           }
         ];
         extraSpecialArgs = {
-          inherit (inputs) zen-browser noctalia-shell slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide arto;
+          inherit (inputs) zen-browser slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide arto;
         };
       };
 
