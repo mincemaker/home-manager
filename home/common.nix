@@ -89,7 +89,7 @@
 
       initContent = lib.mkMerge [
         (lib.mkBefore ''
-          export CARAPACE_EXCLUDES=git
+          export CARAPACE_EXCLUDES=git,starship
         '')
         ''
           setopt auto_menu auto_cd correct auto_name_dirs auto_remove_slash
