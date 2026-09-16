@@ -9,6 +9,11 @@ skill or approving a plan.
 
 Fish shell doesn't support heredoc; use `-m "..."` directly.
 
+`git commit` inside the sandbox always fails GPG signing (`~/.gnupg` is
+read-only there, gpg-agent unreachable). This is expected, not a bug to
+diagnose — go straight to `dangerouslyDisableSandbox: true` for the commit
+command once the user has said to commit.
+
 ## Debugging
 
 When debugging issues, always check recent changes first (git diff, recent commits) before exploring broader hypotheses. Do not SSH into remote machines or assume infrastructure problems without asking the user.
