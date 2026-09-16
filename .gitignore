@@ -13,3 +13,19 @@ result-*
 
 # APM dependencies
 apm_modules/
+
+# Claude Code sandbox mounts devtmpfs stubs over these names during Bash
+# tool execution (protecting secrets that may or may not exist); they show
+# up as phantom untracked files in git status but aren't real files on disk.
+/.bash_profile
+/.bashrc
+/.gitconfig
+/.gitmodules
+/.idea
+/.mcp.json
+/.profile
+/.ripgreprc
+/.zprofile
+/.zshrc
+/id_ed25519
+/id_rsa
