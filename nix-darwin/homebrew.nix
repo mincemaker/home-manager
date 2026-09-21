@@ -14,8 +14,10 @@ _:
 
     brews = [
       "bat"
+      "bazelisk"
       "btop"
       "cliamp"
+      "cmake"
       "ffmpeg"
       "flac"
       "libogg"
