@@ -41,6 +41,26 @@
     '';
   };
 
+  systemd.user.services.home-manager-gc = {
+    Unit.Description = "Rotate old home-manager generations and run Nix garbage collection";
+    Service = {
+      Type = "oneshot";
+      ExecStart = [
+        "${pkgs.nix}/bin/nix-env --delete-generations +20 --profile /home/mince/.local/state/nix/profiles/home-manager"
+        "${pkgs.nix}/bin/nix-collect-garbage"
+      ];
+    };
+  };
+
+  systemd.user.timers.home-manager-gc = {
+    Unit.Description = "Weekly home-manager generation rotation";
+    Timer = {
+      OnCalendar = "weekly";
+      Persistent = true;
+    };
+    Install.WantedBy = [ "timers.target" ];
+  };
+
   programs = {
     home-manager.enable = true;
 
