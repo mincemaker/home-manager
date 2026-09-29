@@ -29,3 +29,7 @@ apm_modules/
 /.zshrc
 /id_ed25519
 /id_rsa
+
+# pixtuoid
+/modules/claude/settings.json.lock
+/modules/claude/settings.json.pixtuoid.bak
