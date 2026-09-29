@@ -180,6 +180,7 @@
     ]
   },
   "language": "Japanese",
+  "model": "opus",
   "permissions": {
     "allow": [
       "Bash(qs:*)",
