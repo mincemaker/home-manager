@@ -6,6 +6,7 @@
   "autoUpdatesChannel": "latest",
   "editorMode": "normal",
   "enabledPlugins": {
+    "cc-plugin-telemetry@builtin": false,
     "cc-plugin-you-should-know@builtin": true,
     "clangd-lsp@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
