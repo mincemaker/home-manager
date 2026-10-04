@@ -10,6 +10,7 @@ _:
       { name = "bjarneo/cliamp"; trusted = true;}
       { name = "sheeki03/tap"; trusted = true; }
       { name = "arto-app/tap"; trusted = true; }
+      { name = "boldsoftware/tap"; trusted = true; }
     ];
 
     brews = [
@@ -61,6 +62,7 @@ _:
       "postgres-app"
       "raycast"
       "secretive"
+      "boldsoftware/tap/shelley"
       "shottr"
       "spotify"
       "tailscale-app"
