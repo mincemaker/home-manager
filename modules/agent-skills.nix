@@ -22,14 +22,17 @@ in {
       };
       skills.enable = [
         "frontend-design"
-        "skill-creator"
         "agent-browser"
         "git-commit"
       ];
+      skills.explicit.skill-creator = {
+        from = "anthropic";
+        agents = [ "claude" "gemini" "opencode" ];
+      };
       excludePatterns = [ "/.system" "/hunk-review" ];
       targets = {
         gemini.enable = true;
-        codex.enable = false;
+        codex.enable = true;
         opencode.enable = true;
       };
     };
