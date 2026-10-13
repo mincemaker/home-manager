@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790154098,
-        "narHash": "sha256-SviEpvFefXCPOmQ2b41c4ujE7BzWYJ/h8p/HZNxD2B8=",
+        "lastModified": 1791801176,
+        "narHash": "sha256-7yMjYQUjpCy0IhItfGt2EJbOobNu1pkIrBX2GA3yOcU=",
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "dc122af897ab9a685c20ae54c639021619dbbb52",
+        "rev": "2948865044b2af55c8c4e4eb2abda7de79d60f0e",
         "type": "github"
       },
       "original": {
@@ -57,14 +57,15 @@
         "crane": "crane",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1791310428,
-        "narHash": "sha256-nQ+DzCcJjcI/p5UbXxfNSu0X8XYUPv3ccNWITeVRRt4=",
+        "lastModified": 1791724201,
+        "narHash": "sha256-zSH9mVV1LO5pNtrqIwj+uG1nZwihLQljUHIkSUcVvfw=",
         "owner": "arto-app",
         "repo": "Arto",
-        "rev": "aa38f60a86a06b53186dbb0d00d2f676660ae05a",
+        "rev": "76b0ec480559a861d28f8c9e6d7ac1c0858dcb9a",
         "type": "github"
       },
       "original": {
@@ -76,11 +77,11 @@
     "awesome-copilot": {
       "flake": false,
       "locked": {
-        "lastModified": 1791524937,
-        "narHash": "sha256-JTjeYPsfQ+ICTSpok/1RjdNyy7D+D7IRUKd8HPmPJBw=",
+        "lastModified": 1791790717,
+        "narHash": "sha256-bTFh29xRprX2brD8khdb+QcdFMz5hROonDwwOWdg8Y4=",
         "owner": "github",
         "repo": "awesome-copilot",
-        "rev": "82701c24b99488536ca399ff4789a458b7a05db7",
+        "rev": "70ddff7fab9d4d49743d221b56d761cff58048d0",
         "type": "github"
       },
       "original": {
@@ -331,11 +332,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791695995,
-        "narHash": "sha256-9oaSV38fawuuSPul2SH2Zknf2Enrha5umBFe6aWhjFk=",
+        "lastModified": 1791819052,
+        "narHash": "sha256-RNlc9xmOg7xS66eRI1gskt+Xz7Fn3v5/YHVsnzk7u+Q=",
         "owner": "kawarimidoll",
         "repo": "guard-and-guide",
-        "rev": "b995d765a12c132c716cd180d45f2fa7fec9da20",
+        "rev": "4a03ee7b5e7ff8f5ab13a501fccf403b09c67c92",
         "type": "github"
       },
       "original": {
@@ -374,11 +375,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1791634273,
-        "narHash": "sha256-jxBHxAFscNDTQZGZBW9QOGZiwPYZo93gspbX9Vsnlis=",
+        "lastModified": 1791852777,
+        "narHash": "sha256-Vi27pHPRbeQYDKRVecLSU0HdO6Z0xnHCy4LhPI+EXW8=",
         "owner": "modem-dev",
         "repo": "hunk",
-        "rev": "e1ec8c1f9d802cc6bfe2393391364b5a55e045c5",
+        "rev": "55c5ac1670aae213c6ea069663e60def7d542328",
         "type": "github"
       },
       "original": {
@@ -515,6 +516,28 @@
         "slash-criticalthink": "slash-criticalthink",
         "xremap-flake": "xremap-flake",
         "zen-browser": "zen-browser"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "arto",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791707771,
+        "narHash": "sha256-w3m8HtAVCfGTHw+gcCTAy7jFHSdGbokm8NngbeFrkek=",
+        "ref": "refs/heads/master",
+        "rev": "c1cfa7a2c809d364ac1a7e9b3ec418afa3f19793",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/oxalica/rust-overlay"
+      },
+      "original": {
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/oxalica/rust-overlay"
       }
     },
     "slash-criticalthink": {
