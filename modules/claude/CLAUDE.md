@@ -1,7 +1,8 @@
 ## Git
 
-Committing triggers physical authentication — YubiKey (GPG) on Linux, Secretive (SSH)
-on macOS — so the user needs to be mentally present and ready to touch the key.
+Committing triggers physical authentication — YubiKey (GPG) on Linux, Touch ID for a
+Secure Enclave SSH key (nix-secure-enclave-key) on macOS — so the user needs to be
+mentally present and ready to touch the key.
 The intended flow is: show the staged diff and proposed commit message in chat,
 then wait. The user will read them and say when they want to commit. This is a
 deliberate, conscious act on the user's part, not a side effect of invoking a
@@ -9,10 +10,14 @@ skill or approving a plan.
 
 Fish shell doesn't support heredoc; use `-m "..."` directly.
 
-`git commit` inside the sandbox always fails GPG signing (`~/.gnupg` is
-read-only there, gpg-agent unreachable). This is expected, not a bug to
-diagnose — go straight to `dangerouslyDisableSandbox: true` for the commit
-command once the user has said to commit.
+`git commit` inside the sandbox always fails signing (on Linux `~/.gnupg` is
+read-only and gpg-agent unreachable; on macOS the sandbox cannot read the
+`~/.ssh` key stub). This is expected, not a bug to diagnose — go straight to
+`dangerouslyDisableSandbox: true` for the commit command once the user has said
+to commit.
+
+A Bash hook rejects any command whose text mentions SSH key paths, including a
+commit message. Write the message to a scratch file and use `git commit -F`.
 
 ## Debugging
 

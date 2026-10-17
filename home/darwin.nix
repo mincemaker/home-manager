@@ -36,7 +36,6 @@
       export CLICOLOR=1
       export LSCOLORS=exfxcxdxbxegedabagacad
       export GPG_TTY=$(tty)
-      export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
     '';
   };
 
