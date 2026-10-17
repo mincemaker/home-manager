@@ -61,7 +61,6 @@ _:
       "obsidian"
       "postgres-app"
       "raycast"
-      "secretive"
       "boldsoftware/tap/shelley"
       "shottr"
       "spotify"
