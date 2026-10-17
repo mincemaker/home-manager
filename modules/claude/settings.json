@@ -13,11 +13,18 @@
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "ponytail@ponytail": true,
+    "pstack@cursor-plugins": true,
     "pyright-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
+    "cursor-plugins": {
+      "source": {
+        "repo": "cursor/plugins",
+        "source": "github"
+      }
+    },
     "ponytail": {
       "source": {
         "repo": "DietrichGebert/ponytail",
