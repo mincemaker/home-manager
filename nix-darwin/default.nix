@@ -13,6 +13,7 @@
     sharedModules = [
       inputs.agent-skills.homeManagerModules.default
       inputs.hunk.homeManagerModules.default
+      inputs.nix-secure-enclave-key.homeManagerModules.default
     ];
     extraSpecialArgs = {
       inherit (inputs) slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide;

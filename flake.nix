@@ -31,6 +31,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # macOS only
+    nix-secure-enclave-key = {
+      url = "github:ryoppippi/nix-secure-enclave-key";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # 共通
     hunk = {
       url = "github:modem-dev/hunk";

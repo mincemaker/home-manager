@@ -19,13 +19,17 @@
         ".serena/"
       ];
       package = null;
-      signing = {
-        format = "ssh";
-        key = "key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAgbrOLpUKvR5cScUebghNz1HzAF6ZPOxKOHorxVqnxOBdn3t+6wTpdxVOBauYID9i1WG8MWqdJgxTLBha3p6HQ=";
-        signByDefault = true;
-      };
       settings.gpg.ssh.allowedSignersFile = "~/.gitallowedsigners";
     };
+    nix-secure-enclave-key = {
+      enable = true;
+      identities.main = {
+        keyFile = "~/.ssh/id_enclave_key";
+        protection = "bio";
+      };
+      signingIdentity = "main";
+    };
+    ssh.enable = false;
     plamo-translate.enable = true;
     home-manager.enable = true;
     zsh.initContent = ''
