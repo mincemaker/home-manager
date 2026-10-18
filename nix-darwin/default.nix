@@ -13,6 +13,7 @@
     sharedModules = [
       inputs.agent-skills.homeManagerModules.default
       inputs.hunk.homeManagerModules.default
+      inputs.try.homeModules.default
       inputs.nix-secure-enclave-key.homeManagerModules.default
     ];
     extraSpecialArgs = {

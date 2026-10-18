@@ -48,6 +48,7 @@
       };
     };
     hunk.enable = true;
+    try.enable = true;
 
     nh = {
       enable = true;

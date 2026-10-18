@@ -30,6 +30,7 @@
       url = "github:kawarimidoll/guard-and-guide";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    try.url = "github:tobi/try";
 
     # macOS only
     nix-secure-enclave-key = {
@@ -74,6 +75,7 @@
           inputs.xremap-flake.homeManagerModules.default
           inputs.agent-skills.homeManagerModules.default
           inputs.hunk.homeManagerModules.default
+          inputs.try.homeModules.default
           ./modules/agent-skills.nix
           ./home/linux.nix
           {
