@@ -27,8 +27,6 @@ apm_modules/
 /.ripgreprc
 /.zprofile
 /.zshrc
-/id_ed25519
-/id_rsa
 
 # pixtuoid
 /modules/claude/settings.json.lock
