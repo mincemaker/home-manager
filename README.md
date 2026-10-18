@@ -55,7 +55,7 @@ sudo darwin-rebuild switch --flake '.#mince-mac'
 # macOS
 mise run switch-mac   # 設定を適用
 mise run update-mac   # flake を更新して適用
-mise run check-mac    # ドライラン（変更内容の確認のみ）
+mise run check-mac    # ビルドして差分を表示（適用しない）
 
 # Linux
 mise run switch-linux  # 設定を適用
@@ -64,9 +64,6 @@ mise run update-linux  # flake を更新して適用
 # Linux 新規マシンのみ（一度きり）
 mise run setup-linux-inir       # iNiR (niri shell) の clone + install
 mise run setup-linux-dotfiles   # dotfiles_new の clone + chezmoi apply
-
-# 共通
-mise run gc            # 古い世代を削除（7日以上前）
 ```
 
 mise を使わない場合:
