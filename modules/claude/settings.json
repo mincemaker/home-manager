@@ -281,16 +281,16 @@
   "sandbox": {
     "enabled": true,
     "excludedCommands": [
-      "tmux *",
-      "herdr *",
-      "git commit *",
-      "rtk git commit *",
-      "podman *",
-      "mise run switch-linux *",
-      "rtk mise run switch-linux *",
-      "home-manager *",
       "agent-browser *",
-      "obsidian *"
+      "git commit *",
+      "herdr *",
+      "home-manager *",
+      "mise run switch-linux *",
+      "obsidian *",
+      "podman *",
+      "rtk git commit *",
+      "rtk mise run switch-linux *",
+      "tmux *"
     ]
   },
   "showThinkingSummaries": true,
