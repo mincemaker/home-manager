@@ -41,7 +41,7 @@ mise run setup-linux-dotfiles   # ↑ に続けて dotfiles_new clone + chezmoi 
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
 # 2. nix-darwin のインストール
-nix run nix-darwin -- switch --flake '/Users/mince/development/home-manager#mince-mac'
+nix run nix-darwin -- switch --flake '.#mince-mac'
 
 # 3. 以降は darwin-rebuild を使用
 sudo darwin-rebuild switch --flake '.#mince-mac'
@@ -78,6 +78,25 @@ home-manager switch --flake '.#mince'
 # macOS
 sudo darwin-rebuild switch --flake '.#mince-mac'
 ```
+
+### nh
+
+[nh](https://github.com/nix-community/nh) を `programs.nh` で導入している。`NH_FLAKE` にこのリポジトリのパスが入るので、どのディレクトリからでも flake の指定なしで実行できる。
+
+```bash
+# Linux
+nh home switch   # 設定を適用
+nh home build    # ビルドのみ。適用前の差分を確認できる
+
+# macOS
+nh darwin switch -H mince-mac
+
+# 共通
+nh clean user --keep 20 --dry   # 削除対象の確認のみ
+nh search <パッケージ名>          # nixpkgs を検索
+```
+
+`nh clean user --keep 20 --no-gcroots` が週1回自動で実行される。Linux は systemd user timer、macOS は launchd agent で動く。
 
 ## AI Agent Skills
 

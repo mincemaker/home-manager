@@ -49,6 +49,15 @@
     };
     hunk.enable = true;
 
+    nh = {
+      enable = true;
+      flake = "${config.home.homeDirectory}/.config/home-manager";
+      clean = {
+        enable = true;
+        extraArgs = [ "--keep" "20" "--no-gcroots" ];
+      };
+    };
+
     zsh = {
       enable = true;
       dotDir = "${config.xdg.configHome}/zsh";
