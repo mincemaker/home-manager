@@ -17,6 +17,12 @@
         "**/z-ai"
         ".env"
         ".serena/"
+        "id_rsa"
+        "id_dsa"
+        "id_ecdsa"
+        "id_ecdsa_sk"
+        "id_ed25519"
+        "id_ed25519_sk"
       ];
       package = null;
       settings.gpg.ssh.allowedSignersFile = "~/.gitallowedsigners";
