@@ -279,7 +279,19 @@
     ]
   },
   "sandbox": {
-    "enabled": true
+    "enabled": true,
+    "excludedCommands": [
+      "tmux *",
+      "herdr *",
+      "git commit *",
+      "rtk git commit *",
+      "podman *",
+      "mise run switch-linux *",
+      "rtk mise run switch-linux *",
+      "home-manager *",
+      "agent-browser *",
+      "obsidian *"
+    ]
   },
   "showThinkingSummaries": true,
   "statusLine": {
