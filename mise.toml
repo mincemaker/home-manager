@@ -1,3 +1,6 @@
+[vars]
+agent_inputs = "-U llm-agents -U agent-skills -U anthropic-skills -U agent-browser -U awesome-copilot -U mizchi-skills -U mizchi-explainer -U mattpocock-skills -U jj-skills -U herdr -U declscope -U claude-plugins-community -U archify"
+
 [tasks.1-switch-linux]
 alias = "switch-linux"
 description = "Apply home-manager configuration (Linux)"
@@ -23,10 +26,10 @@ alias = "check-mac"
 description = "Build and show diff without applying"
 run = "nh darwin build -H mince-mac"
 
-[tasks.6-update-llm-agents-linux]
-alias = "update-llm-agents-linux"
-description = "Update llm-agents input and apply (Linux)"
-run = "nh home switch -U llm-agents"
+[tasks.6-update-agents-linux]
+alias = "update-agents-linux"
+description = "Update llm-agents, agent-skills and skill source inputs and apply (Linux)"
+run = "nh home switch {{vars.agent_inputs}}"
 
 [tasks.7-setup-linux-inir]
 alias = "setup-linux-inir"
@@ -50,7 +53,7 @@ fi
 cd /mnt/development/dotfiles_new && mise install && chezmoi apply --source .
 '''
 
-[tasks.9-update-llm-agents-mac]
-alias = "update-llm-agents-mac"
-description = "Update llm-agents input and apply (macOS)"
-run = "nh darwin switch -H mince-mac -U llm-agents"
+[tasks.9-update-agents-mac]
+alias = "update-agents-mac"
+description = "Update llm-agents, agent-skills and skill source inputs and apply (macOS)"
+run = "nh darwin switch -H mince-mac {{vars.agent_inputs}}"
