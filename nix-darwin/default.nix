@@ -17,7 +17,7 @@
       inputs.nix-secure-enclave-key.homeManagerModules.default
     ];
     extraSpecialArgs = {
-      inherit (inputs) slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide;
+      inherit (inputs) slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide llm-agents;
     };
     users.mince = ../home/darwin.nix;
   };

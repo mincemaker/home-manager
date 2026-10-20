@@ -27,13 +27,12 @@ in {
       ];
       skills.explicit.skill-creator = {
         from = "anthropic";
-        agents = [ "claude" "gemini" "opencode" ];
+        agents = [ "claude" "gemini" ];
       };
       excludePatterns = [ "/.system" "/hunk-review" ];
       targets = {
         gemini.enable = true;
         codex.enable = true;
-        opencode.enable = true;
       };
     };
   };

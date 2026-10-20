@@ -39,6 +39,7 @@
     };
 
     # 共通
+    llm-agents.url = "github:numtide/llm-agents.nix";
     hunk = {
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -84,7 +85,7 @@
           }
         ];
         extraSpecialArgs = {
-          inherit (inputs) zen-browser slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide arto;
+          inherit (inputs) zen-browser slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide arto llm-agents;
         };
       };
 

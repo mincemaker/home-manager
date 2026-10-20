@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, llm-agents, ... }:
 
 {
   imports = [
@@ -23,7 +23,16 @@
       pkgs.moralerspace-hwjpdoc
       pkgs.rmpc
       pkgs.fd
-    ];
+    ] ++ (with llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      codex
+      crush
+      pi
+      herdr
+      rtk
+      agent-browser
+      antigravity-cli
+      apm
+    ]);
 
     sessionVariables = {
       LANG = "ja_JP.UTF-8";
