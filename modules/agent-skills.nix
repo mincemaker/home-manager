@@ -1,4 +1,4 @@
-{ config, lib, anthropic-skills, agent-browser, awesome-copilot, ... }:
+{ config, lib, ... }:
 
 let
   cfg = config.programs.agent-skills;
@@ -7,29 +7,76 @@ in {
     programs.agent-skills = {
       sources = {
         anthropic = {
-          path = anthropic-skills;
+          input = "anthropic-skills";
           subdir = "skills";
         };
         vercel = {
-          path = agent-browser;
+          input = "agent-browser";
           subdir = "skills";
         };
         github = {
-          path = awesome-copilot;
+          input = "awesome-copilot";
           subdir = "skills";
           filter.nameRegex = "^git-commit$";
         };
+        mizchi = {
+          input = "mizchi-skills";
+          filter.nameRegex = "^(apm-usage|empirical-prompt-tuning)$";
+        };
+        mizchi-explainer = {
+          input = "mizchi-explainer";
+          subdir = "skills";
+        };
+        mattpocock = {
+          input = "mattpocock-skills";
+          subdir = "skills/productivity";
+          filter.nameRegex = "^(grill-me|grilling)$";
+        };
+        jj = {
+          input = "jj-skills";
+          subdir = "skills";
+          filter.nameRegex = "^jj-workflow$";
+        };
+        herdr = {
+          input = "herdr";
+          subdir = "skills";
+        };
+        declscope = {
+          input = "declscope";
+          subdir = "skills";
+          filter.nameRegex = "^declscope-adoption$";
+        };
+        eli5 = {
+          input = "claude-plugins-community";
+          subdir = "eli5/skills";
+        };
+        archify = {
+          input = "archify";
+          filter.nameRegex = "^archify$";
+        };
       };
-      skills.enable = [
-        "frontend-design"
-        "agent-browser"
-        "git-commit"
-      ];
-      skills.explicit.skill-creator = {
-        from = "anthropic";
-        agents = [ "claude" "gemini" ];
+      skills = {
+        enable = [
+          "frontend-design"
+          "agent-browser"
+          "git-commit"
+        ];
+        enableAll = [
+          "mizchi"
+          "mizchi-explainer"
+          "mattpocock"
+          "jj"
+          "herdr"
+          "declscope"
+          "eli5"
+          "archify"
+        ];
+        explicit.skill-creator = {
+          from = "anthropic";
+          agents = [ "claude" "gemini" ];
+        };
       };
-      excludePatterns = [ "/.system" "/hunk-review" ];
+      excludePatterns = [ "/.system" "/hunk-review" "/wiki-*" ];
       targets = {
         gemini.enable = true;
         codex.enable = true;

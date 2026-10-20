@@ -52,6 +52,22 @@
         "type": "github"
       }
     },
+    "archify": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792206871,
+        "narHash": "sha256-V2JNJ6q/Ba+XuhwKm8W/TrbDQLIChQCcqf6qgrvP3B0=",
+        "owner": "tt-a1i",
+        "repo": "archify",
+        "rev": "88d1ae4498b6a1df610badf690c5406882622d15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tt-a1i",
+        "repo": "archify",
+        "type": "github"
+      }
+    },
     "arto": {
       "inputs": {
         "crane": "crane",
@@ -176,6 +192,22 @@
         "type": "github"
       }
     },
+    "claude-plugins-community": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791923349,
+        "narHash": "sha256-tHCAXZmHANA0gTQ8KO+DPAzapX5I+Ok1q1+COD720+A=",
+        "owner": "anthropics",
+        "repo": "claude-plugins-community",
+        "rev": "06ec7b6a0a82bdc4bec44bd82d4368c42f20d7c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anthropics",
+        "repo": "claude-plugins-community",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1791754810,
@@ -203,6 +235,22 @@
       "original": {
         "owner": "ipetkov",
         "repo": "crane",
+        "type": "github"
+      }
+    },
+    "declscope": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791808933,
+        "narHash": "sha256-SG+2U2VWGlE00xrNatiN7ecU9to4ILV5tnrp5GboFVk=",
+        "owner": "mpyw",
+        "repo": "declscope",
+        "rev": "c86c62fd1aa537af07942978aec670dcebf3f002",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mpyw",
+        "repo": "declscope",
         "type": "github"
       }
     },
@@ -437,6 +485,22 @@
         "type": "github"
       }
     },
+    "herdr": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792105523,
+        "narHash": "sha256-DGj+1Z+3zHwyi+Wh6SQqY1ya9kUElF1xVNg3V054X0s=",
+        "owner": "herdrdev",
+        "repo": "herdr",
+        "rev": "143bf5fd4781d164260c63fe28e7dc08054ad32f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "herdrdev",
+        "repo": "herdr",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -495,6 +559,22 @@
         "type": "github"
       }
     },
+    "jj-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790460265,
+        "narHash": "sha256-cr20J7OOyq7+B1hPty/KdqPQcVrOjOW2MfyT1pRn6wE=",
+        "owner": "hotthoughts",
+        "repo": "jj-skills",
+        "rev": "60374ad54223654f01dc64f23ffb0b808044ddbe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hotthoughts",
+        "repo": "jj-skills",
+        "type": "github"
+      }
+    },
     "llm-agents": {
       "inputs": {
         "bun2nix": "bun2nix_2",
@@ -514,6 +594,54 @@
       "original": {
         "owner": "numtide",
         "repo": "llm-agents.nix",
+        "type": "github"
+      }
+    },
+    "mattpocock-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791543409,
+        "narHash": "sha256-NljCSZNI3sZ+vbCw7pRdrwR7try4BxOFp4gdjuWYtzs=",
+        "owner": "mattpocock",
+        "repo": "skills",
+        "rev": "49dd158d1076134a641b33efb035946536778336",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mattpocock",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
+    "mizchi-explainer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791650600,
+        "narHash": "sha256-XY4wnEtw3regcnDZ4BDZEM/a3jQ6jraSfkf+CPAH1v4=",
+        "owner": "mizchi",
+        "repo": "explainer",
+        "rev": "ccdd7bacfb47451e38506d837af8a629504960b2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mizchi",
+        "repo": "explainer",
+        "type": "github"
+      }
+    },
+    "mizchi-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790927348,
+        "narHash": "sha256-td6husEnA0cqdgfyROdjFpVOhWv44EfJIvi+gGY13YU=",
+        "owner": "mizchi",
+        "repo": "skills",
+        "rev": "62f580819410cb1d398e4d7f234bbd0aad1c1a15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mizchi",
+        "repo": "skills",
         "type": "github"
       }
     },
@@ -724,13 +852,21 @@
         "agent-browser": "agent-browser",
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
+        "archify": "archify",
         "arto": "arto",
         "awesome-copilot": "awesome-copilot",
         "cage": "cage",
+        "claude-plugins-community": "claude-plugins-community",
+        "declscope": "declscope",
         "guard-and-guide": "guard-and-guide",
+        "herdr": "herdr",
         "home-manager": "home-manager",
         "hunk": "hunk",
+        "jj-skills": "jj-skills",
         "llm-agents": "llm-agents",
+        "mattpocock-skills": "mattpocock-skills",
+        "mizchi-explainer": "mizchi-explainer",
+        "mizchi-skills": "mizchi-skills",
         "nix-darwin": "nix-darwin",
         "nix-secure-enclave-key": "nix-secure-enclave-key",
         "nixpkgs": "nixpkgs_2",
