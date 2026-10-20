@@ -64,6 +64,38 @@
       url = "github:github/awesome-copilot";
       flake = false;
     };
+    mizchi-skills = {
+      url = "github:mizchi/skills";
+      flake = false;
+    };
+    mizchi-explainer = {
+      url = "github:mizchi/explainer";
+      flake = false;
+    };
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
+    jj-skills = {
+      url = "github:hotthoughts/jj-skills";
+      flake = false;
+    };
+    herdr = {
+      url = "github:herdrdev/herdr";
+      flake = false;
+    };
+    declscope = {
+      url = "github:mpyw/declscope";
+      flake = false;
+    };
+    claude-plugins-community = {
+      url = "github:anthropics/claude-plugins-community";
+      flake = false;
+    };
+    archify = {
+      url = "github:tt-a1i/archify";
+      flake = false;
+    };
   };
 
   outputs =
@@ -85,7 +117,8 @@
           }
         ];
         extraSpecialArgs = {
-          inherit (inputs) zen-browser slash-criticalthink anthropic-skills agent-browser awesome-copilot cage guard-and-guide arto llm-agents;
+          inherit inputs;
+          inherit (inputs) zen-browser slash-criticalthink cage guard-and-guide arto llm-agents;
         };
       };
 
