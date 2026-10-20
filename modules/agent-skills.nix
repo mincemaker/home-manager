@@ -55,24 +55,26 @@ in {
           filter.nameRegex = "^archify$";
         };
       };
-      skills.enable = [
-        "frontend-design"
-        "agent-browser"
-        "git-commit"
-      ];
-      skills.enableAll = [
-        "mizchi"
-        "mizchi-explainer"
-        "mattpocock"
-        "jj"
-        "herdr"
-        "declscope"
-        "eli5"
-        "archify"
-      ];
-      skills.explicit.skill-creator = {
-        from = "anthropic";
-        agents = [ "claude" "gemini" ];
+      skills = {
+        enable = [
+          "frontend-design"
+          "agent-browser"
+          "git-commit"
+        ];
+        enableAll = [
+          "mizchi"
+          "mizchi-explainer"
+          "mattpocock"
+          "jj"
+          "herdr"
+          "declscope"
+          "eli5"
+          "archify"
+        ];
+        explicit.skill-creator = {
+          from = "anthropic";
+          agents = [ "claude" "gemini" ];
+        };
       };
       excludePatterns = [ "/.system" "/hunk-review" "/wiki-*" ];
       targets = {
