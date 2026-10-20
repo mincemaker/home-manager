@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, llm-agents, ... }:
 
 {
   imports = [
@@ -27,7 +27,10 @@
             --set ALSA_PLUGIN_DIR ${pipewire}/lib/alsa-lib
         '';
       })
-    ];
+    ] ++ (with llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      claude-desktop
+      chatgpt
+    ]);
   };
 
   services.mpd = {
