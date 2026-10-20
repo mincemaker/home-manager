@@ -23,6 +23,11 @@ alias = "check-mac"
 description = "Build and show diff without applying"
 run = "nh darwin build -H mince-mac"
 
+[tasks.6-update-llm-agents-linux]
+alias = "update-llm-agents-linux"
+description = "Update llm-agents input and apply (Linux)"
+run = "nh home switch -U llm-agents"
+
 [tasks.7-setup-linux-inir]
 alias = "setup-linux-inir"
 description = "One-time: clone and install iNiR (niri shell) on a new Linux machine"
@@ -44,3 +49,8 @@ if [ ! -d /mnt/development/dotfiles_new ]; then
 fi
 cd /mnt/development/dotfiles_new && mise install && chezmoi apply --source .
 '''
+
+[tasks.9-update-llm-agents-mac]
+alias = "update-llm-agents-mac"
+description = "Update llm-agents input and apply (macOS)"
+run = "nh darwin switch -H mince-mac -U llm-agents"
