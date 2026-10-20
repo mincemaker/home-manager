@@ -78,8 +78,8 @@ in {
       };
       excludePatterns = [ "/.system" "/hunk-review" "/wiki-*" ];
       targets = {
+        agents.enable = true;
         gemini.enable = true;
-        codex.enable = true;
       };
     };
   };
