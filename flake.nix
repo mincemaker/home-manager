@@ -16,10 +16,7 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    arto = {
-      url = "github:arto-app/Arto";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    arto.url = "github:arto-app/Arto";
     xremap-flake.url = "github:xremap/nix-flake";
 
     cage = {

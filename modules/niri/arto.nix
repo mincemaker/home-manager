@@ -1,11 +1,7 @@
 { pkgs, arto, ... }:
 
 let
-  artoPkg = arto.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (_old: {
-    # rustc の LLVM 並列 codegen ワーカースレッドがデフォルトの
-    # スタックサイズでは足りず SIGABRT/SIGSEGV で落ちることがあるため増やす
-    RUST_MIN_STACK = "67108864";
-  });
+  artoPkg = arto.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   # non-NixOS (CachyOS + NVIDIA proprietary driver) 環境では、
   # nixpkgs の Mesa とホストの NVIDIA カーネルモジュール/ドライバの不一致により
