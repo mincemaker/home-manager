@@ -92,11 +92,11 @@
     "awesome-copilot": {
       "flake": false,
       "locked": {
-        "lastModified": 1792971507,
-        "narHash": "sha256-VBqO+XFfcB1818oCU5BDHXWE3IlG53lQTgnPn5+KWS8=",
+        "lastModified": 1792978547,
+        "narHash": "sha256-D9iQnO7fsO3u7BorcVzh4mNHOW5MHR7PdL1MnfiaYcM=",
         "owner": "github",
         "repo": "awesome-copilot",
-        "rev": "9dc95ccdc730d9d91c8c1d8541c1c88ad7961ad0",
+        "rev": "1ce2a78feb497ab276fc4073607996f5b08138cb",
         "type": "github"
       },
       "original": {
