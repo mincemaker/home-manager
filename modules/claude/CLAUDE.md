@@ -52,6 +52,11 @@ Do not write in the "noun（appositive gloss / restating the noun）" style — 
 
 `agent-browser` is available to check on the browser.
 
+Run each `agent-browser` call as a standalone command. `sandbox.excludedCommands`
+matches `agent-browser *` only when the command starts with it; prefixing `cd`,
+or chaining with `&&`, `;` or a pipe, makes it run inside the sandbox, where the
+socket directory under `/run/user/` is read-only and it fails.
+
 ```bash
 # 1. Open page (`--allow-private` is required to open localhost)
 agent-browser open <url> --allow-private
@@ -65,6 +70,10 @@ agent-browser fill @e<N> "テキスト"
 
 # 4. Save screenshot
 agent-browser screenshot z-ai/screenshot.png
+
+# ex. read page text; for SPAs, wait for the network to settle first
+agent-browser wait --load networkidle
+agent-browser get text body
 
 # ex. save credentials
 agent-browser open <url> --profile ~/.browser-profile --allow-private
