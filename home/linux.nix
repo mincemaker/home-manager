@@ -29,7 +29,21 @@
       })
     ] ++ (with llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
       claude-desktop
-      chatgpt
+      # chatgpt.desktop は http/https のハンドラを名乗っており、名前順で zen より
+      # 前に並ぶ。ホストの Firefox が見えない claude-desktop の FHS 環境では、
+      # 認証リンクが ChatGPT で開いてしまうので、この 2 つだけ外す
+      (pkgs.symlinkJoin {
+        name = "chatgpt";
+        paths = [ chatgpt ];
+        postBuild = ''
+          rm $out/share
+          cp -rs ${chatgpt}/share/ $out/share
+          chmod -R u+w $out/share
+          rm $out/share/applications/chatgpt.desktop
+          sed -E 's#x-scheme-handler/https?;##g' ${chatgpt}/share/applications/chatgpt.desktop \
+            > $out/share/applications/chatgpt.desktop
+        '';
+      })
     ]);
   };
 
