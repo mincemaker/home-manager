@@ -12,6 +12,7 @@
     "context7@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
+    "pixtuoid@pixtuoid": true,
     "ponytail@ponytail": true,
     "pstack@cursor-plugins": true,
     "pyright-lsp@claude-plugins-official": true,
@@ -25,6 +26,12 @@
         "source": "github"
       }
     },
+    "pixtuoid": {
+      "source": {
+        "path": "~/.config/pixtuoid/claude-plugin",
+        "source": "directory"
+      }
+    },
     "ponytail": {
       "source": {
         "repo": "DietrichGebert/ponytail",
@@ -33,41 +40,7 @@
     }
   },
   "hooks": {
-    "Notification": [
-      {
-        "_pixtuoid": true,
-        "hooks": [
-          {
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
-            "type": "command"
-          }
-        ],
-        "matcher": ".*"
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "_pixtuoid": true,
-        "hooks": [
-          {
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
-            "type": "command"
-          }
-        ],
-        "matcher": ".*"
-      }
-    ],
     "PostToolUse": [
-      {
-        "_pixtuoid": true,
-        "hooks": [
-          {
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
-            "type": "command"
-          }
-        ],
-        "matcher": ".*"
-      },
       {
         "hooks": [
           {
@@ -102,16 +75,6 @@
     ],
     "PreToolUse": [
       {
-        "_pixtuoid": true,
-        "hooks": [
-          {
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
-            "type": "command"
-          }
-        ],
-        "matcher": ".*"
-      },
-      {
         "hooks": [
           {
             "command": "deepwiki-guard",
@@ -137,54 +100,6 @@
           }
         ],
         "matcher": "Bash"
-      }
-    ],
-    "SessionEnd": [
-      {
-        "_pixtuoid": true,
-        "hooks": [
-          {
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
-            "type": "command"
-          }
-        ],
-        "matcher": ".*"
-      }
-    ],
-    "SessionStart": [
-      {
-        "_pixtuoid": true,
-        "hooks": [
-          {
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
-            "type": "command"
-          }
-        ],
-        "matcher": ".*"
-      }
-    ],
-    "SubagentStart": [
-      {
-        "_pixtuoid": true,
-        "hooks": [
-          {
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
-            "type": "command"
-          }
-        ],
-        "matcher": ".*"
-      }
-    ],
-    "SubagentStop": [
-      {
-        "_pixtuoid": true,
-        "hooks": [
-          {
-            "command": "PIXTUOID_SOURCE=claude-code 'pixtuoid-hook'",
-            "type": "command"
-          }
-        ],
-        "matcher": ".*"
       }
     ]
   },
