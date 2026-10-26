@@ -23,6 +23,7 @@
       pkgs.moralerspace-hwjpdoc
       pkgs.rmpc
       pkgs.fd
+      pkgs.keifu
     ] ++ (with llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
       codex
       crush
