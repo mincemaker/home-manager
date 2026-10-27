@@ -23,6 +23,8 @@ in {
         set -g status-keys emacs
         set -g repeat-time 1000
         set -s extended-keys on
+        set -s extended-keys-format csi-u
+        set -as terminal-features "xterm*:extkeys"
         set -ga terminal-overrides ",xterm-256color:Tc"
         set -g set-clipboard on
         set -g allow-passthrough on
