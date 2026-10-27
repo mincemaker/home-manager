@@ -204,6 +204,8 @@
       "herdr *",
       "home-manager *",
       "mise run switch-linux *",
+      "nh darwin *",
+      "nh home *",
       "obsidian *",
       "podman *",
       "rtk git commit *",
