@@ -216,6 +216,7 @@
     "command": "~/.claude/statusline.ts",
     "type": "command"
   },
+  "switchModelsOnFlag": true,
   "tui": "fullscreen",
   "verbose": true
 }
