@@ -8,6 +8,7 @@
     ../modules/cage.nix
     ../modules/guard-and-guide.nix
     ../modules/hunk.nix
+    ../modules/pi.nix
   ];
 
   home = {
