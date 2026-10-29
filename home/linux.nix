@@ -83,9 +83,6 @@
         key-bindings = {
           scrollback-up-page = "Page_Up";
           scrollback-down-page = "Page_Down";
-          clipboard-copy = "Control+c";
-          clipboard-paste = "Control+v";
-          search-start = "Control+f";
           font-increase = "Control+plus Control+equal Control+KP_Add";
           font-decrease = "Control+minus Control+KP_Subtract";
           font-reset = "Control+0 Control+KP_0";
@@ -96,7 +93,6 @@
           find-next = "F3 Control+G";
           delete-prev-word = "Control+BackSpace";
         };
-        text-bindings."\\x03" = "Control+Shift+c";
       };
     };
 
