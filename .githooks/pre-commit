@@ -1,0 +1,3 @@
+#!/bin/sh
+git diff --cached --name-only -- '*.nix' | grep -q . || exit 0
+nix run nixpkgs#statix -- check . && nix run nixpkgs#deadnix -- --fail .
