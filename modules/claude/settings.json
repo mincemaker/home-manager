@@ -124,7 +124,6 @@
       "Bash(git rm:*)",
       "Bash(git switch:*)"
     ],
-    "blockReadsOutsideWorkingDirectories": true,
     "blockWritesOutsideWorkingDirectories": true,
     "defaultMode": "auto",
     "deny": [
