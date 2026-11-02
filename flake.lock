@@ -76,11 +76,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1793456329,
-        "narHash": "sha256-wBJk3tMvZte4mrp2NN5vdt+4XotKraUF1eDCzV+RXGo=",
+        "lastModified": 1793546907,
+        "narHash": "sha256-MHC2Hes/apSSLGwKeYdQKD0KJaKXZNPFXtyxZxvy1iA=",
         "owner": "arto-app",
         "repo": "Arto",
-        "rev": "6fe78c9ebaed0dfde5ecbd71582ec661a024d0be",
+        "rev": "224ecda9d7fb6286f79ceb23d44c0324970eda91",
         "type": "github"
       },
       "original": {
@@ -92,11 +92,11 @@
     "awesome-copilot": {
       "flake": false,
       "locked": {
-        "lastModified": 1793320513,
-        "narHash": "sha256-Pni4IMcuZJc0Ny8DbyciFXnYfN32n2MY3L4kvtAcILo=",
+        "lastModified": 1793581605,
+        "narHash": "sha256-cIt6jUgUYyIo2faLXWiAkGZ3tpszdt5S1DDxFSOBFAs=",
         "owner": "github",
         "repo": "awesome-copilot",
-        "rev": "5269f7ea2d6c3a9bfda5ed878b6726cf509121fd",
+        "rev": "858bca0310db344b05bea54d77486e9b680f804c",
         "type": "github"
       },
       "original": {
@@ -470,11 +470,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793426698,
-        "narHash": "sha256-Oe3aEe1zhX01k9xPx7bgHdYbOle19XfkmeIElFYu3MA=",
+        "lastModified": 1793583498,
+        "narHash": "sha256-XXC+sDw/h+sZskLTk6k3UVwXXD5Dk8VPYCalgz4pFU4=",
         "owner": "kawarimidoll",
         "repo": "guard-and-guide",
-        "rev": "f9adb8ee21022f9c0fca1ea0b8c16999c436d3c5",
+        "rev": "402329ec7e484e80dde18721a1de9fce31b3d0b5",
         "type": "github"
       },
       "original": {
@@ -529,11 +529,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1793493108,
-        "narHash": "sha256-PkBsdBvAU4thdUMu0UWBaVk6ei7cjjQY4Hlko49WRGM=",
+        "lastModified": 1793565727,
+        "narHash": "sha256-XmtMNixZpgVGuWTAE0mBWGEETUH4LgZn4vX+YE2KRw0=",
         "owner": "modem-dev",
         "repo": "hunk",
-        "rev": "e83ff1bfd2d6868cf851d377707528499b69d2f6",
+        "rev": "503efd5aa664e78241139ee9f02ae7942e811d95",
         "type": "github"
       },
       "original": {
@@ -582,11 +582,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1793512069,
-        "narHash": "sha256-i4UBJIugcPJxG4xKnlsypbTb8QfPX+kagQYF9oswO/c=",
+        "lastModified": 1793543262,
+        "narHash": "sha256-qPyhfwkt2NA2oodsZ+vzjzyWlD5uv47i2Yd3zZsXPoM=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "8efcba308a6b12a92441cb4df624e484bad9e18a",
+        "rev": "e78ca7f96a07c5d9ab88a34f5e76d544c6d2a299",
         "type": "github"
       },
       "original": {
