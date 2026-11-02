@@ -201,6 +201,12 @@
     "enabled": true,
     "excludedCommands": [
       "agent-browser *",
+      "gh pr checks *",
+      "gh pr diff *",
+      "gh pr list *",
+      "gh pr view *",
+      "gh run list *",
+      "gh run view *",
       "git commit *",
       "herdr *",
       "home-manager *",
