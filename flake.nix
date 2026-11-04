@@ -111,6 +111,7 @@
           {
             nixpkgs.config.allowUnfreePredicate = pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [ "nvidia-x11" "nvidia" ];
+            nixpkgs.config.nvidia.acceptLicense = true;
           }
         ];
         extraSpecialArgs = {

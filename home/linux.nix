@@ -1,4 +1,4 @@
-{ pkgs, llm-agents, ... }:
+{ config, lib, pkgs, llm-agents, ... }:
 
 {
   imports = [
@@ -9,6 +9,24 @@
     ../modules/niri/zen-browser.nix
     ../modules/niri/arto.nix
   ];
+
+  targets.genericLinux.gpu = {
+    enable = true;
+    nvidia = {
+      enable = true;
+      version = "615.78.08";
+      sha256 = "sha256-Pj9t3cLudnoIGFMAr3vjyyhuznZpjS3eNSRZl4LQf/4=";
+    };
+  };
+
+  home.activation.checkNvidiaVersionDrift = lib.hm.dag.entryAnywhere ''
+    host=$(cat /sys/module/nvidia/version 2>/dev/null || true)
+    want=${config.targets.genericLinux.gpu.nvidia.version}
+    if [[ -n "$host" && "$host" != "$want" ]]; then
+      warnEcho "Host NVIDIA driver is $host but targets.genericLinux.gpu.nvidia.version is $want."
+      warnEcho "Update version/sha256 in home/linux.nix, switch, then rerun non-nixos-gpu-setup with sudo."
+    fi
+  '';
 
   home = {
     username = "mince";
