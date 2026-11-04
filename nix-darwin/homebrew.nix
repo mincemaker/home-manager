@@ -66,6 +66,7 @@ _:
       "spotify"
       "tailscale-app"
       "thaw"
+      "vesktop"
       "visual-studio-code"
       "zen"
       "docker/tap/sbx"
