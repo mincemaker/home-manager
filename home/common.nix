@@ -30,6 +30,7 @@
       crush
       pi
       herdr
+      herdr-app
       rtk
       agent-browser
       antigravity-cli
