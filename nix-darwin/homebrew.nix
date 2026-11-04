@@ -55,6 +55,7 @@ _:
       "copilot-cli"
       "discord"
       "ghostty"
+      "herdr-app"
       "karabiner-elements"
       "macskk"
       "music-decoy"
