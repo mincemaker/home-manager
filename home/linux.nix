@@ -3,10 +3,10 @@
 let
   # Nix 版は /nix/store の glibc に動的リンクされ、hc machine add/update で
   # Nix のないリモートにコピーされると起動しない。公式の静的バイナリを使う
-  herdr-core-static = pkgs.runCommand "herdr-core-static-0.1.17" {
+  herdr-core-static = pkgs.runCommand "herdr-core-static-0.1.18" {
     src = pkgs.fetchurl {
-      url = "https://releases.herdr.dev/core/0.1.17/herdr-core-linux-x86_64.tar.gz";
-      hash = "sha256-guxEBD9olL/bcWuXm4fNpD/X+kawEE57e9k+ZNGpuHc=";
+      url = "https://releases.herdr.dev/core/0.1.18/herdr-core-linux-x86_64.tar.gz";
+      hash = "sha256-Wy+Xy0sqnXprLMWUJiggPtn7t8wMK0sJrYpvVkjiRrc=";
     };
   } ''
     mkdir -p $out/bin
@@ -16,7 +16,7 @@ let
 in
 {
   assertions = [{
-    assertion = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr-core.version == "0.1.17";
+    assertion = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr-core.version == "0.1.18";
     message = "llm-agents の herdr-core が上がった。home/linux.nix の herdr-core-static も揃える";
   }];
 
