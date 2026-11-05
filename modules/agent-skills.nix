@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, llm-agents, ... }:
 
 let
   cfg = config.programs.agent-skills;
@@ -37,9 +37,8 @@ in {
           subdir = "skills";
           filter.nameRegex = "^jj-workflow$";
         };
-        herdr = {
-          input = "herdr";
-          subdir = "skills";
+        herdr-core = {
+          path = "${llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr-core}/share/skills/herdr-core";
         };
         declscope = {
           input = "declscope";
@@ -66,7 +65,7 @@ in {
           "mizchi-explainer"
           "mattpocock"
           "jj"
-          "herdr"
+          "herdr-core"
           "declscope"
           "eli5"
           "archify"

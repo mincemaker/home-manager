@@ -1,5 +1,5 @@
 [vars]
-agent_inputs = "-U llm-agents -U agent-skills -U anthropic-skills -U agent-browser -U awesome-copilot -U mizchi-skills -U mizchi-explainer -U mattpocock-skills -U jj-skills -U herdr -U declscope -U claude-plugins-community -U archify"
+agent_inputs = "-U llm-agents -U agent-skills -U anthropic-skills -U agent-browser -U awesome-copilot -U mizchi-skills -U mizchi-explainer -U mattpocock-skills -U jj-skills -U declscope -U claude-plugins-community -U archify"
 
 [tasks.1-switch-linux]
 alias = "switch-linux"

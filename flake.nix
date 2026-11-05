@@ -77,10 +77,6 @@
       url = "github:hotthoughts/jj-skills";
       flake = false;
     };
-    herdr = {
-      url = "github:herdrdev/herdr";
-      flake = false;
-    };
     declscope = {
       url = "github:mpyw/declscope";
       flake = false;
