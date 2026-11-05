@@ -7,6 +7,7 @@
     ../modules/tmux.nix
     ../modules/cage.nix
     ../modules/guard-and-guide.nix
+    ../modules/herdr-app.nix
     ../modules/hunk.nix
     ../modules/pi.nix
   ];
