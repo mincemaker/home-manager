@@ -1,5 +1,18 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 
+let
+  git-sign = "${inputs.nix-secure-enclave-key.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/nix-secure-enclave-key-git-sign";
+  # ssh-keygen exits 0 with a broken signature when Touch ID is rejected, so check the signature before git uses it
+  git-sign-checked = pkgs.writeShellScript "git-sign-checked" ''
+    ${git-sign} "$@" || exit
+    [ "$1 $2" = "-Y sign" ] || exit 0
+    eval "file=\''${$#}"
+    /usr/bin/ssh-keygen -Y check-novalidate -n git -s "$file.sig" < "$file" > /dev/null 2>&1 && exit 0
+    rm -f "$file.sig"
+    echo "error: signature is invalid; Touch ID was probably rejected" >&2
+    exit 1
+  '';
+in
 {
   imports = [
     ../modules/agent-skills.nix
@@ -12,7 +25,11 @@
   programs = {
     git = {
       package = null;
-      settings.gpg.ssh.allowedSignersFile = "~/.gitallowedsigners";
+      signing.signer = lib.mkForce "${git-sign-checked}";
+      settings.gpg.ssh = {
+        allowedSignersFile = "~/.gitallowedsigners";
+        program = lib.mkForce "${git-sign-checked}";
+      };
     };
     nix-secure-enclave-key = {
       enable = true;
