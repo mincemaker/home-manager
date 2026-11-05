@@ -1,6 +1,25 @@
 { config, lib, pkgs, llm-agents, ... }:
 
+let
+  # Nix 版は /nix/store の glibc に動的リンクされ、hc machine add/update で
+  # Nix のないリモートにコピーされると起動しない。公式の静的バイナリを使う
+  herdr-core-static = pkgs.runCommand "herdr-core-static-0.1.17" {
+    src = pkgs.fetchurl {
+      url = "https://releases.herdr.dev/core/0.1.17/herdr-core-linux-x86_64.tar.gz";
+      hash = "sha256-guxEBD9olL/bcWuXm4fNpD/X+kawEE57e9k+ZNGpuHc=";
+    };
+  } ''
+    mkdir -p $out/bin
+    tar xzf $src -C $out/bin herdr-core
+    ln -s herdr-core $out/bin/hc
+  '';
+in
 {
+  assertions = [{
+    assertion = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr-core.version == "0.1.17";
+    message = "llm-agents の herdr-core が上がった。home/linux.nix の herdr-core-static も揃える";
+  }];
+
   imports = [
     ./common.nix
     ../modules/yaskkserv2.nix
@@ -36,6 +55,7 @@
       delta
       wl-clipboard
       cliphist
+      herdr-core-static
       (symlinkJoin {
         name = "cliamp";
         paths = [ cliamp ];
