@@ -86,6 +86,10 @@ in
     ]);
   };
 
+  # fish の interactiveShellInit だけでは systemd 経由で起動する hc の core に
+  # 届かず、hc machine add の ssh が gpg-agent を使えない
+  systemd.user.sessionVariables.SSH_AUTH_SOCK = "\${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh";
+
   services.mpd = {
     enable = true;
     musicDirectory = "/mnt/music";
