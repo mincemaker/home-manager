@@ -30,7 +30,6 @@
       codex
       crush
       pi
-      herdr
       rtk
       agent-browser
       antigravity-cli
