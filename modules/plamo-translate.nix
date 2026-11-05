@@ -19,13 +19,13 @@ in {
 
           if [[ ! -x "$UV_TOOL_BIN" ]]; then
             echo "plamo-translate not found. Installing via uv..." >&2
-            uv tool install --force --with torch plamo-translate >&2
+            uv tool install --force --with torch --with 'mcp<2' plamo-translate >&2
             echo "Installation complete." >&2
           fi
 
           export TMPDIR="''${TMPDIR:-/tmp}"
           # Suppress harmless warnings: transformers probes optional CUDA libs on import
-          export PYTHONWARNINGS="ignore:mamba_ssm could not be imported:UserWarning,ignore:causal_conv1d could not be imported:UserWarning"
+          export PYTHONWARNINGS="ignore:mamba_ssm could not be imported:UserWarning,ignore:causal_conv1d could not be imported:UserWarning,ignore:Cannot enable progress bars:UserWarning"
 
           exec "$UV_TOOL_BIN" "$@"
         '';
