@@ -57,8 +57,7 @@
     "ctrl-shift-z": "pane.zoom",
     "ctrl-shift-l": "layout.switch",
     "f2": "tab.rename",
-    "shift-f2": "space.rename",
-    "ctrl-b": "mod.open:tmux-prefix"
+    "shift-f2": "space.rename"
   },
   "terminal": {
     "ctrl-backspace": "send:\u0017",
@@ -66,10 +65,6 @@
     "ctrl-right": "send:\u001bf",
     "ctrl-shift-c": "terminal.copy",
     "ctrl-shift-v": "terminal.paste",
-    "ctrl-v": "terminal.paste_image",
-    "ctrl-b": "mod.open:tmux-prefix"
-  },
-  "mod:tmux-prefix": {
-    "ctrl-b": "tmux-prefix.send-prefix"
+    "ctrl-v": "terminal.paste_image"
   }
 }
