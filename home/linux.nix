@@ -104,6 +104,8 @@ in
   programs = {
     home-manager.enable = true;
 
+    try.path = "/mnt/development/tries";
+
     foot = {
       enable = true;
       settings = {
