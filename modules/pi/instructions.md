@@ -13,6 +13,10 @@ Japanese wording:
 
 ## Git
 
+The user pushes changes themselves. Never push on their behalf, including through
+`gh repo create --push`, wrappers, scripts, or APIs. Do not offer to push or
+retry a blocked push through another command.
+
 Committing triggers physical authentication — YubiKey (GPG) on Linux, Touch ID for a
 Secure Enclave SSH key on macOS — so the user needs to be mentally present and
 ready to touch the key.
