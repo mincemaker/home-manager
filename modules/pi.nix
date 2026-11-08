@@ -8,10 +8,16 @@ in {
     enable = true;
     package = null;
     mutableSettings = true;
-    settings.packages = [ "npm:pi-subagents" ];
+    settings.packages = [
+      "npm:pi-subagents"
+      "npm:pi-web-access"
+      "npm:pi-prompt-template-model"
+    ];
   };
 
   home.file = {
+    ".pi/agent/prompts/commit.md".source =
+      mkOutOfStoreSymlink "${piCfgDir}/prompts/commit.md";
     ".pi/agent/keybindings.json".source =
       mkOutOfStoreSymlink "${piCfgDir}/keybindings.json";
     ".pi/agent/AGENTS.md".source =
