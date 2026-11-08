@@ -4,6 +4,13 @@ let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   piCfgDir = "${config.home.homeDirectory}/.config/home-manager/modules/pi";
 in {
+  programs.pi-coding-agent = {
+    enable = true;
+    package = null;
+    mutableSettings = true;
+    settings.packages = [ "npm:pi-subagents" ];
+  };
+
   home.file = {
     ".pi/agent/keybindings.json".source =
       mkOutOfStoreSymlink "${piCfgDir}/keybindings.json";
