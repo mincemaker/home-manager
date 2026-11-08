@@ -12,6 +12,7 @@ in {
       "npm:pi-subagents"
       "npm:pi-web-access"
       "npm:pi-prompt-template-model"
+      "git:github.com/nicobailon/visual-explainer"
     ];
   };
 

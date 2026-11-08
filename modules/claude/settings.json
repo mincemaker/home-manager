@@ -17,7 +17,8 @@
     "pstack@cursor-plugins": true,
     "pyright-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "visual-explainer@visual-explainer-marketplace": true
   },
   "extraKnownMarketplaces": {
     "cursor-plugins": {
@@ -35,6 +36,12 @@
     "ponytail": {
       "source": {
         "repo": "DietrichGebert/ponytail",
+        "source": "github"
+      }
+    },
+    "visual-explainer-marketplace": {
+      "source": {
+        "repo": "nicobailon/visual-explainer",
         "source": "github"
       }
     }
