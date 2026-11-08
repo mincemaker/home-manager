@@ -13,6 +13,7 @@ in {
       "npm:pi-web-access"
       "npm:pi-prompt-template-model"
       "git:github.com/nicobailon/visual-explainer"
+      "git:github.com/DietrichGebert/ponytail"
     ];
   };
 
