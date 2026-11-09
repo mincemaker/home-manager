@@ -1,0 +1,10 @@
+{
+    "name": "Agent Usage",
+    "icon": "monitoring",
+    "version": "1.0",
+    "author": "mince",
+    "description": "Claude and Codex subscription limits",
+    "category": "system",
+    "main": "IrisFace.qml",
+    "iris": { "main": "IrisFace.qml" }
+}

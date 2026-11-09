@@ -8,6 +8,7 @@
     ../modules/niri/clock-rs.nix
     ../modules/niri/zen-browser.nix
     ../modules/niri/arto.nix
+    ../modules/niri/iris/agent-usage.nix
   ];
 
   targets.genericLinux.gpu = {
