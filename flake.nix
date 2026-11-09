@@ -89,6 +89,10 @@
       url = "github:tt-a1i/archify";
       flake = false;
     };
+    yomiyasu = {
+      url = "github:nanaism/yomiyasu";
+      flake = false;
+    };
   };
 
   outputs =

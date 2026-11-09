@@ -53,6 +53,10 @@ in {
           input = "archify";
           filter.nameRegex = "^archify$";
         };
+        yomiyasu = {
+          input = "yomiyasu";
+          subdir = "skills";
+        };
       };
       skills = {
         enable = [
@@ -69,6 +73,7 @@ in {
           "declscope"
           "eli5"
           "archify"
+          "yomiyasu"
         ];
         explicit.skill-creator = {
           from = "anthropic";

@@ -870,6 +870,7 @@
         "slash-criticalthink": "slash-criticalthink",
         "try": "try",
         "xremap-flake": "xremap-flake",
+        "yomiyasu": "yomiyasu",
         "zen-browser": "zen-browser"
       }
     },
@@ -1059,6 +1060,22 @@
       "original": {
         "owner": "xremap",
         "repo": "nix-flake",
+        "type": "github"
+      }
+    },
+    "yomiyasu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793787168,
+        "narHash": "sha256-0ozlVPllwcxnKIn/o9Vs++3Mmr/F1N7068lnPGBua8U=",
+        "owner": "nanaism",
+        "repo": "yomiyasu",
+        "rev": "8394e099486aaa2e28cf89992e46f5ebe5ed839d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nanaism",
+        "repo": "yomiyasu",
         "type": "github"
       }
     },
