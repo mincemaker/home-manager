@@ -79,6 +79,7 @@
         "id_ed25519_sk"
       ];
       settings = {
+        core.autocrlf = "input";
         filter."jsonsort".clean = ''jq -S 'walk(if type=="array" then sort else . end)' '';
       };
     };
