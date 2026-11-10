@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 let
   git-sign = "${inputs.nix-secure-enclave-key.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/nix-secure-enclave-key-git-sign";
@@ -39,6 +39,10 @@ in
       };
       signingIdentity = "main";
     };
+    # try init は $SHELL で構文を選ぶため、zsh から起動した fish では明示する。
+    fish.shellInit = lib.mkForce ''
+      eval (env SHELL=fish ${lib.getExe' config.programs.try.package "try"} init ${config.programs.try.path} | string collect)
+    '';
     ssh.enable = false;
     plamo-translate.enable = true;
     home-manager.enable = true;
