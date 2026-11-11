@@ -185,7 +185,6 @@
         ll = "eza -l -A -F --sort=modified";
         du = "du -h";
         df = "df -h";
-        ccu = "uvx ccusage; uvx codex-cli-usage";
       };
 
       shellAliases = {

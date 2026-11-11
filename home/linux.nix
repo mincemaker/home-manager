@@ -124,6 +124,7 @@
 
     fish = {
       enable = true;
+      shellAbbrs.ccu = "uvx ccusage; uvx codex-cli-usage";
 
       shellInit = ''
         fish_add_path $HOME/.local/bin
