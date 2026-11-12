@@ -57,6 +57,10 @@ in {
           input = "yomiyasu";
           subdir = "skills";
         };
+        ponytail = {
+          input = "ponytail";
+          subdir = "skills";
+        };
       };
       skills = {
         enable = [
@@ -75,10 +79,22 @@ in {
           "archify"
           "yomiyasu"
         ];
-        explicit.skill-creator = {
-          from = "anthropic";
-          agents = [ "claude" "gemini" ];
-        };
+        explicit = {
+          skill-creator = {
+            from = "anthropic";
+            agents = [ "claude" "gemini" ];
+          };
+        } // lib.genAttrs [
+          "ponytail"
+          "ponytail-audit"
+          "ponytail-debt"
+          "ponytail-gain"
+          "ponytail-help"
+          "ponytail-review"
+        ] (_: {
+          from = "ponytail";
+          agents = [ "gemini" ];
+        });
       };
       excludePatterns = [ "/.system" "/hunk-review" "/wiki-*" ];
       targets = {

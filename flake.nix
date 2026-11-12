@@ -93,6 +93,10 @@
       url = "github:nanaism/yomiyasu";
       flake = false;
     };
+    ponytail = {
+      url = "github:DietrichGebert/ponytail";
+      flake = false;
+    };
   };
 
   outputs =
