@@ -25,7 +25,13 @@
       pkgs.moralerspace-hwjpdoc
       pkgs.rmpc
       pkgs.fd
-      pkgs.keifu
+      # Remove this override once nixpkgs keifu declares oniguruma and uses a compatible libgit2.
+      (pkgs.keifu.overrideAttrs (old: {
+        buildInputs = old.buildInputs ++ [ pkgs.oniguruma ];
+        preBuild = (old.preBuild or "") + ''
+          export LIBGIT2_NO_VENDOR=0
+        '';
+      }))
     ] ++ (with llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
       codex
       crush
