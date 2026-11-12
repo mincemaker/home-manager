@@ -39,7 +39,7 @@ When creating plans that end in a session, always write implementation code befo
 
 ## NixOS
 
-For NixOS/home-manager changes, always verify the build succeeds and test on real hardware before committing. Be extra cautious with screen lock, login, and session management changes — these can cause infinite loops or lockouts.
+For NixOS/home-manager changes, verify the build succeeds and test on real hardware before committing. First review existing conversation and available build/switch logs for the current changes; reuse those results instead of repeating checks. A successful switch also establishes that its build succeeded, but does not by itself establish that runtime behavior was checked. Accept the user's confirmation of runtime checks; do not demand that the agent repeat them. Do not equate checks you did not personally run with checks nobody performed. If evidence is missing, identify only the specific missing check; do not assume either completion or failure merely from a commit request. Be extra cautious with screen lock, login, and session management changes — these can cause infinite loops or lockouts.
 
 ## Containers
 
