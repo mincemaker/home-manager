@@ -11,6 +11,7 @@ in {
     settings.packages = [
       "npm:pi-subagents"
       "npm:pi-web-access"
+      "npm:pi-better"
       "npm:pi-prompt-template-model"
       "git:github.com/nicobailon/visual-explainer"
       "git:github.com/DietrichGebert/ponytail"
