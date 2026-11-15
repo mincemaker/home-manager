@@ -87,6 +87,7 @@ in
 
   home = {
     packages = [ pkgs.cliamp ];
+    sessionPath = [ "$HOME/.magnitude/bin" ];
 
     username = "mince";
     homeDirectory = "/Users/mince";
