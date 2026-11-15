@@ -19,6 +19,7 @@ _:
       "btop"
       "cliamp"
       "cmake"
+      "curl-impersonate"
       "ffmpeg"
       "flac"
       "libogg"
