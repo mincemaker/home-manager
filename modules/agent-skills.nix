@@ -61,6 +61,7 @@ in {
           input = "ponytail";
           subdir = "skills";
         };
+        be-ambitious.input = "be-ambitious";
       };
       skills = {
         enable = [
@@ -78,6 +79,7 @@ in {
           "eli5"
           "archify"
           "yomiyasu"
+          "be-ambitious"
         ];
         explicit = {
           skill-creator = {

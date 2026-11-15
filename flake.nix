@@ -98,6 +98,10 @@
       url = "github:DietrichGebert/ponytail";
       flake = false;
     };
+    be-ambitious = {
+      url = "github:robonuggets/be-ambitious";
+      flake = false;
+    };
   };
 
   outputs =

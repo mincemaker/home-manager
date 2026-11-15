@@ -105,6 +105,22 @@
         "type": "github"
       }
     },
+    "be-ambitious": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792197227,
+        "narHash": "sha256-TPTV+f2ScJ2saud6GKdqeevHlcAyOJD3D/39V2Op+Q0=",
+        "owner": "robonuggets",
+        "repo": "be-ambitious",
+        "rev": "dc116a3ebd8cf772e4d0930626f67369bd60399d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "robonuggets",
+        "repo": "be-ambitious",
+        "type": "github"
+      }
+    },
     "bun2nix": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -869,6 +885,7 @@
         "archify": "archify",
         "arto": "arto",
         "awesome-copilot": "awesome-copilot",
+        "be-ambitious": "be-ambitious",
         "cage": "cage",
         "claude-plugins-community": "claude-plugins-community",
         "declscope": "declscope",
