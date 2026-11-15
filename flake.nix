@@ -102,6 +102,10 @@
       url = "github:robonuggets/be-ambitious";
       flake = false;
     };
+    workmux = {
+      url = "github:raine/workmux";
+      flake = false;
+    };
   };
 
   outputs =

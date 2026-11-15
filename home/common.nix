@@ -40,6 +40,7 @@
       agent-browser
       antigravity-cli
       apm
+      workmux
     ]);
 
     sessionVariables = {

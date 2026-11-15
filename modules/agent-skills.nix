@@ -62,6 +62,10 @@ in {
           subdir = "skills";
         };
         be-ambitious.input = "be-ambitious";
+        workmux = {
+          input = "workmux";
+          subdir = "skills";
+        };
       };
       skills = {
         enable = [
@@ -80,6 +84,7 @@ in {
           "archify"
           "yomiyasu"
           "be-ambitious"
+          "workmux"
         ];
         explicit = {
           skill-creator = {

@@ -903,6 +903,7 @@
         "ponytail": "ponytail",
         "slash-criticalthink": "slash-criticalthink",
         "try": "try",
+        "workmux": "workmux",
         "xremap-flake": "xremap-flake",
         "yomiyasu": "yomiyasu",
         "zen-browser": "zen-browser"
@@ -1056,6 +1057,22 @@
       "original": {
         "owner": "tobi",
         "repo": "try",
+        "type": "github"
+      }
+    },
+    "workmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794659038,
+        "narHash": "sha256-BdOcvHgd2J62HZJvmVKBPnbJUmw+Do1baiSmsdWIsUA=",
+        "owner": "raine",
+        "repo": "workmux",
+        "rev": "e76bb06daa21098c37412c003bf25320165b3e03",
+        "type": "github"
+      },
+      "original": {
+        "owner": "raine",
+        "repo": "workmux",
         "type": "github"
       }
     },
