@@ -13,8 +13,9 @@
     };
     # Linux only
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
     arto.url = "github:arto-app/Arto";
     xremap-flake.url = "github:xremap/nix-flake";
