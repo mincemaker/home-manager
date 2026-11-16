@@ -13,6 +13,7 @@ in {
       "npm:pi-web-access"
       "npm:pi-better"
       "npm:pi-prompt-template-model"
+      "npm:pi-powerline-footer"
       "git:github.com/nicobailon/visual-explainer"
       "git:github.com/DietrichGebert/ponytail"
     ];
