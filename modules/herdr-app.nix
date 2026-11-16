@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
@@ -8,7 +8,6 @@ let
 in {
   xdg.configFile = {
     "herdr-app/keys.json".source = mkOutOfStoreSymlink "${herdrCfgDir}/${keys}";
-  } // lib.optionalAttrs isDarwin {
     "herdr-app/mods/tmux-prefix".source =
       mkOutOfStoreSymlink "${herdrCfgDir}/mods/tmux-prefix";
   };

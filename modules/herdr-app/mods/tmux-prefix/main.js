@@ -5,26 +5,33 @@ import { closeOverlay, focused, hc, nextCommand, props, run, theme } from "herdr
 // Edit these two things to make the example yours. Only repeatable actions
 // start a timer: the first key after Ctrl+Z can take as long as you like.
 const REPEAT_MS = 500;
+// Mirrors ~/.tmux.conf. "C-x" means Ctrl+x after the prefix.
 const BINDINGS = [
   ["c", "New tab", "tab.new"],
-  ["%", "Split right", "pane.split", { direction: "right" }],
-  ['"', "Split down", "pane.split", { direction: "down" }],
-  ["x", "Close pane", "pane.close"],
-  ["n", "Next tab", "tab.next"],
-  ["p", "Previous tab", "tab.prev"],
-  ["h", "Focus left", "pane.go", { direction: "left" }, true],
-  ["j", "Focus down", "pane.go", { direction: "down" }, true],
-  ["k", "Focus up", "pane.go", { direction: "up" }, true],
-  ["l", "Focus right", "pane.go", { direction: "right" }, true],
+  ["2", "Split down", "pane.split", { direction: "down" }],
+  ["3", "Split right", "pane.split", { direction: "right" }],
+  ["C-n", "Next tab", "tab.next", {}, true],
+  ["n", "Next tab", "tab.next", {}, true],
+  ["p", "Previous tab", "tab.prev", {}, true],
+  ["k", "Close pane", "pane.close"],
+  ["K", "Close tab", "tab.close"],
+  ["A", "Rename tab", "tab.rename"],
+  ["w", "Picker", "mod.open", { name: "picker" }],
+  ["b", "Picker", "mod.open", { name: "picker" }],
+  ["y", "Search terminal", "terminal.search"],
+  ["z", "Zoom pane", "pane.zoom"],
+  // ponytail: Herdr has no pane resize, so tmux's C-hjkl resize becomes focus.
+  ["C-h", "Focus left", "pane.go", { direction: "left" }, true],
+  ["C-j", "Focus down", "pane.go", { direction: "down" }, true],
+  ["C-k", "Focus up", "pane.go", { direction: "up" }, true],
+  ["C-l", "Focus right", "pane.go", { direction: "right" }, true],
   ["left", "Focus left", "pane.go", { direction: "left" }, true],
   ["down", "Focus down", "pane.go", { direction: "down" }, true],
   ["up", "Focus up", "pane.go", { direction: "up" }, true],
   ["right", "Focus right", "pane.go", { direction: "right" }, true],
-  ["J", "Next space", "space.next", {}, true],
-  ["K", "Previous space", "space.prev", {}, true],
-  ["z", "Zoom pane", "pane.zoom"],
+  [")", "Next space", "space.next", {}, true],
+  ["(", "Previous space", "space.prev", {}, true],
   ["d", "Minimize window", "window.minimize"],
-  ...Array.from({ length: 10 }, (_, i) => [String(i), `Tab ${i === 0 ? 10 : i}`, "tab.select", { index: i === 0 ? 10 : i }]),
 ];
 
 function forwardKey(e, key) {
@@ -78,7 +85,8 @@ export default class TmuxPrefix extends View {
     if (e.key === "escape") return this.dismiss();
     if (m.control && e.key === "z") return this.sendPrefix(cx);
     const plain = !m.control && !m.alt && !m.platform;
-    const key = plain ? (e.key_char ?? (m.shift && e.key.length === 1 ? e.key.toUpperCase() : e.key)) : e.key;
+    const ctrl = m.control && !m.alt && !m.platform && !m.shift;
+    const key = plain ? (e.key_char ?? (m.shift && e.key.length === 1 ? e.key.toUpperCase() : e.key)) : ctrl ? `C-${e.key}` : e.key;
     if (plain && key === "?") {
       this.all = !this.all;
       this.repeat = false;
@@ -86,7 +94,7 @@ export default class TmuxPrefix extends View {
       cx.notify();
       return;
     }
-    const binding = plain && BINDINGS.find((b) => b[0] === key);
+    const binding = (plain || ctrl) && BINDINGS.find((b) => b[0] === key);
     if (!binding) {
       const forwarded = this.repeat && plain && forwardKey(e, key);
       if (forwarded) return this.send(forwarded, cx);
@@ -107,7 +115,7 @@ export default class TmuxPrefix extends View {
 
   render() {
     const t = theme();
-    const rows = this.all ? BINDINGS : BINDINGS.filter(([key]) => !["left", "right", "up", "down"].includes(key) && !/^\d$/.test(key));
+    const rows = this.all ? BINDINGS : BINDINGS.filter(([key]) => !["left", "right", "up", "down"].includes(key));
     return v_flex().id("tmux-prefix").track_focus(this.handle)
       .on_key_down((e, cx) => this.key(e, cx))
       .p(14).gap(8).bg(t.popover).text_color(t.foreground).text_size(12)
@@ -116,6 +124,6 @@ export default class TmuxPrefix extends View {
       .child(v_flex().h(280).min_h(0).overflow_y_scrollbar().children(rows.map(([key, label, , , repeatable]) =>
         h_flex().h(20).flex_none().items_center().gap(12).child(div().w(40).text_color(t.accent).child(key))
           .child(div().flex_1().child(label)).child(div().text_color(t.dim).child(repeatable ? "repeat" : "")))))
-      .child(div().text_color(t.muted).child("0–9 tabs (0 = 10) · arrows focus · ? all bindings"));
+      .child(div().text_color(t.muted).child("arrows focus · ? all bindings"));
   }
 }
