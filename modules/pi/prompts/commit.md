@@ -20,16 +20,17 @@ Use this two-turn workflow:
    A match establishes that its build output is active, not runtime behavior.
    Ask only about evidence still missing, never because you did not personally
    perform a check.
-   Show the staged diff and proposed commit message, then wait for approval.
-2. A reply such as "ok", "ok. commit", or "コミットして" approves that diff
-   and message and authorizes git commit in that reply's turn. Do not ask
-   for approval or completed validation again. Before committing, check only
-   that the staged diff is unchanged and no conflicts or Git operations are
-   in progress. If unchanged and clear, commit with the approved message,
-   using normal signing and hooks. Do not change files or the index.
-   Stop only for changed content, conflicts, an operation in progress, or
-   an actual error; state the concrete reason. Never push.
+   Before staging, run all five checks at the start of git-commit step 3,
+   each separately. Show the staged diff and exact proposed message, then
+   wait for approval.
+2. On approval (for example, "はい", "ok.", or "コミットして"), run
+   git commit with the approved message as the first command. Do not repeat
+   checks, ask again, or restage. Use normal signing and hooks. If the
+   commit fails, report the error and stop. Never push.
 
 After committing, verify that the recorded diff and message match the
 approved content and no target changes remain staged or unstaged.
 Report only the commit ID and verification result.
+
+If later asked why a step was taken, check the request, skill, and observed
+commands and outputs. Do not infer motives.
