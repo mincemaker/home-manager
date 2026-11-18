@@ -48,7 +48,7 @@ in {
 
         [[rules]]
         matcher = "Bash"
-        regex = '\bgit\b[^;|&\n]*\bpush\b'
+        regex = '\bgit\b[^;|&\n]*[\s"\x27]push\b'
         message = "Use of 'git push' is prohibited. Ask the user to execute it."
 
         [[rules]]
