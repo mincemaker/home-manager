@@ -19,6 +19,7 @@ in {
         "npm:pi-powerline-footer"
         "git:github.com/nicobailon/visual-explainer"
         "git:github.com/DietrichGebert/ponytail"
+        "git:github.com/ayghri/i-have-adhd"
       ];
     };
   };
