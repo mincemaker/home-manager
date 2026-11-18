@@ -8,15 +8,19 @@ in {
     enable = true;
     package = null;
     mutableSettings = true;
-    settings.packages = [
-      "npm:pi-subagents"
-      "npm:pi-web-access"
-      "npm:pi-better"
-      "npm:pi-prompt-template-model"
-      "npm:pi-powerline-footer"
-      "git:github.com/nicobailon/visual-explainer"
-      "git:github.com/DietrichGebert/ponytail"
-    ];
+    settings = {
+      defaultProvider = "openai";
+      defaultModel = "gpt-6.2-sol";
+      packages = [
+        "npm:pi-subagents"
+        "npm:pi-web-access"
+        "npm:pi-better"
+        "npm:pi-prompt-template-model"
+        "npm:pi-powerline-footer"
+        "git:github.com/nicobailon/visual-explainer"
+        "git:github.com/DietrichGebert/ponytail"
+      ];
+    };
   };
 
   home.file = {
