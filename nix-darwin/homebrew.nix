@@ -68,6 +68,7 @@ _:
       "spotify"
       "tailscale-app"
       "thaw"
+      "tuna"
       "vesktop"
       "visual-studio-code"
       "zen"
