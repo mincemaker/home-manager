@@ -45,13 +45,13 @@ in {
               exit 0
             fi
 
-            VISIBILITY=$(gh repo view "$REPO_NAME" --json visibility -q '.visibility' 2>/dev/null || true)
-
-            if [ -z "$VISIBILITY" ] || [ "$VISIBILITY" = "PUBLIC" ]; then
+            if ! VISIBILITY=$(gh repo view "$REPO_NAME" --json visibility -q '.visibility' 2>/dev/null); then
+              REASON="DeepWiki MCPへのアクセスをブロックしました: '$REPO_NAME' の公開状態を gh で確認できませんでした。"
+            elif [ "$VISIBILITY" = "PUBLIC" ]; then
               exit 0
+            else
+              REASON="DeepWiki MCPへのアクセスをブロックしました: '$REPO_NAME' はプライベートリポジトリです (visibility: $VISIBILITY)。"
             fi
-
-            REASON="DeepWiki MCPへのアクセスをブロックしました: '$REPO_NAME' はプライベートリポジトリです (visibility: $VISIBILITY)。"
             jq -n --arg reason "$REASON" \
               '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: $reason}}'
             exit 0
