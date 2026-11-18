@@ -19,11 +19,15 @@ in {
         import sys
 
 
+        def deny(reason):
+            print(json.dumps({"decision": "deny", "reason": reason}))
+
+
         def main():
             try:
                 data = json.load(sys.stdin)
             except (json.JSONDecodeError, EOFError):
-                print(json.dumps({"decision": "allow"}))
+                deny("guard-and-guide-agy: invalid hook input")
                 return
 
             tool_call = data.get("toolCall", {})
@@ -31,7 +35,7 @@ in {
             command = args.get("CommandLine", "")
 
             if not command:
-                print(json.dumps({"decision": "allow"}))
+                deny("guard-and-guide-agy: CommandLine is missing")
                 return
 
             # guard-and-guide の Gemini CLI モードは run_shell_command を
@@ -50,11 +54,10 @@ in {
                     timeout=10,
                 )
             except subprocess.TimeoutExpired:
-                print(json.dumps({"decision": "allow"}))
+                deny("guard-and-guide timed out")
                 return
             except FileNotFoundError:
-                print("guard-and-guide not found in PATH", file=sys.stderr)
-                print(json.dumps({"decision": "allow"}))
+                deny("guard-and-guide not found in PATH")
                 return
 
             output = result.stdout.strip()
@@ -62,12 +65,17 @@ in {
                 # guard-and-guide の deny 出力はすでに agy と同形式
                 # {"decision": "deny", "reason": "..."}
                 print(output)
+            elif result.returncode != 0:
+                deny(f"guard-and-guide exited with {result.returncode}")
             else:
                 print(json.dumps({"decision": "allow"}))
 
 
         if __name__ == "__main__":
-            main()
+            try:
+                main()
+            except Exception:
+                deny("guard-and-guide-agy: unexpected hook input")
       '')
     ];
 
