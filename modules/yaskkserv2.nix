@@ -41,6 +41,14 @@ let
       ${pkgs.skkDictionaries.geo}/share/skk/SKK-JISYO.geo \
       ${jawikiDict}
   '';
+
+  serverArgs = [
+    "${yaskkserv2}/bin/yaskkserv2"
+    "--no-daemonize"
+    "--google-japanese-input=notfound"
+    "--google-suggest"
+    "${yaskDict}/dictionary.yaskkserv2"
+  ];
 in
 {
   home.packages = [ yaskkserv2 ];
@@ -49,13 +57,7 @@ in
     enable = true;
     config = {
       Label = "com.github.wachikun.yaskkserv2";
-      ProgramArguments = [
-        "${yaskkserv2}/bin/yaskkserv2"
-        "--no-daemonize"
-        "--google-japanese-input=notfound"
-        "--google-suggest"
-        "${yaskDict}/dictionary.yaskkserv2"
-      ];
+      ProgramArguments = serverArgs;
       KeepAlive = true;
       RunAtLoad = true;
       Sockets = {
@@ -73,7 +75,7 @@ in
     Unit.Description = "yaskkserv2 SKK server";
     Install.WantedBy = [ "default.target" ];
     Service = {
-      ExecStart = "${yaskkserv2}/bin/yaskkserv2 --no-daemonize --google-japanese-input=notfound --google-suggest ${yaskDict}/dictionary.yaskkserv2";
+      ExecStart = lib.concatStringsSep " " serverArgs;
       Restart = "on-failure";
     };
   };
