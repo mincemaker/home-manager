@@ -170,6 +170,15 @@
           zstyle ':fzf-tab:*' fzf-command fzf
           zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
         ''
+        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin ''
+          # Carapace shows basenames, so a trailing directory must not seed the query.
+          zstyle -e ':fzf-tab:complete:*:' query-string '
+            reply=(prefix input first)
+            if [[ $PREFIX == */ && ''${_comps[''${words[1]}]} == _carapace_completer ]]; then
+              reply=(prefix)
+            fi
+          '
+        '')
         (lib.mkAfter ''
           [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
         '')
@@ -230,10 +239,20 @@
 
     zoxide.enable = true;
 
-    fzf = {
+    fzf = let
+      fileCommand = "fd --type f --hidden --exclude .git";
+    in {
       enable = true;
-      defaultCommand = "fd --type f --hidden --exclude .git";
-      fileWidget.command = "fd --type f --hidden --exclude .git";
+      defaultCommand = fileCommand;
+      fileWidget.command = fileCommand;
+      # An explicit root bypasses the ignore on z-ai itself without disabling ignore rules.
+      fileWidget.zsh.command = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin ''
+        if [ -d z-ai ] && [ ! -L z-ai ]; then
+          ${fileCommand} --exclude /z-ai && ${fileCommand} . z-ai
+        else
+          ${fileCommand}
+        fi
+      '';
       changeDirWidget.command = "fd --type d --hidden --exclude .git";
     };
 
