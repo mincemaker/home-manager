@@ -207,8 +207,6 @@
     zsh.shellAliases = {
       ls = "LC_ALL=C ls --color=auto";
     };
-
-    claude.enable = true;
   };
 
   fonts.fontconfig = {
