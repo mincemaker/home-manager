@@ -207,19 +207,22 @@
         where = "type -a";
       };
 
-      interactiveShellInit = ''
-        # 起動時の挨拶メッセージを非表示
-        set -g fish_greeting
+      interactiveShellInit = lib.mkMerge [
+        ''
+          # 起動時の挨拶メッセージを非表示
+          set -g fish_greeting
 
-        # Ctrl+P / Ctrl+N で履歴のプレフィックス検索
-        bind \cp history-prefix-search-backward
-        bind \cn history-prefix-search-forward
-
-        # ローカル設定があれば読み込み
-        if test -f ~/.config/fish/config.local.fish
-          source ~/.config/fish/config.local.fish
-        end
-      '';
+          # Ctrl+P / Ctrl+N で履歴のプレフィックス検索
+          bind \cp history-prefix-search-backward
+          bind \cn history-prefix-search-forward
+        ''
+        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin ''
+          # ローカル設定があれば読み込み
+          if test -f ~/.config/fish/config.local.fish
+            source ~/.config/fish/config.local.fish
+          end
+        '')
+      ];
 
       plugins = [
         {
