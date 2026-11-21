@@ -48,6 +48,13 @@ Do not write in the "noun（appositive gloss / restating the noun）" style — 
   tracking.
 - Do NOT ask whether `z-ai/` is gitignored — it always is.
 
+## Memory
+
+The Bash sandbox mounts `~/.claude/projects/*/memory/` read-only, so `echo >>`
+fails there and the retry with Read and Edit wastes tokens at the end of every
+session. Create memory files with Write and append to `MEMORY.md` with Edit
+from the start.
+
 ## Browser Automation (agent-browser)
 
 `agent-browser` is available to check on the browser.
