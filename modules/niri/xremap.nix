@@ -81,6 +81,8 @@ _:
           # Search
           "C-s" = "C-f";
           "M-Shift-5" = "C-h";
+          # Quoted insert
+          "C-q" = { escape_next_key = true; };
           # C-x prefix
           "C-x" = {
             remap = {
