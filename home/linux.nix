@@ -20,12 +20,18 @@
     };
   };
 
-  home.activation.checkNvidiaVersionDrift = lib.hm.dag.entryAnywhere ''
-    host=$(cat /sys/module/nvidia/version 2>/dev/null || true)
+  # 読み込み済みモジュールは pacman 更新後も再起動まで旧版のままなので、インストール済みパッケージと比べる
+  home.activation.checkNvidiaVersionDrift = lib.hm.dag.entryBefore [ "writeBoundary" ] ''
+    host=$(/usr/bin/pacman -Q nvidia-utils 2>/dev/null || true)
+    host=''${host#* }
+    host=''${host%-*}
     want=${config.targets.genericLinux.gpu.nvidia.version}
     if [[ -n "$host" && "$host" != "$want" ]]; then
-      warnEcho "Host NVIDIA driver is $host but targets.genericLinux.gpu.nvidia.version is $want."
-      warnEcho "Update version/sha256 in home/linux.nix, switch, then rerun non-nixos-gpu-setup with sudo."
+      errorEcho "Host nvidia-utils is $host but targets.genericLinux.gpu.nvidia.version is $want."
+      errorEcho "Set version = \"$host\" in home/linux.nix and sha256 from:"
+      errorEcho "  nix store prefetch-file https://download.nvidia.com/XFree86/Linux-x86_64/$host/NVIDIA-Linux-x86_64-$host.run"
+      errorEcho "Then switch and rerun non-nixos-gpu-setup with sudo."
+      exit 1
     fi
   '';
 
