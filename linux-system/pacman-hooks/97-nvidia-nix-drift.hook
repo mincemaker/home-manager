@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = nvidia-utils
+
+[Action]
+Description = Checking Nix-side NVIDIA driver version...
+When = PostTransaction
+Exec = /usr/local/bin/nvidia-nix-drift-check

@@ -32,6 +32,12 @@ mise run setup-linux-inir       # home-manager switch → iNiR clone + setup ins
 mise run setup-linux-dotfiles   # ↑ に続けて dotfiles_new clone + chezmoi apply
 ```
 
+`/etc` 配下に置く pacman フックも home-manager の管轄外なので、`linux-system/pacman-hooks/` で管理し、次のタスクで設置する。`nvidia-utils` を更新したときに、Nix 側の NVIDIA ドライバーとのバージョンのずれを警告する。
+
+```bash
+mise run setup-linux-pacman-hooks   # sudo で /etc/pacman.d/hooks と /usr/local/bin に設置
+```
+
 ### macOS
 
 #### 初回セットアップ
@@ -64,6 +70,7 @@ mise run update-linux  # flake を更新して適用
 # Linux 新規マシンのみ（一度きり）
 mise run setup-linux-inir       # iNiR (niri shell) の clone + install
 mise run setup-linux-dotfiles   # dotfiles_new の clone + chezmoi apply
+mise run setup-linux-pacman-hooks   # pacman フックの設置
 ```
 
 mise を使わない場合:
@@ -120,6 +127,8 @@ apm install
 │   ├── common.nix           # 全環境共通シェル・CLI ツール設定
 │   ├── linux.nix            # Linux 固有
 │   └── darwin.nix           # macOS 固有
+├── linux-system/            # home-manager 管轄外のシステムファイル (Linux)
+│   └── pacman-hooks/
 └── modules/
     ├── agent-skills.nix     # 共通（Linux は flake.nix 経由、macOS は darwin.nix 経由で有効化）
     ├── antigravity-cli.nix  # 共通

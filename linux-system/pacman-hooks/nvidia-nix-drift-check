@@ -1,0 +1,10 @@
+#!/bin/sh
+host=$(pacman -Q nvidia-utils | cut -d' ' -f2)
+host=${host%-*}
+for f in /run/opengl-driver/lib/libnvidia-glcore.so.*; do
+  nix=${f##*.so.}
+done
+if [ "$nix" != '*' ] && [ "$host" != "$nix" ]; then
+  echo "==> WARNING: nvidia-utils is now $host but the Nix-side driver is $nix."
+  echo "    Update home/linux.nix, switch, then rerun non-nixos-gpu-setup with sudo."
+fi

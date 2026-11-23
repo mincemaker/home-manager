@@ -65,3 +65,10 @@ cd /mnt/development/dotfiles_new && mise install && chezmoi apply --source .
 alias = "update-agents-mac"
 description = "Update llm-agents, agent-skills and skill source inputs and apply (macOS)"
 run = "nh darwin switch -H mince-mac {{vars.agent_inputs}}"
+
+[tasks.setup-linux-pacman-hooks]
+description = "Install pacman hooks from linux-system/pacman-hooks (Linux, needs sudo)"
+run = '''
+sudo install -Dm755 linux-system/pacman-hooks/nvidia-nix-drift-check /usr/local/bin/nvidia-nix-drift-check
+sudo install -Dm644 linux-system/pacman-hooks/97-nvidia-nix-drift.hook /etc/pacman.d/hooks/97-nvidia-nix-drift.hook
+'''
