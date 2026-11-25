@@ -18,7 +18,7 @@
     ];
     extraSpecialArgs = {
       inherit inputs;
-      inherit (inputs) slash-criticalthink cage guard-and-guide llm-agents;
+      inherit (inputs) slash-criticalthink cage guard-and-guide llm-agents mizchi-explainer;
     };
     users.mince = ../home/darwin.nix;
   };

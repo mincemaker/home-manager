@@ -1,7 +1,18 @@
-{ config, lib, pkgs, llm-agents, ... }:
+{ config, lib, pkgs, llm-agents, mizchi-explainer, ... }:
 
 let
   cfg = config.programs.agent-skills;
+  # verify-doc.mjs looks for dist/<page path>.html while build-html.mjs writes
+  # dist/<basename>.html, so --pages with a page in a subdirectory fails.
+  explainer =
+    if mizchi-explainer.rev == "752da7c687e767c3efd8ea79f63c5f4f3d76e7b5" then
+      pkgs.applyPatches {
+        name = "mizchi-explainer-patched";
+        src = mizchi-explainer;
+        patches = [ ./explainer-verify-doc-subdir-pages.patch ];
+      }
+    else
+      mizchi-explainer;
 in {
   config = lib.mkIf cfg.enable {
     programs.agent-skills = {
@@ -24,7 +35,7 @@ in {
           filter.nameRegex = "^(apm-usage|empirical-prompt-tuning)$";
         };
         mizchi-explainer = {
-          input = "mizchi-explainer";
+          path = explainer;
           subdir = "skills";
         };
         mattpocock = {

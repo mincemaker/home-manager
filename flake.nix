@@ -129,7 +129,7 @@
         ];
         extraSpecialArgs = {
           inherit inputs;
-          inherit (inputs) zen-browser slash-criticalthink cage guard-and-guide arto llm-agents;
+          inherit (inputs) zen-browser slash-criticalthink cage guard-and-guide arto llm-agents mizchi-explainer;
         };
       };
 

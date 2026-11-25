@@ -1,0 +1,20 @@
+--- a/skills/explainer/scripts/verify-doc.mjs
++++ b/skills/explainer/scripts/verify-doc.mjs
+@@ -16,7 +16,7 @@
+ import { spawnSync } from 'node:child_process';
+ import { existsSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+ import { homedir, tmpdir } from 'node:os';
+-import { dirname, join, resolve } from 'node:path';
++import { basename, dirname, join, resolve } from 'node:path';
+ import { fileURLToPath } from 'node:url';
+ import { parseArgs } from 'node:util';
+ 
+@@ -164,7 +164,7 @@
+   const b = sh(`node ${join(here, 'build-html.mjs')} ${pages.map((x) => join(docDir, x)).join(' ')}`);
+   if (b.code !== 0) ng('build-html failed', b.out.trim().split('\n').at(-1));
+   else for (const page of pages) {
+-    const html = join(docDir, 'dist', page === 'README.md' ? 'index.html' : page.replace(/\.md$/, '.html'));
++    const html = join(docDir, 'dist', basename(page) === 'README.md' ? 'index.html' : basename(page).replace(/\.md$/, '.html'));
+     // 閉じた <details> の答えは、非表示でも箱の寸法が残り container-protrusion と測られる。
+     // そこで「全部開いた版」を厳格に検査し、閉じた版はその 1 種だけ理由付きで除外する。
+     // 図がページの中で壊れていないか：Markdown の変換で <pre> にされたり、タグがエスケープされたりしていないか
